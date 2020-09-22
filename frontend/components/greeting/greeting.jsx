@@ -9,8 +9,11 @@ export default class Greeting extends React.Component{
             </div>
         ) : (
             <div className="login-signup">
-                <Link className="signup" to="/signup">Sign up</Link>
-                <Link className="login" to="/login">Log in</Link>
+                <h1>SmartSplit!</h1>
+                <div>
+                    <Link className="login" to="/login">Log in</Link>
+                    <Link className="signup" to="/signup">Sign up</Link>
+                </div>
             </div>
         );
         return(

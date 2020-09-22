@@ -33,32 +33,36 @@ export default class SignUpForm extends React.Component {
     }
 
     render(){
-        debugger
         return(
             <div className="signup-form">
                 <ErrorList errors={this.props.errors} />
                 <h3>INTRODUCE YOURSELF</h3>
                 <form className="form" onSubmit={this.handleSubmit}>
-                    <label>Hi there! My name is
+                    <label>Hi there! My name is <br/>
                         <input
                             type="text"
                             value={this.state.name}
                             onChange={this.update('name')} />
                     </label>
-                    <label>Here’s my email address:
+                    <br /><br />
+                    <label>Here’s my email address: <br />
                         <input 
                             type="text" 
                             value={this.state.email} 
                             onChange={this.update('email')}/>
                     </label>
-                    <label>And here’s my password:
+                    <br /><br />
+                    <label>And here’s my password: <br />
                         <input
                             type="password"
                             value={this.state.password}
                             onChange={this.update('password')} />
                     </label>
+                    <br /><br />
                     <button>Sign me up!</button>
                 </form>
+                <p>By signing up, you accept the Smartsplit Terms of Service.</p>
+                <p>Don't use USD for currency? <a style={{color: "rgba(18, 154, 234, 1)"}}>Click here.</a></p>
             </div>
         )
     }

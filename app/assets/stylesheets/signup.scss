@@ -1,0 +1,52 @@
+.signup-form > h3 {
+    font-size: 18px;
+    color: #878787;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form > label {
+    font-size: 25px;
+}
+
+.form > label > input {
+    border: 1px solid #adadad;;
+    border-radius: 3px;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+}
+
+.signup-form {
+    margin-left: 30px;
+    margin-top: 50px;
+}
+
+.signup-form input[type=text]:focus, .signup-form input[type=password]:focus{
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.form > button {
+    background-color:#ff6500; 
+    color: white;
+    font-size: 30px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #E65B00;
+    border-style: outset;
+}
+
+.form > button:hover {
+    background-color:#E65B00;
+}
+
+.signup-form > p:first-of-type {
+    color: rgba(18, 154, 234, 1);
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+.signup-form > p:last-of-type {
+    color: black;
+    padding: 10px 0;
+}

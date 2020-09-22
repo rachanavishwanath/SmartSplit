@@ -8,8 +8,9 @@ const LoginNavBar = () => {
                 <Link to="/">SmartSplit</Link>
             </div>
             <div className="nav-right">
-                <Link to="/login">Log in</Link>
-                <Link to="/signup">Sign up</Link>
+                <Link className="lbttn"to="/login">Log in</Link>
+                or
+                <Link className="sbttn"to="/signup">Sign up</Link>
             </div>
         </div>
     )
