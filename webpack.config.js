@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     context: __dirname,
-    entry: './frontend/index.jsx',
+    entry: './frontend/smart_split.jsx',
     output: {
         path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
         filename: 'bundle.js'
@@ -15,7 +15,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     query: {
-                        presets: ['@babel/env', '@babel/react', 'es2015']
+                        presets: ['@babel/env', '@babel/react']
                     }
                 },
             }
