@@ -14,19 +14,16 @@ document.addEventListener('DOMContentLoaded',() => {
     window.logout = logout;
     window.signup = signup;
     let store;
-    debugger
     if (window.currentUser) {
-        const preloadedState = {
-            entities: { 
-                users: { [window.currentUser.id]: window.currentUser }
-            },
-            session: { id: window.currentUser.id}
+        const preloadedState ={
+            entities: {users: { [window.currentUser.id]: window.currentUser }},
+            session: { id: window.currentUser.id }
         };
-        store = configureStore(preloadedState);
-        delete window.currentUser;
+        store = configureStore(preloadedState)
     } else {
         store = configureStore();
     }
+    // const store = configureStore();
     window.store = store;
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store}/>, root);

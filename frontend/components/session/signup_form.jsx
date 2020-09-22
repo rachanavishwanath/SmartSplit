@@ -33,6 +33,7 @@ export default class SignUpForm extends React.Component {
     }
 
     render(){
+        debugger
         return(
             <div className="signup-form">
                 <ErrorList errors={this.props.errors} />

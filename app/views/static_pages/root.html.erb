@@ -1,12 +1,11 @@
-<% debugger %>
 <% if logged_in? %>
-    <script type="text/javascripts">
+    <script type="text/javascript">
         window.currentUser = <%= render(
-            "api/users/user.json.jbuilder", 
+            "api/users/user.json.jbuilder",
             user: current_user
         ).html_safe %>
     </script>
 <% end %>
 <main id="root">
-    <h3>Fix the code!</h3>
+    <h3>Fix the code! Do you see this?</h3>
 </main>
