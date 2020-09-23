@@ -19,12 +19,6 @@ ul, ol {
     list-style: none;
 }
 
-img {
-    display: block;
-    width: 100%;
-    height: auto; 
-}
-
 input[type="password"],
 input[type="text"],
 input[type="email"],

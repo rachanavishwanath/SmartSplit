@@ -51,29 +51,32 @@ export default class LoginForm extends React.Component {
         //                 />
         //             )
         return (
-            <div>
-                <ErrorList errors={this.props.errors}/>
+            <div>  
                 <LoginNavBar />
-                <div className="login-form">
-                    <h3>WELCOME TO SPLITWISE</h3>
-                    <form className="form2" onSubmit={this.handleSubmit}>
-                        <label>Email address <br/>
-                            <input
-                                type="text"
-                                value={this.state.email}
-                                onChange={this.update('email')} />
-                        </label>
-                        <br /><br />
-                        <label>Password<br />
-                            <input
-                                type="password"
-                                value={this.state.password}
-                                onChange={this.update('password')} />
-                        </label>
-                        <br /><br />
-                        <button className="login-bttn">Log in</button>
-                        <p>Forgot your password? <a>Click here</a></p>
-                    </form>
+                <ErrorList errors={this.props.errors} />
+                <div className="login-page">
+                    <img src={window.logo} alt="logo"/>
+                    <div className="login-form">
+                        <h3>WELCOME TO SMARTSPLIT</h3>
+                        <form className="form2" onSubmit={this.handleSubmit}>
+                            <label>Email address <br/>
+                                <input
+                                    type="text"
+                                    value={this.state.email}
+                                    onChange={this.update('email')} />
+                            </label>
+                            <br /><br />
+                            <label>Password<br />
+                                <input
+                                    type="password"
+                                    value={this.state.password}
+                                    onChange={this.update('password')} />
+                            </label>
+                            <br /><br />
+                            <button className="login-bttn">Log in</button>
+                            <p>Forgot your password? <a>Click here</a></p>
+                        </form>
+                    </div>
                 </div>
             </div>
         )

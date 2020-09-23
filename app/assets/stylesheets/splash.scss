@@ -3,7 +3,15 @@
     font-size: 20px;
     font-weight: bold;
     font-family: sans-serif;
+    padding-top: 5px;
+    margin-left: 10px;
  }
+
+.login-signup > div > img {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
 
   div.login-signup {
       display: flex;
@@ -34,4 +42,8 @@
      margin-left: 20px;
  }
 
-
+[class*="fa-"] {
+  width: 20px;
+  height: 20px;
+  padding-top: 20px;
+}

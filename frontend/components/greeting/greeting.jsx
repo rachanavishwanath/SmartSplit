@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+
 export default class Greeting extends React.Component{
     render(){
         const display = this.props.currentUser ? (
@@ -9,7 +10,10 @@ export default class Greeting extends React.Component{
             </div>
         ) : (
             <div className="login-signup">
-                <h1>SmartSplit!</h1>
+                <div>
+                    <img src={window.logo} alt="Logo"/>
+                    <h1>SmartSplit!</h1>
+                </div>
                 <div>
                     <Link className="login" to="/login">Log in</Link>
                     <Link className="signup" to="/signup">Sign up</Link>

@@ -5,6 +5,7 @@ const LoginNavBar = () => {
     return (
         <div className="login-navbar">
             <div className="nav-left">
+                <img src={window.logo} alt="logo"/>
                 <Link to="/">SmartSplit</Link>
             </div>
             <div className="nav-right">
