@@ -19,6 +19,9 @@
 .signup-form {
     margin-left: 30px;
     margin-top: 50px;
+    display: flex;
+    margin-top: 50px;
+    width: 750px;
 }
 
 .signup-form input[type=text]:focus, .signup-form input[type=password]:focus{
@@ -40,13 +43,37 @@
     background-color:#E65B00;
 }
 
-.signup-form > p:first-of-type {
+.signup-form > .form > p:first-of-type {
     color: rgba(18, 154, 234, 1);
     margin-top: 10px;
     padding: 10px 0;
 }
 
-.signup-form > p:last-of-type {
+.signup-form > .form > p:last-of-type {
     color: black;
     padding: 10px 0;
 }
+
+.signup-form > .form {
+    margin-top: 60px;
+}
+
+
+.signup-form > img {
+    display: none;
+}
+
+@media (min-width: 750px) {
+  /* Probably some parent element that limits the img width */
+  .signup-form > img {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-top: 60px;
+    // margin-bottom: 250px;
+    margin-right: 50px;
+  }
+}
+
+
+

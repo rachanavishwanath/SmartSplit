@@ -1,0 +1,28 @@
+div.error-list {
+    color: white;
+    text-align: center;
+    background: #B30000;
+    width: fit-content;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: start;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+.error-list > p{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+div.error-list > ul {
+    list-style: disc;
+    margin-left: 46px;
+    padding: 0 5px;
+}

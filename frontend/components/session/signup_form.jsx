@@ -34,10 +34,11 @@ export default class SignUpForm extends React.Component {
 
     render(){
         return(
-            <div className="signup-form">
-                <ErrorList errors={this.props.errors} />
-                <h3>INTRODUCE YOURSELF</h3>
+            <div className="signup-form"> 
+                <img src={window.logo} alt="logo" />
                 <form className="form" onSubmit={this.handleSubmit}>
+                    <h3>INTRODUCE YOURSELF</h3>
+                    <ErrorList errors={this.props.errors} />
                     <label>Hi there! My name is <br/>
                         <input
                             type="text"
@@ -60,9 +61,10 @@ export default class SignUpForm extends React.Component {
                     </label>
                     <br /><br />
                     <button>Sign me up!</button>
+                    <p>By signing up, you accept the Smartsplit Terms of Service.</p>
+                    <p>Don't use USD for currency? <a style={{ color: "rgba(18, 154, 234, 1)" }}>Click here.</a></p>
                 </form>
-                <p>By signing up, you accept the Smartsplit Terms of Service.</p>
-                <p>Don't use USD for currency? <a style={{color: "rgba(18, 154, 234, 1)"}}>Click here.</a></p>
+
             </div>
         )
     }
