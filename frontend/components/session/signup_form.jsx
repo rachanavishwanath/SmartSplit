@@ -20,6 +20,19 @@ export default class SignUpForm extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.clearErrors();
+    }
+
+    // isValidEmail(email){
+    //     const arr = email.split('@');
+    //     if (arr.length < 2) {
+    //         return ["Enter a valid email"]
+    //     } else {
+    //         return true
+    //     }
+    // }
+
     handleSubmit(e){
         e.preventDefault();
         this.props.processForm(this.state).then(() => {
@@ -52,6 +65,7 @@ export default class SignUpForm extends React.Component {
                             value={this.state.email} 
                             onChange={this.update('email')}/>
                     </label>
+                    {/* {this.isValidEmail(this.state.email)} */}
                     <br /><br />
                     <label>And here’s my password: <br />
                         <input

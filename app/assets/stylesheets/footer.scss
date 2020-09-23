@@ -1,0 +1,45 @@
+.footer{
+    background-color:#676767;
+    display: flex;
+    justify-content: space-between;
+    height: 180px;
+}
+
+.left-footer {
+    color: white;
+    padding: 30px;
+}
+
+.right-footer {
+    color: white;
+    padding: 30px;
+}
+
+.right-footer > a {
+    border-bottom: 1px dotted white;
+    margin-left: 5px;
+}
+
+.right-footer > a:hover {
+    border-bottom: 1px double white;
+}
+
+.right-footer > a:after {
+    content: '  |'
+}
+
+.right-footer > a:last-of-type:after {
+    content: ''
+}
+
+.left-footer > p:first-of-type{
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
+@media (min-width: 960) {
+    .footer {
+        display: flex;
+        flex-wrap: column;
+    }
+}

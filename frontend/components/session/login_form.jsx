@@ -1,19 +1,16 @@
-import React, { userState } from 'react';
+import React from 'react';
 import ErrorList from './error_list';
 import LoginNavBar from './login_navbar';
-// import FlashMessage from 'react-flash-message';
-// import { Message } from 'semantic-ui-react';
 
 export default class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password: '',
-            formError: false
+            password: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-        // const [status, setStatus] = userState(false);
+        this.demoLogin = this.demoLogin.bind(this);
     }
 
     update(field) {
@@ -24,32 +21,35 @@ export default class LoginForm extends React.Component {
         }
     }
 
+    componentWillUnmount(){
+        this.props.clearErrors();
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user).then(() => {
-            this.setState({ formError: true})
+            this.setState({  })
             return this.props.history.push('/');
         });
         this.setState({
             email: '',
-            password: '',
-            formError: false
+            password: ''
+        })
+    }
+
+    demoLogin(e) {
+        e.preventDefault();
+        this.props.processForm({ email: 'demo@email.com', password: '123456789'}).then(() => {
+            return this.props.history.push('/');
+        });
+        this.setState({
+            email: '',
+            password: ''
         })
     }
 
     render() {
-        // const msg = this.state.formError ? (
-        //                 <Message
-        //                     positive
-        //                     header="You are logged in"
-        //                 />
-        //             ) : (
-        //                 <Message
-        //                     negative
-        //                     header="You are not logged in"
-        //                 />
-        //             )
         return (
             <div>  
                 <LoginNavBar />
@@ -73,7 +73,10 @@ export default class LoginForm extends React.Component {
                                     onChange={this.update('password')} />
                             </label>
                             <br /><br />
-                            <button className="login-bttn">Log in</button>
+                            <div className="login-options">
+                                <button className="login-bttn">Log in</button>
+                                <button className="demo-user" onClick={this.demoLogin}>Demo</button>
+                            </div>
                             <p>Forgot your password? <a>Click here</a></p>
                         </form>
                     </div>
