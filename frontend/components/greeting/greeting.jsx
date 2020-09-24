@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Footer from './footer';
+import HomePage from './home_page';
 
 export default class Greeting extends React.Component{
     constructor(props) {
@@ -20,8 +21,21 @@ export default class Greeting extends React.Component{
     render(){
         const display = this.props.currentUser ? (
             <div className="welcome">
-                <p>{this.props.currentUser.name}</p>
-                <button onClick={this.handleLogout}>Log out</button>
+                <div className="left-Nav">
+                    <img src={window.logo} alt="Logo" />
+                    <h1>SmartSplit!</h1>
+                </div>
+                <div className="right-nav">
+                    <img src={window.user} alt="user"/>
+                    <p>{this.props.currentUser.name}</p>
+                    <div class="arrow-down"></div>
+                    <div className="account-drop-down">
+                        <a href="">Your account</a>
+                        <a href="">Create a group</a>
+                        <a href="">Fairness calculator</a>
+                        <a onClick={this.handleLogout}>Log out</a>
+                    </div>
+                </div>
             </div>
         ) : (
             <div className="splash">
@@ -36,6 +50,7 @@ export default class Greeting extends React.Component{
                     </div>
                 </div>
                 {this.state.logout ? <div className="logout-notice">You are now logged out.</div> : null}
+                <HomePage />
             </div>
         );
         return(

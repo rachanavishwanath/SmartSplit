@@ -1,7 +1,7 @@
 div.error-list {
     color: white;
     text-align: center;
-    background: #B30000;
+    background: #d32c2c;
     width: fit-content;
     padding-right: 10px;
     padding-top: 10px;
@@ -25,4 +25,12 @@ div.error-list > ul {
     list-style: disc;
     margin-left: 46px;
     padding: 0 5px;
+}
+
+div.login-error-list{
+    margin: auto;
+    background: #d32c2c;
+    color: white;
+    padding: 10px 30px;
+    width: fit-content;
 }

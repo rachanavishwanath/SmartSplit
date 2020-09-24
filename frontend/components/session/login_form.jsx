@@ -1,6 +1,7 @@
 import React from 'react';
-import ErrorList from './error_list';
+import ErrorList from './login_error_list';
 import LoginNavBar from './login_navbar';
+import Footer from '../greeting/footer';
 
 export default class LoginForm extends React.Component {
     constructor(props) {
@@ -51,7 +52,7 @@ export default class LoginForm extends React.Component {
 
     render() {
         return (
-            <div>  
+            <div className="login-container">  
                 <LoginNavBar />
                 <ErrorList errors={this.props.errors} />
                 <div className="login-page">
@@ -81,6 +82,7 @@ export default class LoginForm extends React.Component {
                         </form>
                     </div>
                 </div>
+                {/* <Footer /> */}
             </div>
         )
     }

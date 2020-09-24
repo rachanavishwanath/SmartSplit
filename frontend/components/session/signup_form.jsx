@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorList from './error_list';
+import ErrorList from './signup_error_list';
 
 export default class SignUpForm extends React.Component {
     constructor(props){
@@ -10,6 +10,7 @@ export default class SignUpForm extends React.Component {
             password: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
     }
 
     update(field){
@@ -24,14 +25,12 @@ export default class SignUpForm extends React.Component {
         this.props.clearErrors();
     }
 
-    // isValidEmail(email){
-    //     const arr = email.split('@');
-    //     if (arr.length < 2) {
-    //         return ["Enter a valid email"]
-    //     } else {
-    //         return true
-    //     }
-    // }
+    demoLogin(e) {
+        e.preventDefault();
+        this.props.login({ email: 'demo@email.com', password: '123456789' }).then(() => {
+            return this.props.history.push('/');
+        });
+    }
 
     handleSubmit(e){
         e.preventDefault();
@@ -76,7 +75,7 @@ export default class SignUpForm extends React.Component {
                     <br /><br />
                     <button>Sign me up!</button>
                     <p>By signing up, you accept the Smartsplit Terms of Service.</p>
-                    <p>Don't use USD for currency? <a style={{ color: "rgba(18, 154, 234, 1)" }}>Click here.</a></p>
+                    <p>Don't have an account yet? <a style={{ color: "rgba(18, 154, 234, 1)" }} onClick={this.demoLogin}>Login as a demo user.</a></p>
                 </form>
 
             </div>

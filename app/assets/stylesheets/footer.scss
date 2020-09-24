@@ -2,7 +2,10 @@
     background-color:#676767;
     display: flex;
     justify-content: space-between;
-    height: 180px;
+    height: 100px;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
 }
 
 .left-footer {
@@ -12,7 +15,7 @@
 
 .right-footer {
     color: white;
-    padding: 30px;
+    padding: 40px;
 }
 
 .right-footer > a {

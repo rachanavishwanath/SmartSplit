@@ -5,7 +5,7 @@ class Api::SessionsController < ApplicationController
             params[:user][:password]
             )
         if !@user
-            render json: ['Invalid credentials'], status: 404
+            render json: ['Whoops! We couldn’t find an account for that email address and password. Maybe you’ve forgotten your password?'], status: 404
         else
             login(@user)
             render 'api/users/show'
