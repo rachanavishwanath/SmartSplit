@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorList from './error_list';
+import ErrorList from './signup_error_list';
 
 export default class SignUpForm extends React.Component {
     constructor(props){
@@ -10,6 +10,7 @@ export default class SignUpForm extends React.Component {
             password: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
     }
 
     update(field){
@@ -18,6 +19,17 @@ export default class SignUpForm extends React.Component {
                 [field]: e.currentTarget.value
             })
         }
+    }
+
+    componentWillUnmount() {
+        this.props.clearErrors();
+    }
+
+    demoLogin(e) {
+        e.preventDefault();
+        this.props.login({ email: 'demo@email.com', password: '123456789' }).then(() => {
+            return this.props.history.push('/');
+        });
     }
 
     handleSubmit(e){
@@ -33,32 +45,39 @@ export default class SignUpForm extends React.Component {
     }
 
     render(){
-        debugger
         return(
-            <div className="signup-form">
-                <ErrorList errors={this.props.errors} />
-                <h3>INTRODUCE YOURSELF</h3>
+            <div className="signup-form"> 
+                <img src={window.logo} alt="logo" />
                 <form className="form" onSubmit={this.handleSubmit}>
-                    <label>Hi there! My name is
+                    <h3>INTRODUCE YOURSELF</h3>
+                    <ErrorList errors={this.props.errors} />
+                    <label>Hi there! My name is <br/>
                         <input
                             type="text"
                             value={this.state.name}
                             onChange={this.update('name')} />
                     </label>
-                    <label>Here’s my email address:
+                    <br /><br />
+                    <label>Here’s my email address: <br />
                         <input 
                             type="text" 
                             value={this.state.email} 
                             onChange={this.update('email')}/>
                     </label>
-                    <label>And here’s my password:
+                    {/* {this.isValidEmail(this.state.email)} */}
+                    <br /><br />
+                    <label>And here’s my password: <br />
                         <input
                             type="password"
                             value={this.state.password}
                             onChange={this.update('password')} />
                     </label>
+                    <br /><br />
                     <button>Sign me up!</button>
+                    <p>By signing up, you accept the Smartsplit Terms of Service.</p>
+                    <p>Don't have an account yet? <a style={{ color: "rgba(18, 154, 234, 1)" }} onClick={this.demoLogin}>Login as a demo user.</a></p>
                 </form>
+
             </div>
         )
     }

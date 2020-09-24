@@ -1,0 +1,103 @@
+div > h1, .welcome > .left-Nav > h1 {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    padding-top: 5px;
+    margin-left: 10px;
+}
+
+.login-signup > div > img, .welcome > .left-Nav > img, .welcome > .right-nav > img {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+
+div.login-signup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ECECEC;
+}
+
+.login-signup > div {
+    display: flex;
+    flex-direction: wrap row;
+}
+
+a.login {
+    color: #1cc29f;
+    align-content: center;
+    padding-top: 10px; 
+    font-weight: bold;
+}
+
+a.signup {
+    font-family: sans-serif;
+    color: white;
+    background-color: #1cc29f;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0px 2px #878787;
+    margin-left: 20px;
+}
+
+.greeting {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+div.logout-notice {
+    background-color:lightgoldenrodyellow;
+    border: 1px solid #D0D0D0;
+    padding: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+div.splash {
+    display: flex;
+    flex-flow: column;
+    background-color: #ECECEC;
+}
+
+.home-page > img {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.home-page{
+    position: relative;
+    text-align: center;
+}
+
+p.app-line {
+    display: inline-block;
+    position: absolute;
+    width: 400px;
+    top: 150px;
+    left: 100px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.app-line2 {
+    display: inline-block;
+    position: absolute;
+    bottom: 250px;
+    left: 100px;
+    font-size: 20px;
+    width: 400px;
+    font-weight: bold;
+}
+
+.app-line3 {
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    font-size: 15px;
+}

@@ -15,11 +15,16 @@ class User < ApplicationRecord
     validates :name, presence: true
     validates :password_digest, presence: { message: 'Password can\'t be blank' }
     validates :password, length: { minimum: 8, allow_nil: true}
+    validate :validateEmail
     attr_reader :password
 
     after_initialize :ensure_session_token
 
     #FIG VAPER
+
+    def validateEmail
+       errors[:email] << "is not valid" if self.email.split('@').length != 2
+    end
 
     def self.find_by_credentials(email, password)
         @user = User.find_by(email: email)

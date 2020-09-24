@@ -14,6 +14,7 @@ export default ( state = _nullSession, action) => {
             return { id: action.user.id };
 
         case LOGOUT_CURRENT_USER:
+            'You are logged out'
             return _nullSession;
 
         default:
