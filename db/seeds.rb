@@ -9,7 +9,7 @@
 User.destroy_all
 
 guest = User.create!(
-    name: 'guest'
+    name: 'guest',
     email: 'demo@email.com',
     password: '123456789'
 )
