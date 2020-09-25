@@ -20,7 +20,23 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
-    #FIG VAPER
+    has_many :notes,
+        primary_key: :id,
+        foreign_key: :author_id,
+        class_name: :AdditionalDetail,
+        dependent: :destroy
+
+    has_many :expenses,
+        primary_key: :id,
+        foreign_key: :profile_id,
+        class_name: :Expense,
+        dependent: :destroy
+
+    has_many :friends,
+        primary_key: :id,
+        foreign_key: :friend_id,
+        class_name: :Friend,
+        dependent: :destroy
 
     def validateEmail
        errors[:email] << "is not valid" if self.email.split('@').length != 2

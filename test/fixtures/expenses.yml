@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: expenses
+#
+#  id           :bigint           not null, primary key
+#  profile_id   :integer          not null
+#  amount       :float            not null
+#  desc         :string           not null
+#  category_id  :integer          not null
+#  payable_type :string
+#  payable_id   :bigint
+#  date         :date             not null
+#  split_type   :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

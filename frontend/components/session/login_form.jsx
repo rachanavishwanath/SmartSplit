@@ -78,7 +78,7 @@ export default class LoginForm extends React.Component {
                                 <button className="login-bttn">Log in</button>
                                 <button className="demo-user" onClick={this.demoLogin}>Demo</button>
                             </div>
-                            <p>Forgot your password? <a>Click here</a></p>
+                            {/* <p>Forgot your password? <a>Click here</a></p> */}
                         </form>
                     </div>
                 </div>
