@@ -12,6 +12,10 @@
     }
 }
 
+.expense-list{
+    height: 100%;
+}
+
 a#dashboard-link::before{
     content: ''
 }
@@ -27,4 +31,3 @@ a#dashboard-link::before{
     margin-bottom: 5px;
     font-weight: bold;
 }
-

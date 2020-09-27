@@ -23,10 +23,10 @@ export default class AllExpenses extends React.Component {
             />
         })
         return (
-            <div>
+            <div className="all-expenses">
                 <Welcome currentUser={this.props.currentUser} logout={this.props.logout}/>
                 <Dashboard />
-                <ul>{allExpenses}</ul>
+                <ul className="expense-list">{allExpenses}</ul>
             </div>
         )
     }
