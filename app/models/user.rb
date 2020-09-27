@@ -38,6 +38,33 @@ class User < ApplicationRecord
         class_name: :Friend,
         dependent: :destroy
 
+    def amount_payable
+        detailed_expenses = self.expenses.includes(:expense_details)
+        borrowed = 0
+        detailed_expenses.each do |ex|
+            debugger
+            ex.expense_details.each do |ed|
+                debugger
+                puts ed
+                borrowed += ed.amount_borrowed(self.id)
+            end
+        end
+        borrowed
+    end
+
+    def amount_receivable
+        detailed_expenses = self.expenses.includes(:expense_details)
+        owed = 0
+        detailed_expenses.each do |ex|
+            debugger
+            ex.expense_details.each do |ed|
+                debugger
+                owed += ed.amount_owed(self.id)
+            end
+        end
+        owed
+    end
+
     def validateEmail
        errors[:email] << "is not valid" if self.email.split('@').length != 2
     end

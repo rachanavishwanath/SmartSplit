@@ -33,9 +33,12 @@ export const clearErrors = () => {
 }
 
 export const login = user => dispatch => {
+    debugger
     return SessionApiUtil.login(user).then(user => {
+        debugger
         return dispatch(receiveCurrentUser(user))
     }, response => {
+        debugger
         return dispatch(receiveSessionErrors(response.responseJSON))
     })
 }

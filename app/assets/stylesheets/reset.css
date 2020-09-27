@@ -1,5 +1,5 @@
 main, html, body, h1, div, 
-p ,form, h3, a, ul, li, label, 
+p ,form, h3, h2, a, ul, li, label, 
 input, button, footer, span,
 img, section, nav, article {
     margin: 0;
@@ -45,4 +45,8 @@ button, a {
     background: white;
     padding: 10px;
     padding: 0;
+}
+
+body {
+    width: 1000px;
 }

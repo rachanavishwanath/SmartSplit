@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Footer from './footer';
 import HomePage from './home_page';
+import Dashboard from '../Dashboard/dashboard';
+import Welcome from './welcome';
 
 export default class Greeting extends React.Component{
     constructor(props) {
@@ -20,43 +22,36 @@ export default class Greeting extends React.Component{
 
     render(){
         const display = this.props.currentUser ? (
-            <div className="welcome">
-                <div className="left-Nav">
-                    <img src={window.logo} alt="Logo" />
-                    <h1>SmartSplit!</h1>
-                </div>
-                <div className="right-nav">
-                    <img src={window.user} alt="user"/>
-                    <p>{this.props.currentUser.name}</p>
-                    <div class="arrow-down"></div>
-                    <div className="account-drop-down">
-                        <a href="">Your account</a>
-                        <a href="">Create a group</a>
-                        <a href="">Fairness calculator</a>
-                        <a onClick={this.handleLogout}>Log out</a>
-                    </div>
-                </div>
+            <div>
+                <Welcome 
+                    currentUser={this.props.currentUser} 
+                    logoutFlag={this.state.logout}
+                    logout={this.handleLogout}
+                />
+                <Dashboard openModal={this.props.openModal} closeModal={this.props.closeModal}/>
             </div>
         ) : (
-            <div className="splash">
-                <div className="login-signup">
-                    <div>
-                        <img src={window.logo} alt="Logo"/>
-                        <h1>SmartSplit!</h1>
+            <div>
+                <div className="splash">
+                    <div className="login-signup">
+                        <div>
+                            <img src={window.logo} alt="Logo"/>
+                            <h1>SmartSplit!</h1>
+                        </div>
+                        <div>
+                            <Link className="login" to="/login">Log in</Link>
+                            <Link className="signup" to="/signup">Sign up</Link>
+                        </div>
                     </div>
-                    <div>
-                        <Link className="login" to="/login">Log in</Link>
-                        <Link className="signup" to="/signup">Sign up</Link>
-                    </div>
+                    {this.state.logout ? <div className="logout-notice">You are now logged out.</div> : null}
+                    <HomePage />
                 </div>
-                {this.state.logout ? <div className="logout-notice">You are now logged out.</div> : null}
-                <HomePage />
+                <Footer />
             </div>
         );
-        return(
+        return (
             <div className="greeting">
                 {display}
-                <Footer />
             </div>
         )
     }

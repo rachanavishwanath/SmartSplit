@@ -3,6 +3,7 @@ import LoginForm from './login_form';
 import { login, clearErrors } from '../../actions/session_action';
 
 const mSTP = (state, ownProps) => {
+    debugger
     const userId = ownProps.match.params.id;
     return {
         currentUser: state.entities.users[userId],
@@ -12,6 +13,7 @@ const mSTP = (state, ownProps) => {
 }
 
 const mDTP = dispatch => {
+    debugger
     return {
         processForm: user => dispatch(login(user)),
         clearErrors: () => dispatch(clearErrors())

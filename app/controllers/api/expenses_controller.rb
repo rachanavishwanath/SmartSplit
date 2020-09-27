@@ -1,6 +1,6 @@
 class Api::ExpensesController < ApplicationController
 
-    #before_action :ensure_logged_in
+    before_action :ensure_logged_in
 
     def index
         #replace 12 with current_user.id after testing
@@ -12,15 +12,15 @@ class Api::ExpensesController < ApplicationController
     end
 
     def show
-        debugger
         @expense = Expense.find(params[:id])
         render '/api/expenses/show'
     end
 
     def create
         @expense = Expense.new(expense_params)
+        @expense.profile_id = current_user.id
         if @expense.save!
-            render 'api/expenses/index'
+            render 'api/expenses/show'
         else
             render json: @expense.errors.full_messages, status: 422
         end
@@ -29,7 +29,7 @@ class Api::ExpensesController < ApplicationController
     def update
         @expense = Expense.find(params[:id])
         if @expense.update(expense_params)
-            render 'api/expenses/index'
+            render 'api/expenses/show'
         else
             render json: @expense.errors.full_messages, status: 422
         end
@@ -43,6 +43,6 @@ class Api::ExpensesController < ApplicationController
 
     private
     def expense_params
-        params.require(:expense).permit(:amount, :profile_id, :amount, :desc, :category_id, :payable_type, :payable_id, :date, :split_type )
+        params.require(:expense).permit(:profile_id, :amount, :desc, :category_id, :payable_type, :payable_id, :date, :split_type )
     end
 end
