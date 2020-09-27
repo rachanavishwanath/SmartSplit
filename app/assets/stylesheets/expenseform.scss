@@ -121,6 +121,12 @@ div.pfields > label > input {
     text-align: center;
 }
 
+.main-fields > img {
+    height: 80px;
+    width: 80px;
+    padding-top: 10px;
+}
+
 .main-fields-right {
     display: flex;
     flex-direction: column;
@@ -154,7 +160,7 @@ div.human-summary {
 .payer, .split {
     color: #1cc29f;
     border: 1px dotted #dad6d6;
-    padding: 3px;
+    padding: 3px 6px;
     border-radius: 11px;
 }
 .payer {

@@ -11,6 +11,7 @@ export default () => {
     return (
         <div>
             <Modal />
+            {/* <DashboardContainer /> */}
             <Switch>
                 <ProtectedRoute path="/all" component={AllExpensesContainer} />
                 <ProtectedRoute path="/dashboard" component={GreetingContainer}/>

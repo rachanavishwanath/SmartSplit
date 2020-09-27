@@ -12,14 +12,6 @@
     }
 }
 
-.expense-list{
-    height: 100%;
-}
-
-a#dashboard-link::before{
-    content: ''
-}
-
 .is-active {
     border-left: 6px solid #5bc5a7;
     color: #5bc5a7;

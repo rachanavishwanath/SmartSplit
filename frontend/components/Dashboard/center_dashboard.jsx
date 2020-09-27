@@ -1,6 +1,7 @@
 import React from 'react';
+import AllExpensesContainer from '../Dashboard/expense/create_expense_container';
 
-export default class DashboardNav extends React.Component {
+export default class CenterDashboard extends React.Component {
 
     constructor(props){
         super(props)
@@ -16,8 +17,9 @@ export default class DashboardNav extends React.Component {
     }
     render() {
         debugger
+        console.log(this.props)
         return (
-            <div className="dashboard-nav">
+            <div className="center-dashboard">
                 <header>{this.props.header}</header>
                 <div>
                     <button className="add-expense" 
@@ -27,6 +29,7 @@ export default class DashboardNav extends React.Component {
                         onClick={this.handleClick('settle')}
                     >Settle</button>
                 </div>
+                {/* <AllExpensesContainer/> */}
             </div>
         )
     }

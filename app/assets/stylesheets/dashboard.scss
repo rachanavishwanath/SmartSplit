@@ -4,19 +4,19 @@
     justify-content: center;
 }
 
-.dashboard-nav {
+.center-dashboard, div#all-expenses {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     background-color: #eee;
     width: 550px;
-    height: 60px;
-    margin: 0 20px;
     border-left: 1px solid #dad6d6;
     border-right: 1px solid #dad6d6;
-    box-shadow: 0px 8px 8px rgba(124,124,124,0.8);
 }
 // [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];
+.center-dashboard {
+    flex-direction: row;
+    border-bottom: 1px solid #ddd;
+}
 
 button.add-expense, button.settle {
     color: white;
@@ -40,7 +40,7 @@ button.settle {
     border-style: outset;
 }
 
-div.dashboard-nav > header {
+div.center-dashboard > header {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 24px;

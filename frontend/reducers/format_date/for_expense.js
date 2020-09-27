@@ -27,7 +27,7 @@ const daysOfWeek = {
 export const dateFormat = date => {
     let arr = date.split('-');
     let month = months[parseInt(arr[1])];
-    return `${month} ${arr[2]}`
+    return `${month.slice(0, 3).toUpperCase()} ${arr[2]}`
 }
 
 // NB: this file is complete - you do not to write/edit anything!

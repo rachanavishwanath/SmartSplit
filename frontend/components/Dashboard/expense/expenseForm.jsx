@@ -70,12 +70,13 @@ export default class ExpenseForm extends React.Component {
                     </div>
                     <div className={this.state.active ? "expense-secondary-fields" : "hidden"}>
                         <div className="main-fields">
-                            <input 
+                            {/* <input 
                                 type="text"
                                 onChange={this.updateField('category_id')}
                                 placeholder="coffee"
                                 value={this.state.category_id}
-                            />
+                            /> */}
+                            <img src={window.expense} alt="expense-logo"/>
                             <div className="main-fields-right">
                                 <input 
                                     type="text"

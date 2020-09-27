@@ -1,0 +1,15 @@
+div#main-section{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.center-column {
+    box-shadow: 0px 0px 8px rgba(124,124,124,0.8);
+    margin: 0 20px;
+    height: 800px;
+}
+
+div#all-expenses{
+    flex-direction: column;
+}

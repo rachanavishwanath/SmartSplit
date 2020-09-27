@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import { fetchAllExpenses, deleteExpense } from '../../../actions/expense_action';
-import { closeModal } from '../../../actions/modal_actions';
+import { closeModal, openModal } from '../../../actions/modal_actions';
 import AllExpenses from './all_expenses';
 
 const mSTP = state => {
@@ -17,7 +17,8 @@ const mDTP = dispatch => {
         fetchAllExpenses: () => dispatch(fetchAllExpenses()),
         logout: () => dispatch(logout()),
         closeModal: () => dispatch(closeModal()),
-        deleteExpense: (expenseId) => dispatch(deleteExpense(expenseId))
+        deleteExpense: (expenseId) => dispatch(deleteExpense(expenseId)),
+        openModal: (modal) => dispatch(openModal(modal))
     }
 }
 
