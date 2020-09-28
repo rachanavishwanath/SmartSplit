@@ -4,7 +4,7 @@ import { closeModal, openModal } from '../../../actions/modal_actions';
 import AllExpenses from './all_expenses';
 
 const mSTP = state => {
-    debugger
+    // debugger
     return {
         currentUser: state.entities.users[state.session.id],
         expenses: Object.values(state.entities.expenses),
@@ -13,7 +13,7 @@ const mSTP = state => {
 }
 
 const mDTP = dispatch => {
-    debugger
+    // debugger
     return {
         fetchAllExpenses: () => dispatch(fetchAllExpenses()),
         logout: () => dispatch(logout()),

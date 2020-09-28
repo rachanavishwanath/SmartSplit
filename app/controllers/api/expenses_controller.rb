@@ -2,9 +2,11 @@ class Api::ExpensesController < ApplicationController
 
     def index
         #replace 12 with current_user.id after testing
-        @expenses = Expense.all.where(profile_id: current_user.id)
-        if params.has_key?(:friend_id) 
-            @expenses = Expense.with_a_friend(current_user.id, params[:friend_id])
+        if params.has_key?(:payable_id) 
+            @expenses = Expense.all.where(payable_id: params[:payable_id])
+            #@expenses = Expense.with_a_friend(current_user.id, params[:friend_id])
+        else
+            @expenses = Expense.all.where(profile_id: current_user.id )
         end
         render :index
     end

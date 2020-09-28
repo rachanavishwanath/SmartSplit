@@ -1,5 +1,6 @@
 import React from 'react';
 import { dateFormat } from '../../../reducers/format_date/for_expense';
+
 export default ({ expense, deleteExpense}) => {
     let d = dateFormat(expense.date).split(' ');
     return (

@@ -8,7 +8,6 @@ import Modal from './modal/modal';
 import ActivityContainer from '../components/Dashboard/activity/activity_container';
 import DashboardContainer from './Dashboard/dashboard_container';
 import FriendExpenseContainer from './Dashboard/centerDashboard/friend_expense_container';
-import LeftDashboardContainer from './Dashboard/LeftDashboard/leftdashboard_container';
 import AllExpensesContainer from './Dashboard/LeftDashboard/all_expenses_container';
 export default () => {
     return (

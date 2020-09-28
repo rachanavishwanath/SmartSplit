@@ -33,8 +33,8 @@ const receiveErrors = errors => {
     }
 }
 
-export const fetchAllExpenses = () => dispatch => {
-    return ExpenseApiUtil.fetchallExpenses().then(expenses => {
+export const fetchAllExpenses = (friend_id) => dispatch => {
+    return ExpenseApiUtil.fetchallExpenses(friend_id).then(expenses => {
         return dispatch(receiveAllExpenses(expenses))
     }, response => {
             return dispatch(receiveErrors(response.responseJSON))

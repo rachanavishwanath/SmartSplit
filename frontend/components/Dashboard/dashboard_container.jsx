@@ -9,7 +9,6 @@ const mSTP = state => {
 }
 
 const mDTP = dispatch => {
-    debugger
     return {
         openModal: (modal) => dispatch(openModal(modal)),
         closeModal: () => dispatch(closeModal())

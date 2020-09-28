@@ -10,13 +10,13 @@ export default class ExpenseForm extends React.Component {
     }
     
     handleClick(e){
-        debugger
+        // debugger
         e.preventDefault();
         this.props.closeModal();
     }
 
     handleSubmit(e){
-        debugger
+        // debugger
         e.preventDefault();
         if (this.state.name === '' && this.state.email === '') {
             alert ('There is only one person involved in this expense. Do you still want to save it?')
@@ -29,7 +29,7 @@ export default class ExpenseForm extends React.Component {
     }
 
     updateField(field){
-        debugger
+        // debugger
         return e => {
             switch (field) {
                 case 'friend_id':
@@ -52,7 +52,7 @@ export default class ExpenseForm extends React.Component {
     }
 
     render() {
-        debugger
+        // debugger
         return (
             <div className="expense-form">
                 <div className="expense-form-header">

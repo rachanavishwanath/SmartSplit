@@ -1,7 +1,8 @@
-export const fetchallExpenses = () => {
+export const fetchallExpenses = (payable_id) => {
     return $.ajax({
         method: 'GET',
-        url: '/api/expenses'
+        url: '/api/expenses',
+        data: { payable_id }
     })
 }
 

@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Footer from './footer';
 import HomePage from './home_page';
-import Dashboard from '../Dashboard/dashboard';
 import Welcome from './welcome';
 
 export default class Greeting extends React.Component{
@@ -28,7 +27,6 @@ export default class Greeting extends React.Component{
                     logoutFlag={this.state.logout}
                     logout={this.handleLogout}
                 />
-                {/* <Dashboard openModal={this.props.openModal} closeModal={this.props.closeModal}/> */}
             </div>
         ) : (
             <div>

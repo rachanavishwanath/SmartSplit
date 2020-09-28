@@ -21,7 +21,7 @@ const mSTP = state => {
 }
 
 const mDTP = dispatch => {
-    debugger
+    // debugger
     return {
         processForm: expense => dispatch(createExpense(expense)),
         closeModal: () => dispatch(closeModal())

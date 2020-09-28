@@ -9,14 +9,14 @@ export default class CenterDashboard extends React.Component {
     }
 
     handleClick(modal){
-        debugger
+        // debugger
         return e => {
             e.preventDefault();
             this.props.openModal(modal)
         }
     }
     render() {
-        debugger
+        // debugger
         console.log(this.props)
         return (
             <div className="center-dashboard">

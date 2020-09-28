@@ -6,7 +6,7 @@ export default class LeftDashboard extends React.Component {
     render() {
         console.log(this.props);
         const allFriends = this.props.friends.map(friend => {
-            debugger
+            // debugger
             return <FriendListItems
                 key={friend.friend_id}
                 friend={friend}

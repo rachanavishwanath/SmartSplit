@@ -1,6 +1,6 @@
 import React from 'react';
 import Welcome from '../../greeting/welcome';
-import ExpenseListItems from './expense_items';
+import ExpenseItems from './expense_items';
 import Dashboard from '../dashboard';
 import LeftDashboard from '../LeftDashboard/left_dashboard';
 import CenterDashboard from '../centerDashboard/center_dashboard';
@@ -20,8 +20,8 @@ export default class AllExpenses extends React.Component {
     render(){
         if (!this.props.expenses) { return null;}
         const allExpenses = this.props.expenses.map(expense => {
-            debugger
-            return <ExpenseListItems 
+            // debugger
+            return <ExpenseItems 
                 key={expense.id}
                 expense={expense}
                 deleteExpense={this.props.deleteExpense}
