@@ -2,7 +2,6 @@ import { connect}from 'react-redux';
 import LeftDashboard from './left_dashboard';
 
 const mSTP = state => {
-    // debugger
     return {
         friends: Object.values(state.entities.users)[0].friends
     }

@@ -32,14 +32,14 @@ export default class SignUpForm extends React.Component {
     demoLogin(e) {
         e.preventDefault();
         this.props.login({ email: 'demo@email.com', password: '123456789' }).then(() => {
-            return this.props.history.push('/');
+            return this.props.history.push('/dashboard');
         });
     }
 
     handleSubmit(e){
         e.preventDefault();
         this.props.processForm(this.state).then(() => {
-            return this.props.history.push('/')
+            return this.props.history.push('/dashboard')
         });
         this.setState({
             name: '',

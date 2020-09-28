@@ -4,15 +4,12 @@ import FriendListItems from './all_friends_list_item';
 
 export default class LeftDashboard extends React.Component {
     render() {
-        console.log(this.props);
         const allFriends = this.props.friends.map(friend => {
-            // debugger
             return <FriendListItems
                 key={friend.friend_id}
                 friend={friend}
             />
         })
-        console.log(allFriends);
         return (
             <div className="left-dashboard">
                 <Link id="dashboard-link" to="/dashboard">Dashboard</Link>

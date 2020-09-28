@@ -4,7 +4,6 @@ import { closeModal } from '../../../actions/modal_actions';
 import ExpenseForm from './expenseForm';
 
 const mSTP = state => {
-    console.log(state)
     return {
         expense: { 
             desc: '',
@@ -16,12 +15,12 @@ const mSTP = state => {
             active: false,
             date: '2020-09-09',
             paid_by: 14
-        }
+        },
+        friends: Object.values(state.entities.users)[0].friends
     }
 }
 
 const mDTP = dispatch => {
-    // debugger
     return {
         processForm: expense => dispatch(createExpense(expense)),
         closeModal: () => dispatch(closeModal())

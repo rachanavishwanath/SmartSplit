@@ -31,7 +31,6 @@ const mSTP = state => {
 }
 
 const mDTP = dispatch => {
-    // debugger
     return {
         closeModal: () => dispatch(closeModal())
     }

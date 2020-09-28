@@ -11,10 +11,8 @@
 #
 class ExpenseDetail < ApplicationRecord
     belongs_to :expense
-    # get the current_user_id
-    def amount_owed(user_id) #13 #12
-        #split_type = Expense.select(:split_type).where(id: self.expense_id)
-        #debugger
+
+    def amount_owed(user_id)
         expense = Expense.find(self.expense_id)
         alleds = ExpenseDetail.where(expense_id: self.expense_id)
         if expense.split_type == "equally" && self.paid_by == user_id

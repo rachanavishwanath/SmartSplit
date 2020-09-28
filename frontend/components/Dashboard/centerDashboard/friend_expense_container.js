@@ -4,7 +4,6 @@ import { openModal } from '../../../actions/modal_actions';
 import { fetchAllExpenses, deleteExpense } from '../../../actions/expense_action';
 
 const mSTP = (state, ownProps) => {
-    console.log(ownProps);
     const friendId = ownProps.match.params.friend_id;
     return {
         friends: Object.values(state.entities.users)[0].friends,

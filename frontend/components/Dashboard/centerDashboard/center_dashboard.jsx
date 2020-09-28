@@ -1,5 +1,4 @@
 import React from 'react';
-import AllExpensesContainer from '../expense/create_expense_container';
 
 export default class CenterDashboard extends React.Component {
 
@@ -9,15 +8,12 @@ export default class CenterDashboard extends React.Component {
     }
 
     handleClick(modal){
-        // debugger
         return e => {
             e.preventDefault();
             this.props.openModal(modal)
         }
     }
     render() {
-        // debugger
-        console.log(this.props)
         return (
             <div className="center-dashboard">
                 <header>{this.props.header}</header>
@@ -29,7 +25,6 @@ export default class CenterDashboard extends React.Component {
                         onClick={this.handleClick('settle')}
                     >Settle</button>
                 </div>
-                {/* <AllExpensesContainer/> */}
             </div>
         )
     }

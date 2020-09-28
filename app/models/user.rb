@@ -44,18 +44,13 @@ class User < ApplicationRecord
             obj[friendship.id] = User.find(friendship.profile_id)
         end
         obj
-        #friends_array += inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
-        #friends_array.compact
     end
 
     def amount_payable
         detailed_expenses = self.expenses.includes(:expense_details)
         borrowed = 0
         detailed_expenses.each do |ex|
-            debugger
             ex.expense_details.each do |ed|
-                debugger
-                puts ed
                 borrowed += ed.amount_borrowed(self.id)
             end
         end
@@ -66,9 +61,7 @@ class User < ApplicationRecord
         detailed_expenses = self.expenses.includes(:expense_details)
         owed = 0
         detailed_expenses.each do |ex|
-            debugger
             ex.expense_details.each do |ed|
-                debugger
                 owed += ed.amount_owed(self.id)
             end
         end

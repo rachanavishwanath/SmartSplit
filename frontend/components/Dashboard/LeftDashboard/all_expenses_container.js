@@ -2,9 +2,9 @@ import {connect} from 'react-redux';
 import { fetchAllExpenses, deleteExpense } from '../../../actions/expense_action';
 import { closeModal, openModal } from '../../../actions/modal_actions';
 import AllExpenses from './all_expenses';
+import { logout } from '../../../actions/session_action';
 
 const mSTP = state => {
-    // debugger
     return {
         currentUser: state.entities.users[state.session.id],
         expenses: Object.values(state.entities.expenses),
@@ -13,7 +13,6 @@ const mSTP = state => {
 }
 
 const mDTP = dispatch => {
-    // debugger
     return {
         fetchAllExpenses: () => dispatch(fetchAllExpenses()),
         logout: () => dispatch(logout()),

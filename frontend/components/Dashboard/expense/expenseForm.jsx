@@ -1,4 +1,5 @@
 import React from 'react';
+import AutoSearch from './autoSearch';
 
 export default class ExpenseForm extends React.Component {
 
@@ -8,15 +9,20 @@ export default class ExpenseForm extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    select(e) {
+        e.preventDefault();
+        this.setState({
+            inputVal: this.props.friends[e.currentTarget.value]
+        })
+    }
     
     handleClick(e){
-        // debugger
         e.preventDefault();
         this.props.closeModal();
     }
 
     handleSubmit(e){
-        // debugger
         e.preventDefault();
         if (this.state.name === '' && this.state.email === '') {
             alert ('There is only one person involved in this expense. Do you still want to save it?')
@@ -29,12 +35,10 @@ export default class ExpenseForm extends React.Component {
     }
 
     updateField(field){
-        // debugger
         return e => {
             switch (field) {
                 case 'friend_id':
                     this.setState({
-                        // [field]: e.currentTarget.value,
                         active: true
                     })
                     break;
@@ -52,7 +56,6 @@ export default class ExpenseForm extends React.Component {
     }
 
     render() {
-        // debugger
         return (
             <div className="expense-form">
                 <div className="expense-form-header">
@@ -70,12 +73,6 @@ export default class ExpenseForm extends React.Component {
                     </div>
                     <div className={this.state.active ? "expense-secondary-fields" : "hidden"}>
                         <div className="main-fields">
-                            {/* <input 
-                                type="text"
-                                onChange={this.updateField('category_id')}
-                                placeholder="coffee"
-                                value={this.state.category_id}
-                            /> */}
                             <img src={window.expense} alt="expense-logo"/>
                             <div className="main-fields-right">
                                 <input 

@@ -15,7 +15,7 @@ export default class FriendExpense extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        if (this.props.friendId !== prevProps.match.params.friendId) {
+        if (this.props.friendId !== prevProps.match.params.friend_id) {
             this.props.fetchAllExpenses(this.props.friendId)
         }
     }
@@ -24,7 +24,6 @@ export default class FriendExpense extends React.Component {
         let name;
         arr.forEach(val => {
             if (val["friend_id"] === parseInt(payable_id)) {
-                console.log(val)
                 name = val["name"]
             }
         })

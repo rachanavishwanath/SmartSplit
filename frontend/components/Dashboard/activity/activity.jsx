@@ -6,8 +6,6 @@ import LeftDashboard from '../LeftDashboard/left_dashboard';
 
 export default class Activity extends React.Component {
     render() {
-        // debugger
-        // console.log(this.props);
         return(
             <div>
                 <GreetingComponent />
