@@ -5,11 +5,17 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.form > label {
+.form > label, .form > .appear > label {
     font-size: 25px;
 }
 
-.form > label > input {
+// why is this not wokring?
+div.appear {
+  transition-delay: 1s;
+//   transform: scale(2);
+}
+
+.form > label > input, .form > .appear > label > input{
     border: 1px solid #adadad;;
     border-radius: 3px;
     padding: 3px 0px 3px 3px;
@@ -17,11 +23,10 @@
 }
 
 .signup-form {
-    margin-left: 30px;
-    margin-top: 50px;
     display: flex;
     margin-top: 50px;
     width: 750px;
+    margin: auto;
 }
 
 .signup-form input[type=text]:focus, .signup-form input[type=password]:focus{

@@ -1,0 +1,1 @@
+json.extract! expense, :id, :profile_id, :amount, :desc, :category_id, :payable_id, :payable_type, :date, :split_type, :additional_detail_ids, :expense_detail_ids

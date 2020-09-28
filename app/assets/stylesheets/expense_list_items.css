@@ -1,0 +1,71 @@
+.expense-list-items{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.expense-list-items:hover{
+    background-color: #fdfdf8;
+}
+
+/* not working */
+/* .expense-list-items:hover > .delete-expense {
+        color: aqua;
+} */
+
+.delete-expense{
+    color: rgb(207, 24, 24);
+    margin-right: 10px;
+    padding-top: 8px;
+    font-size: 20px;
+}
+
+.month-filter {
+    text-transform: uppercase;
+    color: #666;
+    font-size: 12px;
+    padding: 5px;
+}
+.expense-list{
+    background-color: white;
+}
+
+.summary{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.summary > div {
+    margin-right: 5px;
+}
+
+.summary > img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.expense-desc {
+    padding-top: 10px;
+}
+
+.expense-date {
+    width: 30px;
+    height: 20px;
+    color: rgb(153, 153, 153);
+}
+.expense-date > div:first-of-type{
+    font-size: 12px;
+    text-align: center;
+}
+
+.expense-date > div:last-of-type{
+    font-size: 20px;
+    text-align: center;
+}

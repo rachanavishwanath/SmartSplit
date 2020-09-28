@@ -8,8 +8,9 @@ div > h1, .welcome > .left-Nav > h1 {
 
 .login-signup > div > img, .welcome > .left-Nav > img, .welcome > .right-nav > img {
     display: inline-block;
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
+    padding-top: 5px;
 }
 
 div.login-signup {
@@ -43,7 +44,7 @@ a.signup {
 }
 
 .greeting {
-    height: 100vh;
+    height: 41px;
     display: flex;
     flex-flow: column;
     justify-content: space-between;

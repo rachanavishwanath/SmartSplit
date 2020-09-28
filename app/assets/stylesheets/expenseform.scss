@@ -1,0 +1,172 @@
+.expense-form {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #999;
+    overflow: hidden;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.3);
+    width: 350px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div.pfields  { 
+    margin: 10px 0; 
+}
+
+div.pfields > label {
+    color: rgb(43, 41, 41);
+    font-size: 15px;
+    margin: 6px;
+}
+
+div.pfields > label > input {
+    margin-left: 7px;
+    width: 226px;
+}
+
+.expense-secondary-fields{
+    display: block;
+}
+
+.expense-form-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #1cc29f;
+    height: fit-content;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-style: inset;
+    text-shadow: 0 -1px 0 #318a71;
+    font-size: 18px;
+}
+
+.expense-form-header > button {
+    text-shadow: 0 -1px 0 #318a71;
+}
+
+.footer-buttons{
+    border-top: 1px solid rgb(231, 229, 229);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-bottoms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-buttons > button {
+    border: 1px solid rgb(231, 229, 229);
+    padding: 8px 12px;
+    margin: 8px 3px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.footer-buttons > button:first-of-type {
+    background-color: rgb(245, 242, 242);
+}
+
+.footer-buttons > button:last-of-type {
+    background-color: #1cc29f;
+    color: white;
+    text-shadow: 0 -1px 0 #318a71;
+}
+
+.slim-buttom{
+    background-color: rgb(245, 242, 242);
+    color: #666;
+    border-radius: 10px;
+    border: 1px solid  rgb(218, 214, 214);
+    padding: 3px 20px;
+    margin: 5px;
+    font-size: 13px;
+}
+.slim-buttom:last-of-type {
+    width: 120px;
+    text-align: center;
+}
+
+.expense-form-eles {
+    margin: 5px;
+}
+    // border-bottom: 1px solid #e7e5e5;
+.expense-form-eles > label:first-of-type{
+    margin: 5px;
+    padding: 10px 5px;
+}
+
+::placeholder {
+  color: #e7e5e5
+}
+
+.expense-form-eles > label:first-of-type > input {
+    width: calc(100% - 150px);
+    margin-left: 5px;
+}
+
+.main-fields {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 10px;
+}
+
+.main-fields > input {
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+    text-align: center;
+}
+
+.main-fields > img {
+    height: 80px;
+    width: 80px;
+    padding-top: 10px;
+}
+
+.main-fields-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-fields-right > input{
+    height: 40px;
+    border-bottom: 1px dotted #dad6d6;
+}
+
+.main-fields-right > input:last-of-type {
+    height: 40px;
+}
+
+.main-fields-right > input:first-of-type::placeholder {
+    font-size: 20px;
+}
+
+.main-fields-right > input:last-of-type::placeholder {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+div.human-summary {
+    font-size: 14px;
+    color: rgb(43, 41, 41);
+    text-align: center;
+}
+
+.payer, .split {
+    color: #1cc29f;
+    border: 1px dotted #dad6d6;
+    padding: 3px 6px;
+    border-radius: 11px;
+}
+.payer {
+    margin-right: 2px;
+}
+
+div.details {
+    margin: 7px;
+}

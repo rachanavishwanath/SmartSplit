@@ -31,7 +31,7 @@ export default class LoginForm extends React.Component {
         const user = Object.assign({}, this.state);
         this.props.processForm(user).then(() => {
             this.setState({  })
-            return this.props.history.push('/');
+            return this.props.history.push('/dashboard');
         });
         this.setState({
             email: '',
@@ -42,7 +42,7 @@ export default class LoginForm extends React.Component {
     demoLogin(e) {
         e.preventDefault();
         this.props.processForm({ email: 'demo@email.com', password: '123456789'}).then(() => {
-            return this.props.history.push('/');
+            return this.props.history.push('/dashboard');
         });
         this.setState({
             email: '',
@@ -78,7 +78,7 @@ export default class LoginForm extends React.Component {
                                 <button className="login-bttn">Log in</button>
                                 <button className="demo-user" onClick={this.demoLogin}>Demo</button>
                             </div>
-                            <p>Forgot your password? <a>Click here</a></p>
+                            {/* <p>Forgot your password? <a>Click here</a></p> */}
                         </form>
                     </div>
                 </div>

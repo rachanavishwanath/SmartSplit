@@ -1,0 +1,44 @@
+.center-dashboard, div#all-expenses {
+    display: flex;
+    justify-content: space-between;
+    background-color: #eee;
+    width: 550px;
+    border-left: 1px solid #dad6d6;
+    border-right: 1px solid #dad6d6;
+}
+// [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];
+.center-dashboard {
+    flex-direction: row;
+    border-bottom: 1px solid #ddd;
+}
+
+button.add-expense, button.settle {
+    color: white;
+    font-family: sans-serif;
+    padding: 10px 15px;
+    border-radius: 3px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button.add-expense {
+    background-color: rgb(255, 101, 47);
+    text-shadow: 0 -1px 0 rgb(177, 59, 16);
+    border-style: outset;
+}
+
+button.settle {
+    background-color: #1cc29f;
+    text-shadow: 0 -1px 0 #318a71;
+    border-style: outset;
+}
+
+div.center-dashboard > header {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: rgb(66, 63, 63);
+    padding-top: 13px;
+    margin-left: 10px;
+}

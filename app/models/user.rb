@@ -20,7 +20,53 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
-    #FIG VAPER
+    has_many :notes,
+        primary_key: :id,
+        foreign_key: :author_id,
+        class_name: :AdditionalDetail,
+        dependent: :destroy
+
+    has_many :expenses,
+        primary_key: :id,
+        foreign_key: :profile_id,
+        class_name: :Expense,
+        dependent: :destroy
+
+    has_many :friends,
+        primary_key: :id,
+        foreign_key: :friend_id,
+        class_name: :Friend,
+        dependent: :destroy
+
+    def friends_list
+        obj ={}
+        friends.map do |friendship| 
+            obj[friendship.id] = User.find(friendship.profile_id)
+        end
+        obj
+    end
+
+    def amount_payable
+        detailed_expenses = self.expenses.includes(:expense_details)
+        borrowed = 0
+        detailed_expenses.each do |ex|
+            ex.expense_details.each do |ed|
+                borrowed += ed.amount_borrowed(self.id)
+            end
+        end
+        borrowed
+    end
+
+    def amount_receivable
+        detailed_expenses = self.expenses.includes(:expense_details)
+        owed = 0
+        detailed_expenses.each do |ex|
+            ex.expense_details.each do |ed|
+                owed += ed.amount_owed(self.id)
+            end
+        end
+        owed
+    end
 
     def validateEmail
        errors[:email] << "is not valid" if self.email.split('@').length != 2
