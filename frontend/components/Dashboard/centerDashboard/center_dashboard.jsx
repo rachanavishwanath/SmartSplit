@@ -1,5 +1,5 @@
 import React from 'react';
-import AllExpensesContainer from '../Dashboard/expense/create_expense_container';
+import AllExpensesContainer from '../expense/create_expense_container';
 
 export default class CenterDashboard extends React.Component {
 

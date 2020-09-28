@@ -38,6 +38,16 @@ class User < ApplicationRecord
         class_name: :Friend,
         dependent: :destroy
 
+    def friends_list
+        obj ={}
+        friends.map do |friendship| 
+            obj[friendship.id] = User.find(friendship.profile_id)
+        end
+        obj
+        #friends_array += inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
+        #friends_array.compact
+    end
+
     def amount_payable
         detailed_expenses = self.expenses.includes(:expense_details)
         borrowed = 0

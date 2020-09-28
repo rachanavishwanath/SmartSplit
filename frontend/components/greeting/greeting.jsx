@@ -28,7 +28,7 @@ export default class Greeting extends React.Component{
                     logoutFlag={this.state.logout}
                     logout={this.handleLogout}
                 />
-                <Dashboard openModal={this.props.openModal} closeModal={this.props.closeModal}/>
+                {/* <Dashboard openModal={this.props.openModal} closeModal={this.props.closeModal}/> */}
             </div>
         ) : (
             <div>

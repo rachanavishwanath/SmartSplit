@@ -1,7 +1,5 @@
 class Api::ExpensesController < ApplicationController
 
-    before_action :ensure_logged_in
-
     def index
         #replace 12 with current_user.id after testing
         @expenses = Expense.all.where(profile_id: current_user.id)

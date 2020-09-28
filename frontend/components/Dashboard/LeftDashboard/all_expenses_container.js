@@ -8,6 +8,7 @@ const mSTP = state => {
     return {
         currentUser: state.entities.users[state.session.id],
         expenses: Object.values(state.entities.expenses),
+        friends: state.entities.users.friends
     }
 }
 

@@ -3,9 +3,10 @@ import Welcome from '../../greeting/welcome';
 import ExpenseListItems from './expense_items';
 import Dashboard from '../dashboard';
 import LeftDashboard from '../LeftDashboard/left_dashboard';
-import CenterDashboard from '../center_dashboard';
+import CenterDashboard from '../centerDashboard/center_dashboard';
 import RightDashboard from '../RightDashboard/right_dashboard';
-
+import GreetingComponent from '../../greeting/greeting_container';
+import LeftDashboardContainer from './leftdashboard_container';
 
 export default class AllExpenses extends React.Component {
     constructor(props){
@@ -31,8 +32,10 @@ export default class AllExpenses extends React.Component {
             <div className="all-expenses">
                 <Welcome currentUser={this.props.currentUser} logout={this.props.logout}/>
                 {/* <Dashboard /> */}
+                {/* refactor code to use below component */}
+                {/* <GreetingComponent /> */}
                 <div id="main-section">
-                    <LeftDashboard />
+                    <LeftDashboardContainer/>
                     <div className="center-column">
                         <CenterDashboard openModal={this.props.openModal} header={'All expenses'} />
                         <div id="all-expenses">
