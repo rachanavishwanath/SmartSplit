@@ -1,4 +1,4 @@
-.expense-form {
+.expense-form, .child-modal {
     background-color: white;
     border-radius: 5px;
     border: 1px solid #999;
@@ -6,6 +6,10 @@
     box-shadow: 0px 2px 8px rgba(0,0,0,0.3);
     width: 350px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.child-modal{
+    margin-left: 10px;
 }
 
 div.pfields  { 
@@ -27,7 +31,7 @@ div.pfields > label > input {
     display: block;
 }
 
-.expense-form-header{
+.expense-form-header, .child-modal-header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -40,6 +44,10 @@ div.pfields > label > input {
     border-style: inset;
     text-shadow: 0 -1px 0 #318a71;
     font-size: 18px;
+}
+
+.child-modal-header {
+    margin-left: 0;
 }
 
 .expense-form-header > button {

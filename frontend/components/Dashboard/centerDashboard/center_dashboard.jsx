@@ -13,6 +13,7 @@ export default class CenterDashboard extends React.Component {
             this.props.openModal(modal)
         }
     }
+    
     render() {
         return (
             <div className="center-dashboard">

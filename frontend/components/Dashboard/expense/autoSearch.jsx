@@ -1,29 +1,23 @@
 import React from 'react';
-
-// will receive friends arr 
-
+// pass val to this component
 export default (props) => {
-    if (props.val) {
-        return (
-            props.friends.map((friend, idx) => {
-                if (friend.name.startsWith(this.props.val)) {
-                    return (
-                        <li key={idx} className="names" value={idx}>
-                            {name}
-                        </li>
-                    )
+    debugger
+    console.log(props);
+    const SearchResult = props.friends.map(friend => {
+        debugger
+            if (friend.name.startsWith(props.val)) {
+                return <li key={friend.friend_id} 
+                        className="names"
+                        onClick={props.setPayableId(friend.friend_id)}
+                        >
+                        {friend.name}
+                    </li>
                 }
             })
-        )
-    } else {
         return (
-            props.friends.map((friend, idx) => {
-                return (
-                    <li key={idx} className="names" onClick={props.select} value={idx}>
-                        {friend}
-                    </li>
-                )
-            })
+            <div>
+                <h1>Where are you?</h1>
+                <ul>{SearchResult}</ul>
+            </div>
         )
     }
-}

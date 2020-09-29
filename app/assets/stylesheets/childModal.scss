@@ -1,0 +1,40 @@
+.category-ul {
+    overflow: visible;
+    width: 175px;
+    text-align: left;
+}
+
+.subCategory-ul > li {
+    display: none;
+}
+
+li.category-li:hover {
+    background-color:lightgrey;
+    ul.subCategory-ul {
+        display: block;
+        z-index: 0;
+        position: absolute;
+        margin-top: 42px;
+        top: 0;
+        right: 0;
+        width: 172px;
+        height: 325px;
+        background: #eee;
+        li {
+            display: block;
+            padding: 10px;
+        }
+    }
+}  
+
+.category-ul > li {
+    display: block;
+    padding: 14px 10px 15px;
+    font-size: 14px;
+    border-right: 1px solid #bbb;
+}
+.subCategory-ul > li {
+    background: #ddd;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}

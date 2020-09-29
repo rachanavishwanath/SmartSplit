@@ -9,14 +9,15 @@ import {
     updateExpense,
     deleteExpense
 } from './util/expenses_util';
-import { signup, login, logout } from './actions/session_action';
+import { fetchAllCategories } from './actions/category_actions';
 
 document.addEventListener('DOMContentLoaded',() => {
-    window.fetchallExpenses = fetchallExpenses;
-    window.fetchExpense = fetchExpense;
-    window.createExpense = createExpense;
-    window.updateExpense = updateExpense;
-    window.deleteExpense = deleteExpense;
+    window.fetchAllCategories = fetchAllCategories;
+    // window.fetchallExpenses = fetchallExpenses;
+    // window.fetchExpense = fetchExpense;
+    // window.createExpense = createExpense;
+    // window.updateExpense = updateExpense;
+    // window.deleteExpense = deleteExpense;
     let store;
     if (window.currentUser) {
         const preloadedState ={

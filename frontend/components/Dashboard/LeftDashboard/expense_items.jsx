@@ -20,3 +20,5 @@ export default ({ expense, deleteExpense}) => {
         </li>
     )
 }
+
+// make this classical and active flags to show details of expense details
