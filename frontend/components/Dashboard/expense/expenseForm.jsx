@@ -136,9 +136,6 @@ export default class ExpenseForm extends React.Component {
                             <a className="notes slim-buttom">Add images/notes</a>
                             <a className="group slim-buttom">No group</a>
                         </div>
-                        <div>
-
-                        </div>
                     </div>
                     <div className="footer-buttons">
                         <button onClick={this.handleClick}>Cancel</button>
