@@ -29,30 +29,11 @@ export const dateFormat = date => {
     let month = months[parseInt(arr[1])];
     return `${month.slice(0, 3).toUpperCase()} ${arr[2]}`
 }
-
-// NB: this file is complete - you do not to write/edit anything!
-
-export const formatDate = date => {  
-    const obj = new Date(date);
-    const month = months[obj.getMonth()];
-    const day = obj.getDate();
-    const year = obj.getFullYear();
-    const dayOfWeek = daysOfWeek[obj.getDay()];
-    return `${month} ${day}, ${year} (${dayOfWeek})`;
-};
-
-export const formatTime = date => {
-    const obj = new Date(date);
-    const fullHours = obj.getHours();
-    let hours = fullHours % 12;
-    if (hours === 0) hours = 12;
-    const minutes = obj.getMinutes();
-    const tmp = `0${minutes}`;
-    const paddedMinutes = tmp.slice(tmp.length - 2);
-    const ampm = fullHours < 12 || fullHours === 0 ? 'am' : 'pm';
-    return `${hours}:${paddedMinutes}${ampm}`;
-};
-
-export const formatDateTime = date => (
-    `${formatDate(date)} ${formatTime(date)}`
-);
+// 2020 - 09 - 30T02: 09: 24.687Z
+export const formatDate = input => {
+    let arr = input.split('-');
+    const year = arr[0];
+    const month = months[parseInt(arr[1])];
+    const date = arr[2].slice(0,2);
+    return `${month} ${date}, ${year}`
+}
