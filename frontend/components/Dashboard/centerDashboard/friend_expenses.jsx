@@ -31,7 +31,6 @@ export default class FriendExpense extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         let name = this.findName(this.props.friends, this.props.friendId);
         if (!this.props.expenses) { return null; }
         const allExpenses = this.props.expenses.map(expense => {

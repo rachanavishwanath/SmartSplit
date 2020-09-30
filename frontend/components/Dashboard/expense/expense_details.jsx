@@ -9,7 +9,6 @@ export default class ExpenseDetails extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        debugger
         this.setState({ paid_by: e.currentTarget})
         this.props.openEDModal = false;
     }
@@ -24,13 +23,11 @@ export default class ExpenseDetails extends React.Component {
             }
         });
         const allPayersli = allPayers.map(payer => {
-            debugger
             return <li key={payer[0]} 
                     onClick={this.handleClick}
                     className="ed-li"
                     >{payer[1]}</li>
         })
-        console.log(this.props);
         return (
             <div className="child-modal expense-details">
                 <div className="expense-form-header">

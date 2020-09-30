@@ -17,7 +17,6 @@ export default class ExpenseForm extends React.Component {
 
     componentDidMount() {
         this.props.fetchAllCategories();
-        debugger
         this.props.fetchAllFriends();
     }
 
@@ -90,7 +89,6 @@ export default class ExpenseForm extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
         <div>
             <div className="expense-form">

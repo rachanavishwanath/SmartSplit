@@ -8,7 +8,6 @@ export default class ExpenseItems extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         const { expense, deleteExpense, expenseDetails, currentUser, friends } = this.props;
         let d = dateFormat(expense.date).split(' ');
         let you_paid = 0;

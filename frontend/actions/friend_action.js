@@ -10,9 +10,7 @@ const receiveAllFriends = friends => {
 }
 
 export const fetchAllFriends = () => dispatch => {
-    debugger
     return FriendAPIUtil.fetchAllFriends().then(friends => {
-        debugger
         return dispatch(receiveAllFriends(friends))
     })
 }
