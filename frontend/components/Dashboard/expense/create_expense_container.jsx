@@ -18,10 +18,11 @@ const mSTP = state => {
             payable_id: null,
             split_type: 'equally',
             active: false,
-            date: '2020-09-09',
+            date: new Date(),
             openCatModal: false,
             openEDModal: false,
-            show: false
+            show: false,
+            openCal: false
         },
         expense_detail: {
             expense_id: null,

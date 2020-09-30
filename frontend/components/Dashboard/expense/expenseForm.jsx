@@ -2,6 +2,8 @@ import React from 'react';
 import AutoSearch from './autoSearch';
 import Categories from './categories';
 import ExpenseDetails from './expense_details';
+// import Calender from './calender';
+import Calendar from 'react-calendar';
 
 export default class ExpenseForm extends React.Component {
 
@@ -13,12 +15,17 @@ export default class ExpenseForm extends React.Component {
         this.setCategory = this.setCategory.bind(this);
         this.setPayableId = this.setPayableId.bind(this);
         this.updateField = this.updateField.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchAllCategories();
         this.props.fetchAllFriends();
     }
+
+    onChange(date) {
+        this.setState({ date: date })
+    } 
 
     select(field) {
         return e => {
@@ -43,15 +50,28 @@ export default class ExpenseForm extends React.Component {
     }
 
     handleSubmit(e){
-        e.preventDefault();
         if (this.state.name === '' && this.state.email === '') {
-            alert ('There is only one person involved in this expense. Do you still want to save it?')
-        } else {
-            this.props.processForm(this.state).then(() => {
-                this.props.closeModal();
-                this.state = this.props.expense;
-            })
-        }
+            debugger
+            alert('There is only one person involved in this expense. Do you still want to save it?')
+        } 
+        let that = this;
+        e.preventDefault();
+        this.props.processForm(this.state).then(() => {
+            this.props.closeModal();
+            this.state = this.props.expense;
+        }, response => {
+            debugger
+                if (that.state.name === '') {
+                    alert('There is only one person involved in this expense. Do you still want to save it?')
+                } else if (that.state.desc === '') {
+                    debugger
+                    alert('You must enter a description')
+                } else if (that.state.amount === '')  {
+                    alert('You must enter some amount')
+                } else if (that.state.category_id === undefined) {
+                    alert('You must select a category')
+                }        
+        })
     }
 
     setPayableId(friend_id, friend_name){
@@ -96,7 +116,7 @@ export default class ExpenseForm extends React.Component {
                     <h2>Add an expense</h2>
                     <button onClick={this.handleClick}>x</button>
                 </div>
-                <form className="expense-form-eles"onSubmit={this.handleSubmit}>
+                <form className="expense-form-eles"onSubmit={e => this.handleSubmit(e)}>
                     <div className="pfields">
                         <label>With <strong>you</strong> and:
                             <input 
@@ -130,7 +150,7 @@ export default class ExpenseForm extends React.Component {
                             <div className="details">($0.00/person)</div>
                         </div>
                         <div className="footer-bottoms">
-                            <a className="date slim-buttom">September 25, 2020</a>
+                                <a className="date slim-buttom" onClick={() => this.setState({ openCal: true})}>September 25, 2020</a>
                             <a className="notes slim-buttom">Add images/notes</a>
                             <a className="group slim-buttom">No group</a>
                         </div>
@@ -157,6 +177,18 @@ export default class ExpenseForm extends React.Component {
                     expenseDetails={this.props.expense_detail}
                     openEDModal={this.state.openEDModal}
                 />: null}
+                {this.state.openCal ? 
+                <div>
+                    <div className="expense-form-header">
+                        <h2>Choose date</h2>
+                        <button onClick={this.handleClick}>x</button>
+                    </div>
+                    <Calendar
+                        onChange={this.onChange}
+                        handleClick={this.handleClick}
+                        value={this.state.date}
+                    /> 
+                </div>: null}
         </div>
         )
     }
