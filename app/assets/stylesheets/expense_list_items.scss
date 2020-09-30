@@ -17,9 +17,39 @@
         color: aqua;
 } */
 
+.expense-summary {
+    display: flex;
+    div {
+        margin: 0 5px;
+        padding-top: 5px;
+        display: flex;
+        flex-flow: column;
+        p:first-of-type {
+            color: lightgray;
+            font-size: 13px; 
+        }
+        p:last-of-type {
+            font-size: 15px;
+            font-weight: bold;
+        }
+    }
+}
+.paid-amount {
+    text-align: end;
+}
+
+.lent-amount{
+    color: #5bc5a7;
+}
+
+.you-borrowed {
+    color: #ff652f;
+}
+
 .delete-expense{
     color: rgb(207, 24, 24);
     margin-right: 10px;
+    margin-left: 10px;
     padding-top: 8px;
     font-size: 20px;
 }

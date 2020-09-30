@@ -1,0 +1,36 @@
+div.autoSearch {
+    display: inline-block;
+    height: fit-content;
+    z-index: 10;
+}
+
+ul.autoSearch-ul { 
+    z-index: 10;
+    position: absolute;
+    top: 80px;
+    left: 2px;
+    border-top: 1px solid rgb(216, 212, 212);
+    border-bottom: 1px solid rgb(216, 212, 212);
+    width: 345px;
+}
+
+li.autoSearch-li {
+    font-family: sans-serif;
+    font-size: 13px;
+    padding: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+// not working
+// li.autoSearch-li:before{
+//     background-image: url(../images/friend.jpg);
+//     background-size: 10px 10px;
+//     display: inline-block;
+//     width: 10px; 
+//     height: 10px;
+//     content:"";
+// }
+
+li.autoSearch-li:hover{
+    background-color: rgb(238, 234, 234);
+}

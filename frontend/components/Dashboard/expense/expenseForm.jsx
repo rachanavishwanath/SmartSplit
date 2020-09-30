@@ -1,6 +1,8 @@
 import React from 'react';
 import AutoSearch from './autoSearch';
 import Categories from './categories';
+import ExpenseDetails from './expense_details';
+
 export default class ExpenseForm extends React.Component {
 
     constructor(props){
@@ -15,6 +17,8 @@ export default class ExpenseForm extends React.Component {
 
     componentDidMount() {
         this.props.fetchAllCategories();
+        debugger
+        this.props.fetchAllFriends();
     }
 
     select(field) {
@@ -51,23 +55,26 @@ export default class ExpenseForm extends React.Component {
         }
     }
 
-    setPayableId(friend_id){
+    setPayableId(friend_id, friend_name){
         this.setState({
-            payable_id: friend_id
+            payable_id: friend_id,
+            show: false,
+            name: friend_name
         })
     }
 
     updateField(field){
+        let that = this;
         return e => {
             e.preventDefault();
             switch (field) {
                 case 'friend_id':
                     e.stopPropagation();
-                    this.setState({
+                    that.setState({
                         active: true,
-                        // name: e.currentTarget.value,   
+                        show: true,
+                        name: e.currentTarget.value, 
                     });
-                    this.Disable(e);
                     break;
                 case 'amount':
                     this.setState({
@@ -83,7 +90,7 @@ export default class ExpenseForm extends React.Component {
     }
 
     render() {
-        console.log(this.props);
+        console.log(this.props)
         return (
         <div>
             <div className="expense-form">
@@ -96,22 +103,15 @@ export default class ExpenseForm extends React.Component {
                         <label>With <strong>you</strong> and:
                             <input 
                                 type="text"
+                                value={this.state.name}
                                 placeholder="Enter name or email addresses"
-                                // onChange={this.updateField('friend_id')}
-                                onChange={(e) => {
-                                    e.preventDefault();
-                                    this.setState({ active: true })
-                                    {return <AutoSearch friends={this.props.friends }
-                                                setPayableId = {this.setPayableId }
-                                                val = { e.currentTarget.value }
-                                    />}
-                                }}
-                                />
+                                onChange={this.updateField('friend_id')}
+                            />
                         </label>
                     </div>
                     <div className={this.state.active ? "expense-secondary-fields" : "hidden"}>
                         <div className="main-fields">
-                            <img src={window.expense} onClick={() => this.setState({openCatModal: true})} alt="expense-logo"/>
+                            <img src={window.expense} onClick={() => this.setState({openCatModal: true}) } alt="expense-logo"/>
                             <div className="main-fields-right">
                                 <input 
                                     type="text"
@@ -127,7 +127,7 @@ export default class ExpenseForm extends React.Component {
                             </div>
                         </div>
                         <div className="human-summary">
-                            Paid by  <a className="payer">you</a>
+                                Paid by  <a className="payer" onClick={() => this.setState({ openEDModal: true}) }>you</a>
                               and split  <a className="split">equally</a>.
                             <div className="details">($0.00/person)</div>
                         </div>
@@ -147,12 +147,21 @@ export default class ExpenseForm extends React.Component {
                 </form>
             </div>
                 {this.state.openCatModal ? <Categories categories={this.props.categories} handleClick={this.handleClick} setCategory={this.setCategory}/> : null }
-                {/* {this.state.name.length > 0 ? <AutoSearch friends={this.props.friends}
+                {this.state.show ? <AutoSearch friends={this.props.friends}
                     setPayableId={this.setPayableId}
+                    state={this.state}
                     val={this.state.name}
                     />
                 : null
-                } */}
+                }
+                {this.state.openEDModal ? <ExpenseDetails 
+                    handleClick={this.handleClick}
+                    friendships={this.props.friendsships}
+                    payable_id={this.state.payable_id}
+                    users={this.props.users}
+                    expenseDetails={this.props.expense_detail}
+                    openEDModal={this.state.openEDModal}
+                />: null}
         </div>
         )
     }

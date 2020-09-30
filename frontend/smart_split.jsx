@@ -2,25 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import {
-    fetchallExpenses,
-    fetchExpense,
-    createExpense,
-    updateExpense,
-    deleteExpense
-} from './util/expenses_util';
+import { fetchAllExpenseDetails, createExpenseDetail } from './actions/expense_detail_action';
+import { fetchExpenseDetails } from './util/expense_detail_util';
 import { fetchAllCategories } from './actions/category_actions';
+import { fetchAllFriends } from './actions/friend_action';
 
 document.addEventListener('DOMContentLoaded',() => {
     window.fetchAllCategories = fetchAllCategories;
-    // window.fetchallExpenses = fetchallExpenses;
-    // window.fetchExpense = fetchExpense;
-    // window.createExpense = createExpense;
-    // window.updateExpense = updateExpense;
-    // window.deleteExpense = deleteExpense;
+    window.fetchAllExpenseDetails = fetchAllExpenseDetails;
+    window.createExpenseDetail = createExpenseDetail;
+    window.fetchExpenseDetails = fetchExpenseDetails;
+    window.fetchAllFriends = fetchAllFriends;
     let store;
     if (window.currentUser) {
-        const preloadedState ={
+        const preloadedState = {
             entities: {users: { [window.currentUser.id]: window.currentUser }},
             session: { id: window.currentUser.id }
         };

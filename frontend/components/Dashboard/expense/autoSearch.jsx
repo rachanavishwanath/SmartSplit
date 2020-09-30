@@ -1,23 +1,42 @@
 import React from 'react';
-// pass val to this component
-export default (props) => {
-    debugger
-    console.log(props);
-    const SearchResult = props.friends.map(friend => {
-        debugger
-            if (friend.name.startsWith(props.val)) {
-                return <li key={friend.friend_id} 
-                        className="names"
-                        onClick={props.setPayableId(friend.friend_id)}
-                        >
-                        {friend.name}
-                    </li>
-                }
-            })
+
+export default class AutoSearch extends React.Component {
+    constructor(props) {
+        super(props);
+        // this.state = this.props.state;
+        this.state = { searchResult: null };
+        this.SearchResult = this.SearchResult.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidMount(){
+        this.SearchResult();
+    }
+
+    handleClick(friend_id) {
+        e.preventDefault();
+        this.props.setPayableId(friend_id)
+    }
+
+    SearchResult(){
+        let searchResult = this.props.friends.map(friend => {
+        if (friend.name.startsWith(this.props.val)) {
+            return <li key={friend.friend_id}
+                        className="autoSearch-li"
+                        onClick={() => (this.props.setPayableId(friend.friend_id, friend.name))}
+                    >
+                    {friend.name}
+                 </li>
+            }
+        })
+        this.setState({ searchResult: searchResult})
+    }
+
+    render() {
         return (
-            <div>
-                <h1>Where are you?</h1>
-                <ul>{SearchResult}</ul>
+            <div className="autoSearch">
+                <ul className="autoSearch-ul">{this.state.searchResult}</ul>
             </div>
         )
     }
+}

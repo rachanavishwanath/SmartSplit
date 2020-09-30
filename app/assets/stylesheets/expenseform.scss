@@ -14,6 +14,8 @@
 
 div.pfields  { 
     margin: 10px 0; 
+    // border-bottom: 1px solid rgb(216, 212, 212);
+    // padding-bottom: 10px;
 }
 
 div.pfields > label {
@@ -29,9 +31,10 @@ div.pfields > label > input {
 
 .expense-secondary-fields{
     display: block;
+    border-top: 1px solid #d8d4d4;
 }
 
-.expense-form-header, .child-modal-header{
+.expense-form-header, .child-modal-header, .expense-details-header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -46,12 +49,13 @@ div.pfields > label > input {
     font-size: 18px;
 }
 
-.child-modal-header {
+.child-modal-header,.expense-details-header {
     margin-left: 0;
 }
 
 .expense-form-header > button {
     text-shadow: 0 -1px 0 #318a71;
+    cursor: pointer;
 }
 
 .footer-buttons{
@@ -133,6 +137,7 @@ div.pfields > label > input {
     height: 80px;
     width: 80px;
     padding-top: 10px;
+    cursor: pointer;
 }
 
 .main-fields-right {

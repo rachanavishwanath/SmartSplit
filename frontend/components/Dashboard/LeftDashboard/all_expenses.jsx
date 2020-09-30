@@ -12,15 +12,26 @@ export default class AllExpenses extends React.Component {
 
     componentDidMount(){
         this.props.fetchAllExpenses();
+        this.props.fetchAllExpenseDetails();
     }
 
     render(){
         if (!this.props.expenses) { return null;}
+        console.log(this)
+        let that = this;
         const allExpenses = this.props.expenses.map(expense => {
+            console.log(that)
+            const expenseDetails = expense.expense_detail_ids.map(expenseDetailId => {
+                console.log(that)
+                return that.props.expenseDetails[expenseDetailId]
+            })
             return <ExpenseItems 
                 key={expense.id}
                 expense={expense}
                 deleteExpense={this.props.deleteExpense}
+                expenseDetails={expenseDetails}
+                currentUser={this.props.currentUser}
+                friends={this.props.currentUser.friends}
             />
         })
         return (

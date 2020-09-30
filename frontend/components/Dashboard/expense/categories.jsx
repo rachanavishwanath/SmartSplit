@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SubCategoryListItems = props => {
-    debugger
     return (
         <li className="subCategory-li" onClick={() => (props.setCategory(props.subCategory[0]))}>{props.subCategory[1]}</li>
     )
@@ -9,8 +8,6 @@ const SubCategoryListItems = props => {
 
 const SubCategoryList = props => {
     const allSubs = props.subCategory.map((subCat) => {
-        console.log(`subCat ${subCat}`)
-        debugger
         return <SubCategoryListItems 
             setCategory={props.setCategory}
             key={subCat[0]}
@@ -23,7 +20,6 @@ const SubCategoryList = props => {
 }
 
 const CategoryList = props => {
-    debugger
     return (
         <li className="category-li" onClick={() => (props.setCategory(props.category[0]))}>{props.category[1]}
             <SubCategoryList
@@ -32,10 +28,9 @@ const CategoryList = props => {
         </li>
     )
 }
+
 export default (props) => {
-    console.log(props);
     const allCategories = props.categories.map(category => {
-        debugger
         return <CategoryList 
                 setCategory={props.setCategory}
                 key={category[0][0]}

@@ -274,3 +274,11 @@ e1 = Expense.create!(profile_id: guest.id,
 e2 = Expense.create!(profile_id: guest.id, 
         amount: 20, desc: 'Game day', category_id: s1.id,
         payable_type: 'Friend', payable_id: f2.id, split_type: 'equally', date: '2020-08-26')
+
+ed1 = ExpenseDetails.create!(
+        expense_id: e1.id, paid_by: guest.id, amount_paid: 7.99
+)
+
+ed2 = ExpenseDetails.create!(
+        expense_id: e1.id, paid_by: u1.id, amount_paid: 2.01
+)
