@@ -54,7 +54,6 @@ export default class ExpenseForm extends React.Component {
 
     handleSubmit(e){
         if (this.state.name === '' && this.state.email === '') {
-            debugger
             alert('There is only one person involved in this expense. Do you still want to save it?')
         } 
         let that = this;
@@ -95,14 +94,12 @@ export default class ExpenseForm extends React.Component {
     }
 
     updatedNotes(text){
-        debugger
         this.setState({
             notes: text,
         })
     }
 
     closeNotesModal() {
-        debugger
         this.setState({
             openNotes: false
         })

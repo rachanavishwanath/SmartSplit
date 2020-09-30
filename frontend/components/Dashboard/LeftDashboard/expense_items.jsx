@@ -1,10 +1,21 @@
 import React from 'react';
 import { dateFormat } from '../../../reducers/format_date/for_expense';
+import ExpendeItemDetails from './expense_item_details';
 
 export default class ExpenseItems extends React.Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            show: false
+        }
+        this.toggleShow = this.toggleShow.bind(this);
+    }
+
+    toggleShow(){
+        if (this.state.show) {
+            this.setState({ show: false })
+        } else { this.setState({ show: true }) }
     }
 
     render() {
@@ -15,11 +26,13 @@ export default class ExpenseItems extends React.Component {
         let friend_name;
         let you_lent;
         if (expenseDetails && expenseDetails.length > 0) {
+            debugger
             expenseDetails.forEach(ed => {
                 if (ed.paid_by === currentUser.id) {
                     you_paid = ed.amount_paid;
+                    you_borrowed = 
                     you_lent = you_paid / 2;
-                } else  {
+                } else {
                     you_borrowed = ed.amount_paid / 2;
                 }
                 if (ed.amount_borrowed > 0) {
@@ -35,6 +48,7 @@ export default class ExpenseItems extends React.Component {
             });
         }
         return (
+            <div>
             <li className="expense-list-items">
                 <div className="summary">
                     <div className="expense-date">
@@ -42,7 +56,7 @@ export default class ExpenseItems extends React.Component {
                         <div>{d[1]}</div>
                     </div>
                     <img src={window.expense} alt="expense-logo"/>
-                    <div className="expense-desc">{expense.desc}</div>
+                        <div className="expense-desc" onClick={this.toggleShow}>{expense.desc}</div>
                 </div>
                 <div className="expense-summary">
                     <div className="you-paid">
@@ -63,6 +77,10 @@ export default class ExpenseItems extends React.Component {
                     <button className="delete-expense" onClick={() => deleteExpense(expense.id)}>x</button>
                 </div>
             </li>
+            {this.state.show ? <ExpendeItemDetails
+                    expense={this.props.expense}
+            /> : null}
+            </div>
         )
     }
 }

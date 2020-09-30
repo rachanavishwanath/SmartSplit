@@ -4,7 +4,7 @@ export default class RightDashboard extends React.Component {
     render() {
         return (
             <div className="right-dashboard">
-                <h3>Right Dashboard</h3>
+                <h3>GET SMARTSPLIT PRO!</h3>
             </div>
         )
     }

@@ -2,7 +2,8 @@ import React from 'react';
 import GreetingComponent from '../../greeting/greeting_container';
 import RightDashboard from '../RightDashboard/right_dashboard';
 import LeftDashboard from '../LeftDashboard/left_dashboard';
-import ExpenseListItems from '../LeftDashboard/expense_items';
+// import ExpenseListItems from '../LeftDashboard/expense_items';
+import ExpenseItems from '../LeftDashboard/expense_items';
 import CenterDashboard from '../centerDashboard/center_dashboard';
 
 export default class FriendExpense extends React.Component {
@@ -34,7 +35,8 @@ export default class FriendExpense extends React.Component {
         let name = this.findName(this.props.friends, this.props.friendId);
         if (!this.props.expenses) { return null; }
         const allExpenses = this.props.expenses.map(expense => {
-            return <ExpenseListItems
+                debugger
+            return <ExpenseItems
                 key={expense.id}
                 expense={expense}
                 deleteExpense={this.props.deleteExpense}

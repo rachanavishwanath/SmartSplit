@@ -8,14 +8,11 @@ export default class AdditionalDetails extends React.Component {
     }
 
     updateField(e){
-        debugger
-        debugger
         this.props.updatedNotes(e.currentTarget.value)
         this.setState({ notes: e.currentTarget.value})
     }
 
     render(){
-        debugger
         return(
             <div className="child-modal ad">
                 <div className="expense-form-header">
