@@ -16,6 +16,7 @@ export default class ExpenseForm extends React.Component {
         this.setPayableId = this.setPayableId.bind(this);
         this.updateField = this.updateField.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.setPayerId = this.setPayerId.bind(this);
     }
 
     componentDidMount() {
@@ -56,7 +57,11 @@ export default class ExpenseForm extends React.Component {
         } 
         let that = this;
         e.preventDefault();
-        this.props.processForm(this.state).then(() => {
+        this.props.processForm(this.state).then((action) => {
+            action;
+            debugger
+            this.setState({ expense_id: action.expense.id })
+            this.props.createExpenseDetail(this.state);
             this.props.closeModal();
             this.state = this.props.expense;
         }, response => {
@@ -82,6 +87,13 @@ export default class ExpenseForm extends React.Component {
         })
     }
 
+    setPayerId(payer_id){
+        this.setState({
+            paid_by: payer_id,
+            openEDModal: false,
+        })
+    }
+
     updateField(field){
         let that = this;
         return e => {
@@ -97,7 +109,8 @@ export default class ExpenseForm extends React.Component {
                     break;
                 case 'amount':
                     this.setState({
-                        [field]: parseInt(e.currentTarget.value)
+                        [field]: parseInt(e.currentTarget.value),
+                        amount_paid: parseInt(e.currentTarget.value)
                     })
                     break;
                 default:
@@ -109,6 +122,7 @@ export default class ExpenseForm extends React.Component {
     }
 
     render() {
+        debugger
         return (
         <div>
             <div className="expense-form">
@@ -171,11 +185,10 @@ export default class ExpenseForm extends React.Component {
                 }
                 {this.state.openEDModal ? <ExpenseDetails 
                     handleClick={this.handleClick}
+                    setPayerId={this.setPayerId}
                     friendships={this.props.friendsships}
                     payable_id={this.state.payable_id}
                     users={this.props.users}
-                    expenseDetails={this.props.expense_detail}
-                    openEDModal={this.state.openEDModal}
                 />: null}
                 {this.state.openCal ? 
                 <div>

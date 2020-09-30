@@ -3,14 +3,6 @@ import React from 'react';
 export default class ExpenseDetails extends React.Component {
     constructor(props){
         super(props);
-        this.state = this.props.expenseDetails;
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(e) {
-        e.preventDefault();
-        this.setState({ paid_by: e.currentTarget})
-        this.props.openEDModal = false;
     }
 
     render() {
@@ -24,7 +16,7 @@ export default class ExpenseDetails extends React.Component {
         });
         const allPayersli = allPayers.map(payer => {
             return <li key={payer[0]} 
-                    onClick={this.handleClick}
+                    onClick={() => (this.props.setPayerId(payer[0]))}
                     className="ed-li"
                     >{payer[1]}</li>
         })

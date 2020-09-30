@@ -3,7 +3,6 @@ import React from 'react';
 export default class AutoSearch extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = this.props.state;
         this.state = { searchResult: null };
         this.SearchResult = this.SearchResult.bind(this);
         this.handleClick = this.handleClick.bind(this);

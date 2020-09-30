@@ -22,9 +22,7 @@ const mSTP = state => {
             openCatModal: false,
             openEDModal: false,
             show: false,
-            openCal: false
-        },
-        expense_detail: {
+            openCal: false,
             expense_id: null,
             paid_by: state.session.id,
             amount_paid: null

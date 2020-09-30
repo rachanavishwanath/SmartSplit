@@ -53,7 +53,6 @@ export const createExpense = expense => dispatch => {
     return ExpenseApiUtil.createExpense(expense).then(expense => {
         return dispatch(receiveExpense(expense))
     }, response => {
-        debugger
         return dispatch(receiveErrors(response.responseText))
     })
 }
