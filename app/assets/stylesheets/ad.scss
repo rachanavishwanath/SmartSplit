@@ -1,0 +1,67 @@
+.ad, .expense-details, .categories {
+    height: fit-content;
+}
+
+.expense-details {
+    width: 200px;
+}
+
+.ad-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // height: 350px;
+    height: fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.upload {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid lightgray;
+    padding-left: 10px;
+    padding-bottom: 13px;
+    font-size: 13px;
+    color: #8a8787;
+    margin: 10px 0;
+}
+
+.upload > p{
+    margin-top: 5px;
+    margin-left: 8px;
+}
+
+.upload-asset {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 7px;
+    padding-bottom: 7px;
+    button {
+        border: 1px solid black;
+        color: black;
+        background-color: rgb(236, 233, 233);
+        margin-right: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+    p {
+        margin-top: 10px;
+    }
+}
+
+section.notes {
+    margin-left: 10px;
+    // border-bottom: 1px solid lightgray;
+    padding-bottom: 6px;
+    textarea {
+        border: 1px solid  lightgray;
+    }
+}    
+
+section.complete > button {
+    margin: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}

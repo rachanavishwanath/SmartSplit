@@ -58,7 +58,7 @@ div.pfields > label > input {
     cursor: pointer;
 }
 
-.footer-buttons{
+.footer-buttons, .complete{
     border-top: 1px solid rgb(231, 229, 229);
     display: flex;
     justify-content: flex-end;
@@ -82,7 +82,7 @@ div.pfields > label > input {
     background-color: rgb(245, 242, 242);
 }
 
-.footer-buttons > button:last-of-type {
+.footer-buttons > button:last-of-type, .complete > button {
     background-color: #1cc29f;
     color: white;
     text-shadow: 0 -1px 0 #318a71;

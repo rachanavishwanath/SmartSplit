@@ -39,7 +39,7 @@ export default class FriendExpense extends React.Component {
                 expense={expense}
                 deleteExpense={this.props.deleteExpense}
                 // pass this after adding paid_by
-                // friends={this.props.friends}
+                friends={this.props.friends}
             />
         })
         return(

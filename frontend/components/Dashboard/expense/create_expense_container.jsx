@@ -6,6 +6,7 @@ import { fetchAllCategories } from '../../../actions/category_actions';
 import { createExpenseDetail } from '../../../actions/expense_detail_action';
 import { fetchAllFriends } from '../../../actions/friend_action';
 import { category, defCa } from '../../../reducers/selectors';
+import { createAD } from '../../../actions/ad_actions';
 
 const mSTP = state => {
     return {
@@ -23,9 +24,13 @@ const mSTP = state => {
             openEDModal: false,
             show: false,
             openCal: false,
+            openNotes: false,
             expense_id: null,
             paid_by: state.session.id,
-            amount_paid: null
+            amount_paid: null,
+            author_id: state.session.id,
+            notes: '',
+            asset_url: ''
         },
         users: state.entities.users,
         friends: Object.values(state.entities.users)[0].friends,
@@ -41,6 +46,7 @@ const mDTP = dispatch => {
         openModal: modal => dispatch(openModal(modal)),
         fetchAllCategories: () => dispatch(fetchAllCategories()),
         fetchAllFriends: () => dispatch(fetchAllFriends()),
+        createAD: (ad) => dispatch(createAD(ad)),
         createExpenseDetail: (expenseDetail) => dispatch(createExpenseDetail(expenseDetail))
     }
 }

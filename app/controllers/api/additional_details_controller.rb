@@ -8,7 +8,7 @@ class Api::AdditionalDetailsController < ApplicationController
     def create
         @ad = AdditionalDetail.new(ad_params)
         if @ad.save
-            render json: {}
+            render :show
         else
             render @ad.errors.full_messages, status: 422
         end

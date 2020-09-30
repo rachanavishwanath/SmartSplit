@@ -13,10 +13,14 @@ export default class ExpenseItems extends React.Component {
         let you_paid = 0;
         let you_borrowed = 0;
         let friend_name;
+        let you_lent;
         if (expenseDetails && expenseDetails.length > 0) {
             expenseDetails.forEach(ed => {
                 if (ed.paid_by === currentUser.id) {
-                    you_paid = ed.amount_paid
+                    you_paid = ed.amount_paid;
+                    you_lent = you_paid / 2;
+                } else  {
+                    you_borrowed = ed.amount_paid / 2;
                 }
                 if (ed.amount_borrowed > 0) {
                     you_borrowed = ed.amount_borrowed
@@ -52,8 +56,8 @@ export default class ExpenseItems extends React.Component {
                         </div>
                     ) : (
                         <div className="you-lent">
-                            <p className="you-lent">you lent</p>
-                            <p className="lent-amount">$5</p>
+                                <p className="you-lent">{`you lent ${friend_name}`}</p>
+                                <p className="lent-amount">{`$${you_lent}`}</p>
                         </div>
                     )}
                     <button className="delete-expense" onClick={() => deleteExpense(expense.id)}>x</button>

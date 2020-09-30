@@ -2,7 +2,7 @@ import React from 'react';
 import AutoSearch from './autoSearch';
 import Categories from './categories';
 import ExpenseDetails from './expense_details';
-// import Calender from './calender';
+import AdditionalDetails from './additional_details';
 import Calendar from 'react-calendar';
 
 export default class ExpenseForm extends React.Component {
@@ -17,6 +17,8 @@ export default class ExpenseForm extends React.Component {
         this.updateField = this.updateField.bind(this);
         this.onChange = this.onChange.bind(this);
         this.setPayerId = this.setPayerId.bind(this);
+        this.updatedNotes = this.updatedNotes.bind(this);
+        this.closeNotesModal = this.closeNotesModal.bind(this);
     }
 
     componentDidMount() {
@@ -59,17 +61,15 @@ export default class ExpenseForm extends React.Component {
         e.preventDefault();
         this.props.processForm(this.state).then((action) => {
             action;
-            debugger
             this.setState({ expense_id: action.expense.id })
             this.props.createExpenseDetail(this.state);
+            this.props.createAD(this.state);
             this.props.closeModal();
             this.state = this.props.expense;
         }, response => {
-            debugger
                 if (that.state.name === '') {
                     alert('There is only one person involved in this expense. Do you still want to save it?')
                 } else if (that.state.desc === '') {
-                    debugger
                     alert('You must enter a description')
                 } else if (that.state.amount === '')  {
                     alert('You must enter some amount')
@@ -91,6 +91,20 @@ export default class ExpenseForm extends React.Component {
         this.setState({
             paid_by: payer_id,
             openEDModal: false,
+        })
+    }
+
+    updatedNotes(text){
+        debugger
+        this.setState({
+            notes: text,
+        })
+    }
+
+    closeNotesModal() {
+        debugger
+        this.setState({
+            openNotes: false
         })
     }
 
@@ -122,7 +136,6 @@ export default class ExpenseForm extends React.Component {
     }
 
     render() {
-        debugger
         return (
         <div>
             <div className="expense-form">
@@ -137,6 +150,7 @@ export default class ExpenseForm extends React.Component {
                                 type="text"
                                 value={this.state.name}
                                 placeholder="Enter name or email addresses"
+                                onEnded
                                 onChange={this.updateField('friend_id')}
                             />
                         </label>
@@ -165,7 +179,7 @@ export default class ExpenseForm extends React.Component {
                         </div>
                         <div className="footer-bottoms">
                                 <a className="date slim-buttom" onClick={() => this.setState({ openCal: true})}>September 25, 2020</a>
-                            <a className="notes slim-buttom">Add images/notes</a>
+                                <a className="notes slim-buttom" onClick={() => this.setState({ openNotes: true })}>Add images/notes</a>
                             <a className="group slim-buttom">No group</a>
                         </div>
                     </div>
@@ -189,7 +203,7 @@ export default class ExpenseForm extends React.Component {
                     friendships={this.props.friendsships}
                     payable_id={this.state.payable_id}
                     users={this.props.users}
-                />: null}
+                /> : null}
                 {this.state.openCal ? 
                 <div>
                     <div className="expense-form-header">
@@ -202,6 +216,14 @@ export default class ExpenseForm extends React.Component {
                         value={this.state.date}
                     /> 
                 </div>: null}
+                {this.state.openNotes ? 
+                <AdditionalDetails
+                    updatedNotes={this.updatedNotes}
+                    handleClick={this.handleClick}
+                    value={this.state.notes}
+                    closeNotesModal={this.closeNotesModal}
+                />
+                : null}
         </div>
         )
     }

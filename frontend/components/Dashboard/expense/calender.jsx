@@ -14,7 +14,7 @@ export default class Calender1 extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="child-modal calender">
                 <div className="expense-form-header">
                     <h2>Choose date</h2>
                     <button onClick={props.handleClick}>x</button>
