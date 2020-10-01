@@ -67,11 +67,13 @@ class User < ApplicationRecord
         amount = 0
         more_details = Hash.new {|h,k| h[k] = k }
         detailed_expenses.each do |ex|
+            id = Friend.find(ex.payable_id)
+            friend_id = self.id != id.profile_id ? id.profile_id : id.friend_id
             ex.expense_details.each do |ed|
                 if ed.paid_by == self.id
                     amount += (ed.amount_paid / 2.0)
-                    more_details[ed.paid_by] ||= {}
-                    more_details[ed.paid_by] += ed.amount_paid / 2.0
+                    more_details[friend_id] ||= {}
+                    more_details[friend_id] += ed.amount_paid / 2.0
                 end
             end
         end

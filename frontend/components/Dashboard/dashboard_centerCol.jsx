@@ -31,6 +31,7 @@ export default class DashboardCenterCol extends React.Component {
                     </div>
                     <div className="you-are-owe-right">
                         <h1>YOU ARE OWED</h1>
+                        <p>Coming soon</p>
                     </div>
                 </div>
             </div>

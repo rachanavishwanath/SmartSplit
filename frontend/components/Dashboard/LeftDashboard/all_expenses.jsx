@@ -15,6 +15,12 @@ export default class AllExpenses extends React.Component {
         this.props.fetchAllExpenseDetails();
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.expenses.length !== prevProps.expenses.length) {
+            this.props.fetchAllExpenses(this.props.friendId)
+        }
+    }
+
     render(){
         if (!this.props.expenses) { return null;}
         let that = this;

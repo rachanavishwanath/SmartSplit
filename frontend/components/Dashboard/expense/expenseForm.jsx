@@ -46,9 +46,24 @@ export default class ExpenseForm extends React.Component {
         })
     }
     
-    handleClick(e){
+    handleClick(e, modal){
         e.preventDefault();
-        this.props.closeModal();
+        switch(modal){
+            case 'Calender':
+                this.setState({ openCal: false });
+                break;
+            case 'Category':
+                this.setState({ openCatModal: false });
+                break;
+            case 'ED':
+                this.setState({ openEDModal: false });
+                break;
+            case 'AD':
+                this.setState({ openNotes: false });
+                break;
+            default:
+                this.props.closeModal();
+        }
         this.state = this.props.expense;
     }
 
@@ -138,9 +153,11 @@ export default class ExpenseForm extends React.Component {
         return (
         <div>
             <div className="expense-form">
+
+
                 <div className="expense-form-header">
                     <h2>Add an expense</h2>
-                    <button onClick={this.handleClick}>x</button>
+                    <button onClick={e => this.handleClick(e)}>x</button>
                 </div>
                 <form className="expense-form-eles"onSubmit={e => this.handleSubmit(e)}>
                     <div className="pfields">
@@ -155,7 +172,7 @@ export default class ExpenseForm extends React.Component {
                     </div>
                     <div className={this.state.active ? "expense-secondary-fields" : "hidden"}>
                         <div className="main-fields">
-                            <img src={window.expense} onClick={() => this.setState({openCatModal: true}) } alt="expense-logo"/>
+                                <img src={window.expense} onClick={() => this.setState({ openCatModal: true, openNotes: false, openCal: false, openEDModal: false}) } alt="expense-logo"/>
                             <div className="main-fields-right">
                                 <input 
                                     type="text"
@@ -171,23 +188,27 @@ export default class ExpenseForm extends React.Component {
                             </div>
                         </div>
                         <div className="human-summary">
-                                Paid by  <a className="payer" onClick={() => this.setState({ openEDModal: true}) }>you</a>
+                                Paid by  <a className="payer" onClick={() => this.setState({ openEDModal: true, openNotes: false, openCal: false, openCatModal: false}) }>you</a>
                               and split  <a className="split">equally</a>.
                             <div className="details">($0.00/person)</div>
                         </div>
                         <div className="footer-bottoms">
-                                <a className="date slim-buttom" onClick={() => this.setState({ openCal: true})}>September 25, 2020</a>
-                                <a className="notes slim-buttom" onClick={() => this.setState({ openNotes: true })}>Add images/notes</a>
+                                <a className="date slim-buttom" onClick={() => this.setState({ openCal: true, openNotes: false, openEDModal: false, openCatModal: false })}>September 25, 2020</a>
+                                <a className="notes slim-buttom" onClick={() => this.setState({ openNotes: true, openCal: false, openEDModal: false, openCatModal: false })}>Add images/notes</a>
                             <a className="group slim-buttom">No group</a>
                         </div>
                     </div>
                     <div className="footer-buttons">
-                        <button onClick={this.handleClick}>Cancel</button>
+                        <button onClick={e => this.handleClick(e)}>Cancel</button>
                         <button>save</button>
                     </div>
                 </form>
             </div>
-                {this.state.openCatModal ? <Categories categories={this.props.categories} handleClick={this.handleClick} setCategory={this.setCategory}/> : null }
+                {this.state.openCatModal ? <Categories 
+                    categories={this.props.categories} 
+                    handleClick={e => this.handleClick(e, 'Category')} 
+                    setCategory={this.setCategory}
+                /> : null }
                 {this.state.show ? <AutoSearch friends={this.props.friends}
                     setPayableId={this.setPayableId}
                     state={this.state}
@@ -196,7 +217,7 @@ export default class ExpenseForm extends React.Component {
                 : null
                 }
                 {this.state.openEDModal ? <ExpenseDetails 
-                    handleClick={this.handleClick}
+                    handleClick={e => this.handleClick(e, 'ED')}
                     setPayerId={this.setPayerId}
                     friendships={this.props.friendsships}
                     payable_id={this.state.payable_id}
@@ -206,18 +227,17 @@ export default class ExpenseForm extends React.Component {
                 <div>
                     <div className="expense-form-header">
                         <h2>Choose date</h2>
-                        <button onClick={this.handleClick}>x</button>
+                            <button onClick={e => this.handleClick(e, 'Calender')}>x</button>
                     </div>
                     <Calendar
                         onChange={this.onChange}
-                        handleClick={this.handleClick}
                         value={this.state.date}
                     /> 
                 </div>: null}
                 {this.state.openNotes ? 
                 <AdditionalDetails
                     updatedNotes={this.updatedNotes}
-                    handleClick={this.handleClick}
+                    handleClick={e => this.handleClick(e, 'AD')}
                     value={this.state.notes}
                     closeNotesModal={this.closeNotesModal}
                 />

@@ -19,7 +19,6 @@ export default class ExpenseItems extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         // you borrowed is for groups
         const { expense, deleteExpense, expenseDetails, currentUser, friends } = this.props;
         
@@ -36,7 +35,6 @@ export default class ExpenseItems extends React.Component {
                 }
             });
         }
-        debugger
         if (expenseDetails[0] === undefined) { return null; }
         if (expenseDetails && expenseDetails.length > 0) {
             expenseDetails.forEach(ed => {

@@ -9,7 +9,6 @@ export default class ExpendeItemDetails extends React.Component {
 
     render() {
         const formattedDate = formatDate(this.props.expense.created_at);
-        console.log(this.props);
         return(
             <div className="show-expense-details">
                 <div className="edit-and-other">
