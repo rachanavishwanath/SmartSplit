@@ -1,10 +1,8 @@
 class Api::ExpensesController < ApplicationController
 
     def index
-        #replace 12 with current_user.id after testing
         if params.has_key?(:payable_id) 
             @expenses = Expense.all.where(payable_id: params[:payable_id])
-            #@expenses = Expense.with_a_friend(current_user.id, params[:friend_id])
         else
             @expenses = Expense.all.where(profile_id: current_user.id )
         end

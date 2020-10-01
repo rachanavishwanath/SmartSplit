@@ -37,3 +37,11 @@ export const formatDate = input => {
     const date = arr[2].slice(0,2);
     return `${month} ${date}, ${year}`
 }
+
+export const forShow = input => {
+    let arr = input.split('-');
+    let month = months[parseInt(arr[1])];
+    month = month.slice(0, 3)
+    const date = arr[2].slice(0, 2);
+    return `${month} ${date}`
+}

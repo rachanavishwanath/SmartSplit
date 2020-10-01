@@ -75,7 +75,7 @@ export default class ExpenseItems extends React.Component {
                     ) : ( 
                         <div className="you-lent">
                             <p className="you-lent">{`${friend_name} lent you`}</p>
-                            <p className="lent-amount">{`$${you_lent}`}</p>
+                            <p className="you-borrowed">{`$${you_lent}`}</p>
                         </div>
                     )}
                     <button className="delete-expense" onClick={() => deleteExpense(expense.id)}>x</button>

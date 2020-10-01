@@ -4,7 +4,8 @@ import Dashboard from './dashboard';
 
 const mSTP = state => {
     return {
-        friends: Object.values(state.entities.users)[0].friends
+        friends: Object.values(state.entities.users)[0].friends,
+        user: Object.values(state.entities.users)
     }
 }
 

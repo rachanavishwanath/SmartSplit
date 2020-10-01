@@ -46,26 +46,36 @@ class User < ApplicationRecord
         obj
     end
 
-    def amount_payable
+    def you_owe
         detailed_expenses = self.expenses.includes(:expense_details)
-        borrowed = 0
+        amount = 0
+        more_details = Hash.new {|h,k| h[k] = k }
         detailed_expenses.each do |ex|
             ex.expense_details.each do |ed|
-                borrowed += ed.amount_borrowed(self.id)
+                if ed.paid_by != self.id
+                    amount += (ed.amount_paid / 2.0)
+                    more_details[ed.paid_by] ||= {}
+                    more_details[ed.paid_by] += (ed.amount_paid / 2.0)
+                end
             end
         end
-        borrowed
+        [amount, more_details]
     end
 
-    def amount_receivable
+    def you_are_owed
         detailed_expenses = self.expenses.includes(:expense_details)
-        owed = 0
+        amount = 0
+        more_details = Hash.new {|h,k| h[k] = k }
         detailed_expenses.each do |ex|
             ex.expense_details.each do |ed|
-                owed += ed.amount_owed(self.id)
+                if ed.paid_by == self.id
+                    amount += (ed.amount_paid / 2.0)
+                    more_details[ed.paid_by] ||= {}
+                    more_details[ed.paid_by] += ed.amount_paid / 2.0
+                end
             end
         end
-        owed
+        [amount, more_details]
     end
 
     def validateEmail

@@ -1,4 +1,5 @@
 import React from 'react';
+import { forShow } from '../../../reducers/format_date/for_expense';
 
 export default class AdditionalDetails extends React.Component {
     constructor(props){
@@ -12,7 +13,6 @@ export default class AdditionalDetails extends React.Component {
     }
 
     componentDidMount(){
-        debugger
         this.props.fetchADs(this.props.expenseId);
     }
 
@@ -38,11 +38,15 @@ export default class AdditionalDetails extends React.Component {
                         }
                     })
                 }
-                return <li key={ad.id}>
-                            <p className="ad.author">{author}</p> 
-                            <p className="ad.createdAt">{ad.created_at}</p>
-                            <p className="ad.notes">{ad.notes}</p>
+                return <li key={ad.id} className="ad-li">
+                        <div className="parent-div">
+                            <div className="child-div">
+                                <p className="ad-author">{author}</p> 
+                                <p className="ad-createdAt">{forShow(ad.created_at)}</p>
+                            </div>
                             <button onClick={() => this.props.deleteAD(ad.id)}>X</button>
+                        </div> 
+                            <p className="ad-notes">{ad.notes}</p>   
                         </li>
             })
         }
@@ -52,12 +56,13 @@ export default class AdditionalDetails extends React.Component {
                 <h1>NOTES AND COMMENTS </h1>
                 <ul>{allADDetails}</ul>
                 <form onSubmit={this.handleSubmit} className="add-a-comment">
-                    <input
+                    <textarea
                         className="input-add-a-comment"
                         placeholder="Add a comment"
                         value={this.state.notes}
                         onChange={(e) => (this.setState({ notes: e.currentTarget.value}))}
                     />
+                    <br/>
                     <button className="post-comment">Post</button>
                 </form>
             </div>

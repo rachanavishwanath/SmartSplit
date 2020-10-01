@@ -36,6 +36,7 @@ const mSTP = state => {
         friends: Object.values(state.entities.users)[0].friends,
         categories: category(state.entities.categories),
         friendsships: state.entities.friendships,
+        formType: 'Create'
     }
 }
 

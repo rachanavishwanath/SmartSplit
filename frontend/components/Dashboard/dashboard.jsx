@@ -12,7 +12,7 @@ export default class Dashboard extends React.Component {
                 <GreetingComponent />
                 <div className="dashboard">
                     <LeftDashboard friends={this.props.friends} />
-                    <DashboardCenterCol openModal={this.props.openModal}/>
+                    <DashboardCenterCol openModal={this.props.openModal} currentUser={this.props.user}/>
                     <RightDashboard/>
                 </div>
             </nav>
