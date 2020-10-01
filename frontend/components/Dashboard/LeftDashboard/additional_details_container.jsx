@@ -4,8 +4,6 @@ import AdditionalDetails from './additional_details';
 import { fetchADs, createAD, deleteAD } from '../../../actions/ad_actions';
 
 const mSTP = (state, ownProps) => {
-    console.log(ownProps);
-    console.log(state);
     const expenseId = ownProps.expense.id
     return {
         additionalDetails: Object.values(state.entities.additional_details),

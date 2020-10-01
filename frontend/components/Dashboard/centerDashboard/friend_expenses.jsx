@@ -4,6 +4,7 @@ import RightDashboard from '../RightDashboard/right_dashboard';
 import LeftDashboard from '../LeftDashboard/left_dashboard';
 import ExpenseItems from '../LeftDashboard/expense_items';
 import CenterDashboard from '../centerDashboard/center_dashboard';
+import ExpenseItemContainer from '../LeftDashboard/expense_item_container';
 
 export default class FriendExpense extends React.Component {
     constructor(props) {
@@ -19,6 +20,7 @@ export default class FriendExpense extends React.Component {
         if (this.props.friendId !== prevProps.match.params.friend_id) {
             this.props.fetchAllExpenses(this.props.friendId)
         }
+        console.log(prevProps);
     }
 
     findName (arr, payable_id) {
@@ -40,6 +42,13 @@ export default class FriendExpense extends React.Component {
             const expenseDetails = expense.expense_detail_ids.map(expenseDetailId => {
                 return that.props.expenseDetails[expenseDetailId]
             })
+            console.log(expenseDetails);
+            console.log(expense);
+            return <ExpenseItemContainer 
+                key={expense.id}
+                expense={expense}
+                expenseDetails={expenseDetails}
+            />
             return <ExpenseItems
                 key={expense.id}
                 expense={expense}

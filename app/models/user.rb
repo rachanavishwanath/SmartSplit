@@ -61,7 +61,7 @@ class User < ApplicationRecord
         end
         [amount, more_details]
     end
-
+    # change the ed.paid_by on line 72 to reflect profile_id of friend
     def you_are_owed
         detailed_expenses = self.expenses.includes(:expense_details)
         amount = 0

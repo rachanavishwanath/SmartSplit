@@ -36,7 +36,8 @@ export default class ExpenseItems extends React.Component {
                 }
             });
         }
-
+        debugger
+        if (expenseDetails[0] === undefined) { return null; }
         if (expenseDetails && expenseDetails.length > 0) {
             expenseDetails.forEach(ed => {
                 if (ed.paid_by === currentUser.id) {
@@ -49,7 +50,7 @@ export default class ExpenseItems extends React.Component {
                     you_lent = you_paid / 2;
                 }
             })
-        }
+        } 
 
         return (
             <div>

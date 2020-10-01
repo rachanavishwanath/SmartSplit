@@ -23,5 +23,6 @@ class Friend < ApplicationRecord
         class_name: :User
 
     # payable_type = 'Friend'
-    has_many :expenses, as: :payable 
+    has_many :expenses, as: :payable,
+        dependent: :destroy 
 end

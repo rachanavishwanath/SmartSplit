@@ -62,7 +62,9 @@ export default class ExpenseForm extends React.Component {
             action;
             this.setState({ expense_id: action.expense.id })
             this.props.createExpenseDetail(this.state);
-            this.props.createAD(this.state);
+            if (this.state.notes !== '' || this.state.asset_url !== '') {
+                this.props.createAD(this.state);
+            }
             this.props.closeModal();
             this.state = this.props.expense;
         }, response => {
@@ -147,7 +149,6 @@ export default class ExpenseForm extends React.Component {
                                 type="text"
                                 value={this.state.name}
                                 placeholder="Enter name or email addresses"
-                                onEnded
                                 onChange={this.updateField('friend_id')}
                             />
                         </label>

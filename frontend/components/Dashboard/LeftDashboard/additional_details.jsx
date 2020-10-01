@@ -22,7 +22,6 @@ export default class AdditionalDetails extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         if (!this.props.additionalDetails) { return null; }
         let that = this;
         let allADDetails;

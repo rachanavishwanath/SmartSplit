@@ -25,10 +25,12 @@ class Expense < ApplicationRecord
 
     belongs_to :category
 
-    has_many :expense_details
+    has_many :expense_details,
+        dependent: :destroy
 
-    has_many :additional_details
-
+    has_many :additional_details,
+        dependent: :destroy
+        
     def self.with_a_friend(profile_id, friend_id)
         id = Friend.where(:profile_id => [profile_id, friend_id])
                     .where(:friend_id => [profile_id, friend_id])

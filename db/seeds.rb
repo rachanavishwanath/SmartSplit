@@ -11,21 +11,22 @@ Friend.destroy_all
 Category.destroy_all
 Expense.destroy_all
 ExpenseDetail.destroy_all
+AdditionalDetail.destroy_all
 
 guest = User.create!(
-    name: 'guest',
+    name: 'DemoUser',
     email: 'demo@email.com',
     password: '123456789'
 )
 
 u1 = User.create!(
-    name: 'user1',
+    name: 'Arya',
     email: 'user1@email.com',
     password: '123456789'
 )
 
 u2 = User.create!(
-    name: 'user2',
+    name: 'Ned',
     email: 'user2@email.com',
     password: '123456789'
 )
@@ -269,7 +270,7 @@ s43 = Category.create!(name: 'Water',
         )
 
 e1 = Expense.create!(profile_id: guest.id, 
-        amount: 10, desc: 'Star Wars movie', category_id: s2.id,
+        amount: 10, desc: 'Hate Story 3', category_id: s2.id,
         payable_type: 'Friend', payable_id: f1.id, split_type: 'equally', date: '2020-09-26')
 
 e2 = Expense.create!(profile_id: guest.id, 
@@ -290,4 +291,16 @@ ed2 = ExpenseDetail.create!(
 
 ed3 = ExpenseDetail.create!(
         expense_id: e3.id, paid_by: u2.id, amount_paid: 30
+)
+
+ad1 = AdditionalDetail.create!(
+        expense_id: e1.id, author_id: u1.id, notes: 'That movie sucked!'
+)
+
+ad2 = AdditionalDetail.create!(
+        expense_id: e2.id, author_id: guest.id, notes: 'I will post the bill here'
+)
+
+ad3 = AdditionalDetail.create!(
+        expense_id: e3.id, author_id: u2.id, notes: 'What did we buy again?'
 )
