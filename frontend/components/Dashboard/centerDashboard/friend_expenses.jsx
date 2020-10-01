@@ -2,7 +2,6 @@ import React from 'react';
 import GreetingComponent from '../../greeting/greeting_container';
 import RightDashboard from '../RightDashboard/right_dashboard';
 import LeftDashboard from '../LeftDashboard/left_dashboard';
-// import ExpenseListItems from '../LeftDashboard/expense_items';
 import ExpenseItems from '../LeftDashboard/expense_items';
 import CenterDashboard from '../centerDashboard/center_dashboard';
 
@@ -12,7 +11,8 @@ export default class FriendExpense extends React.Component {
         this.findName = this.findName.bind(this);
     }
     componentDidMount(){
-        this.props.fetchAllExpenses(this.props.friendId)
+        this.props.fetchAllExpenses(this.props.friendId);
+        this.props.fetchAllExpenseDetails();
     }
 
     componentDidUpdate(prevProps){
@@ -32,15 +32,20 @@ export default class FriendExpense extends React.Component {
     }
 
     render() {
+        console.log(this.props);
+        let that = this;
         let name = this.findName(this.props.friends, this.props.friendId);
         if (!this.props.expenses) { return null; }
         const allExpenses = this.props.expenses.map(expense => {
-                debugger
+            const expenseDetails = expense.expense_detail_ids.map(expenseDetailId => {
+                return that.props.expenseDetails[expenseDetailId]
+            })
             return <ExpenseItems
                 key={expense.id}
                 expense={expense}
+                currentUser={this.props.currentUser}
                 deleteExpense={this.props.deleteExpense}
-                // pass this after adding paid_by
+                expenseDetails={expenseDetails}
                 friends={this.props.friends}
             />
         })

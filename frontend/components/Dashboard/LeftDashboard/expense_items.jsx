@@ -38,7 +38,6 @@ export default class ExpenseItems extends React.Component {
         }
 
         if (expenseDetails && expenseDetails.length > 0) {
-            debugger
             expenseDetails.forEach(ed => {
                 if (ed.paid_by === currentUser.id) {
                     who_paid = 'you';

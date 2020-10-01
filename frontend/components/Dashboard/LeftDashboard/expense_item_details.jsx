@@ -1,10 +1,10 @@
 import React from 'react';
 import { formatDate } from '../../../reducers/format_date/for_expense';
+import AdditionalDetailsContainer from './additional_details_container';
 
 export default class ExpendeItemDetails extends React.Component {
     constructor(props){
         super(props);
-
     }
 
     render() {
@@ -23,11 +23,11 @@ export default class ExpendeItemDetails extends React.Component {
                 </div>
                 <div className="show-other-details">
                     <div className="show-from-EDT">
-                        <p>{`${this.props.who_paid} paid $${this.props.amount} and owes $${this.props.you_lent}`}</p>
-                        <p>{`${this.props.lent_to} owes $${this.props.you_lent}`}</p>
+                        <p><strong>{this.props.who_paid}</strong> paid <strong>${this.props.amount}</strong> and owes <strong>${this.props.you_lent}</strong></p>
+                        <p><strong>{this.props.lent_to}</strong> owes $<strong>{this.props.you_lent}</strong></p>
                     </div>
                     <div className="show-from-ADT">
-                        <p>details from additional details table</p>
+                        <AdditionalDetailsContainer expense={this.props.expense}/>
                     </div>
                 </div>
             </div>

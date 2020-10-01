@@ -14,7 +14,7 @@ class Api::AdditionalDetailsController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
         @ad = AdditionalDetail.find(params[:id])
         @ad.destroy
         render json: {}
