@@ -7,10 +7,9 @@ export default class DashboardCenterCol extends React.Component {
     }
 
     render() {
-        console.log(this.props)
-        const you_owe = this.props.currentUser[0].you_owe[0]
-        const you_are_owed = this.props.currentUser[0].you_are_owed[0]
-        const total_bal = you_are_owed - you_owe
+        const you_owe = this.props.currentUser[0].you_owe[0];
+        const you_are_owed = this.props.currentUser[0].you_are_owed[0];
+        const total_bal = you_are_owed - you_owe;
         return (
             <div className="dashboard-center-col">
                 <CenterDashboard openModal={this.props.openModal} header={'Dashboard'} />

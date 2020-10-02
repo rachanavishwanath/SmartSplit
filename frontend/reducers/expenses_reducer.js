@@ -6,7 +6,6 @@ import {
 
 export default (state = {}, action) => {
     Object.freeze(state);
-    debugger
     switch(action.type) {
         case RECEIVE_ALL_EXPENSES:
             return action.expenses;
@@ -15,7 +14,6 @@ export default (state = {}, action) => {
             return Object.assign({}, state, { [action.expense.id]: action.expense })
 
         case REMOVE_EXPENSE:
-            debugger
             let newState = Object.assign({}, state);
             delete newState[action.expenseId];
             return newState;

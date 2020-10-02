@@ -5,12 +5,10 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-    debugger
     Object.freeze(state);
     switch(action.type) {
 
         case FETCHING:
-            debugger
             return {
                 loading: true
             }
@@ -19,7 +17,6 @@ export default (state = initialState, action) => {
                 loading: false
             }
         default:
-            debugger
             state
     }
 }

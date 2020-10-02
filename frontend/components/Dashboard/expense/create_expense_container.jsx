@@ -10,8 +10,6 @@ import { createAD } from '../../../actions/ad_actions';
 import { fetchCurrentUser } from '../../../actions/session_action';
 
 const mSTP = (state, ownProps) => {
-    // ownProps;
-    // debugger
     return {
         expense: { 
             name: '',

@@ -11,7 +11,6 @@ export default class Welcome extends React.Component {
     }
 
     render() {
-        debugger
         return (
             <div className="welcome">
                 <div className="left-Nav">

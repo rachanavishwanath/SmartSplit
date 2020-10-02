@@ -14,13 +14,9 @@ export default class Greeting extends React.Component{
     }
 
     handleLogout(e) {
-        debugger
         e.preventDefault(); 
-        // this.setState({ logout: true });
+        this.setState({ logout: true });
         this.props.logout()
-        // .then(() => {
-        //     this.setState({ logout: true })
-        // });
     }
 
     componentDidMount(){
@@ -32,13 +28,12 @@ export default class Greeting extends React.Component{
     }
 
     render(){
-        debugger
         const display = this.props.currentUser ? (
             <div>
-                    <Welcome 
-                        currentUser={this.props.currentUser} 
-                        logout={this.handleLogout}
-                    />
+                <Welcome 
+                    currentUser={this.props.currentUser} 
+                    logout={this.handleLogout}
+                />
             </div>
         ) : (
             <div>
@@ -59,7 +54,6 @@ export default class Greeting extends React.Component{
                 <Footer />
             </div>
         );
-        console.log(this.state.logout);
         return (
             <div className="greeting">
                 {display}
