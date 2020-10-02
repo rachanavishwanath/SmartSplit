@@ -18,7 +18,13 @@ export default class AdditionalDetails extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.createAD(this.state);
+        this.props.createAD(this.state).then(()=>{
+            this.setState({
+                author_id: this.props.currentUser.id,
+                notes: '',
+                expense_id: this.props.expenseId
+            })
+        });
     }
 
     render() {

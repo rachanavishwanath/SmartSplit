@@ -18,6 +18,7 @@ class Api::ExpensesController < ApplicationController
         @expense = Expense.new(expense_params)
         @expense.profile_id = current_user.id
         if @expense.save!
+            @user = current_user
             render 'api/expenses/show'
         else
             render json: @expense.errors.full_messages, status: 422
@@ -36,7 +37,8 @@ class Api::ExpensesController < ApplicationController
     def destroy
         @expense = Expense.find(params[:id])
         @expense.destroy
-        render json: {}
+        @user = current_user
+        render 'api/users/show'
     end
 
     private

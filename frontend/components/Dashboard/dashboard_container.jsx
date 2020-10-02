@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
+import { fetchAllExpenseDetails } from '../../actions/expense_detail_action';
 import Dashboard from './dashboard';
 
 const mSTP = state => {
@@ -12,7 +13,8 @@ const mSTP = state => {
 const mDTP = dispatch => {
     return {
         openModal: (modal) => dispatch(openModal(modal)),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        fetchAllExpenseDetails: () => dispatch(fetchAllExpenseDetails())
     }
 }
 

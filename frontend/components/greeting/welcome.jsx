@@ -3,9 +3,15 @@ import React from 'react';
 export default class Welcome extends React.Component {
     constructor(props){
         super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(){
+        this.props.logout;
     }
 
     render() {
+        debugger
         return (
             <div className="welcome">
                 <div className="left-Nav">

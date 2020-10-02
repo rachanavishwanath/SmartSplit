@@ -92,7 +92,9 @@ export default class ExpenseForm extends React.Component {
                 } else if (that.state.category_id === undefined) {
                     alert('You must select a category')
                 }        
-        })
+        }).then(() => {
+            this.props.fetchCurrentUser();
+        });
     }
 
     setPayableId(friend_id, friend_name){

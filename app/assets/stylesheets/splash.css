@@ -89,7 +89,7 @@ p.app-line {
 .app-line2 {
     display: inline-block;
     position: absolute;
-    bottom: 250px;
+    top: 400px;
     left: 100px;
     font-size: 20px;
     width: 400px;
@@ -98,7 +98,8 @@ p.app-line {
 
 .app-line3 {
     position: absolute;
-    bottom: 100px;
+    top: 500px;
     left: 100px;
     font-size: 15px;
 }
+

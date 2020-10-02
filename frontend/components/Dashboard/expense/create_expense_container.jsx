@@ -7,8 +7,11 @@ import { createExpenseDetail } from '../../../actions/expense_detail_action';
 import { fetchAllFriends } from '../../../actions/friend_action';
 import { category, defCa } from '../../../reducers/selectors';
 import { createAD } from '../../../actions/ad_actions';
+import { fetchCurrentUser } from '../../../actions/session_action';
 
-const mSTP = state => {
+const mSTP = (state, ownProps) => {
+    // ownProps;
+    // debugger
     return {
         expense: { 
             name: '',
@@ -48,6 +51,7 @@ const mDTP = dispatch => {
         fetchAllCategories: () => dispatch(fetchAllCategories()),
         fetchAllFriends: () => dispatch(fetchAllFriends()),
         createAD: (ad) => dispatch(createAD(ad)),
+        fetchCurrentUser: () => dispatch(fetchCurrentUser()),
         createExpenseDetail: (expenseDetail) => dispatch(createExpenseDetail(expenseDetail))
     }
 }

@@ -1,4 +1,5 @@
 .category-ul {
+    cursor: pointer;
     overflow: visible;
     width: 175px;
     text-align: left;
@@ -10,7 +11,9 @@
 
 li.category-li:hover {
     background-color:lightgrey;
+    cursor: pointer;
     ul.subCategory-ul {
+        cursor: pointer;
         display: block;
         z-index: 0;
         position: absolute;
@@ -28,12 +31,14 @@ li.category-li:hover {
 }  
 
 .category-ul > li {
+    cursor: pointer;
     display: block;
     padding: 14px 10px 15px;
     font-size: 14px;
     border-right: 1px solid #bbb;
 }
 .subCategory-ul > li {
+    cursor: pointer;
     background: #ddd;
     border-bottom: 1px solid #ccc;
     font-weight: bold;

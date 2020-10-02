@@ -2,8 +2,12 @@ import React from 'react';
 import CenterDashboard from './centerDashboard/center_dashboard';
 
 export default class DashboardCenterCol extends React.Component {
+    constructor(props){
+        super(props);
+    }
 
     render() {
+        console.log(this.props)
         const you_owe = this.props.currentUser[0].you_owe[0]
         const you_are_owed = this.props.currentUser[0].you_are_owed[0]
         const total_bal = you_are_owed - you_owe

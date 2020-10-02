@@ -1,4 +1,5 @@
 import * as ExpenseApiUtil from '../util/expenses_util';
+import { receiveCurrentUser} from './session_action';
 
 export const RECEIVE_ALL_EXPENSES = 'RECEIVE_ALL_EXPENSES';
 export const RECEIVE_EXPENSE = 'RECEIVE_EXPENSES';
@@ -50,8 +51,9 @@ export const fetchExpense = expenseId => dispatch => {
 }
 
 export const createExpense = expense => dispatch => {
-    return ExpenseApiUtil.createExpense(expense).then(expense => {
-        return dispatch(receiveExpense(expense))
+    return ExpenseApiUtil.createExpense(expense).then(data => {
+        dispatch(receiveCurrentUser(data.user))
+        return dispatch(receiveExpense(data.expense))
     }, response => {
         return dispatch(receiveErrors(response.responseText))
     })
@@ -67,7 +69,8 @@ export const updateExpense = expense => dispatch => {
 
 export const deleteExpense = (expenseId) => dispatch => {
     let id = expenseId;
-    return ExpenseApiUtil.deleteExpense(expenseId).then(() => {
+    return ExpenseApiUtil.deleteExpense(expenseId).then((user) => {
+        dispatch(receiveCurrentUser(user));
         return dispatch(removeExpense(id))
     }, response => {
         return dispatch(receiveErrors(response.responseJSON))

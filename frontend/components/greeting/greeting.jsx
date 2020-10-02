@@ -14,19 +14,31 @@ export default class Greeting extends React.Component{
     }
 
     handleLogout(e) {
-        e.preventDefault();
-        this.setState({ logout: true })
-        this.props.logout();
+        debugger
+        e.preventDefault(); 
+        // this.setState({ logout: true });
+        this.props.logout()
+        // .then(() => {
+        //     this.setState({ logout: true })
+        // });
+    }
+
+    componentDidMount(){
+        this.setState({ logout: false });
+    }
+
+    componentWillUnmount(){
+        this.setState({ logout: true });
     }
 
     render(){
+        debugger
         const display = this.props.currentUser ? (
             <div>
-                <Welcome 
-                    currentUser={this.props.currentUser} 
-                    logoutFlag={this.state.logout}
-                    logout={this.handleLogout}
-                />
+                    <Welcome 
+                        currentUser={this.props.currentUser} 
+                        logout={this.handleLogout}
+                    />
             </div>
         ) : (
             <div>
@@ -41,12 +53,13 @@ export default class Greeting extends React.Component{
                             <Link className="signup" to="/signup">Sign up</Link>
                         </div>
                     </div>
-                    {this.state.logout ? <div className="logout-notice">You are now logged out.</div> : null}
+                    {this.state.logout ? null : <div className="logout-notice">You are now logged out.</div> }
                     <HomePage />
                 </div>
                 <Footer />
             </div>
         );
+        console.log(this.state.logout);
         return (
             <div className="greeting">
                 {display}

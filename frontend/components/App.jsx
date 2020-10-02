@@ -9,12 +9,13 @@ import ActivityContainer from '../components/Dashboard/activity/activity_contain
 import DashboardContainer from './Dashboard/dashboard_container';
 import FriendExpenseContainer from './Dashboard/centerDashboard/friend_expense_container';
 import AllExpensesContainer from './Dashboard/LeftDashboard/all_expenses_container';
+import Loading from './loading/loading';
 
 export default () => {
     return (
         <div>
             <Modal />
-            
+            <Loading />
             <Switch>
                 <ProtectedRoute path="/activity" component={ActivityContainer}/>
                 <ProtectedRoute path="/all" component={AllExpensesContainer} />
