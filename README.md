@@ -23,7 +23,7 @@ SmartSplit is a full stack single page application clone of splitwise. Users can
 
 Adding expense
 
-![](expense-filter.gif)
+![](expense_filter.gif)
 
 List of expenses with a friend
 
