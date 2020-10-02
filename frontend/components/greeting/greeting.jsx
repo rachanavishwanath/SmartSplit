@@ -48,7 +48,7 @@ export default class Greeting extends React.Component{
                             <Link className="signup" to="/signup">Sign up</Link>
                         </div>
                     </div>
-                    {this.state.logout ? null : <div className="logout-notice">You are now logged out.</div> }
+                    {this.state.logout ? <div className="logout-notice">You are now logged out.</div> : null}
                     <HomePage />
                 </div>
                 <Footer />
