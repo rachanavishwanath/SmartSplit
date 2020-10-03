@@ -1,24 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+SmartSplit is a full stack single page application clone of splitwise. Users can add an expense, delete an expense, add notes to the expense, share the expense with friends and smartsplit will calculate what share does each one owe.
 
-Things you may want to cover:
+[Live Demo](https://smartsplit2.herokuapp.com/#/)
 
-* Ruby version
+## Technologies Used
 
-* System dependencies
+### Backend
+* PostgreSQL
+* Ruby on Rails
 
-* Configuration
+### Frontend
+* React
+* Redux
 
-* Database creation
+### Packages/Api's
+* [React-calender](https://www.npmjs.com/package/react-calendar)
 
-* Database initialization
+## Features
+* Full user authentication (signUp, Login and logout) with security
+* Add expense based on the type of category, choose who paid the bill, select a friend to share the expense with from your list of friends
 
-* How to run the test suite
+Adding expense
 
-* Services (job queues, cache servers, search engines, etc.)
+![](Add_expense.gif)
 
-* Deployment instructions
+List of expenses with a friend
 
-* ...
+![](expense_filter.gif)
+
+Details about an expense
+
+![](show_details.gif)
+
+
+### Future Implementations
+* AWS for uploading receipt
+* Displaying recent activities
+* Create a group to share the expense
