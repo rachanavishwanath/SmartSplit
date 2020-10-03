@@ -1,3 +1,4 @@
+
 json.extract! user, :id, :name, :email, :you_are_owed, :you_owe #,friend_ids
 json.friends(user.friends_list) do |friend|
     json.profile_id friend[1].id

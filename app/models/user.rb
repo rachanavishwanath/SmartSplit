@@ -46,6 +46,10 @@ class User < ApplicationRecord
         obj
     end
 
+    def friend_list
+        Friend.where(profile_id: self.id).where(friend_id: 55)
+    end
+
     def you_owe
         detailed_expenses = self.expenses.includes(:expense_details)
         amount = 0

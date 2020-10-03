@@ -1,5 +1,6 @@
 import { connect}from 'react-redux';
 import LeftDashboard from './left_dashboard';
+import { openModal, closeModal } from '../../../actions/modal_actions';
 
 const mSTP = state => {
     return {
@@ -7,9 +8,12 @@ const mSTP = state => {
     }
 }
 
-// needs addFriend action
-// const mDTP = dispatch => {
+// needs addFriend action add-friend
+const mDTP = dispatch => {
+    return {
+        openModal: (modal) => dispatch(openModal(modal)),
+        closeModal: () => dispatch(closeModal())
+    }
+}
 
-// }
-
-export default connect(mSTP, null)(LeftDashboard);
+export default connect(mSTP, mDTP)(LeftDashboard);

@@ -11,8 +11,10 @@ export default class FriendExpense extends React.Component {
         this.findName = this.findName.bind(this);
     }
     componentDidMount(){
+        debugger
         this.props.fetchAllExpenses(this.props.friendId);
         this.props.fetchAllExpenseDetails();
+        this.props.fetchAllFriends();
     }
 
     componentDidUpdate(prevProps){

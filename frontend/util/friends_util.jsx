@@ -4,3 +4,11 @@ export const fetchAllFriends = () => {
         url: '/api/friends'
     })
 }
+
+export const createFriend = friend => {
+    return $.ajax({
+        method: 'POST',
+        url: '/api/friends',
+        data: { friend }
+    })
+}

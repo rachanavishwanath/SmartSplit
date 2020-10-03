@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import CreateExpenseContainer from '../Dashboard/expense/create_expense_container';
+import AddFriendContainer from '../Dashboard/LeftDashboard/add_friend_container';
 
 function Modal ({modal, closeModal}) {
     if (!modal) { return null; }
@@ -10,6 +11,10 @@ function Modal ({modal, closeModal}) {
         case ('expense'):
             component = <CreateExpenseContainer/>
             break;
+            
+        case('add-friend'):
+            component = <AddFriendContainer/>
+            break; 
 
         default:
             return null;

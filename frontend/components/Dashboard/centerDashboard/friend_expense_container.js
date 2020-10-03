@@ -3,13 +3,15 @@ import FriendExpense from './friend_expenses';
 import { openModal } from '../../../actions/modal_actions';
 import { fetchAllExpenses, deleteExpense } from '../../../actions/expense_action';
 import { fetchAllExpenseDetails } from '../../../actions/expense_detail_action';
+import { fetchAllFriends } from '../../../actions/friend_action';
 
 const mSTP = (state, ownProps) => {
+    debugger
     const friendId = ownProps.match.params.friend_id;
     return {
         currentUser: state.entities.users[state.session.id],
         friends: Object.values(state.entities.users)[0].friends,
-        friendId,
+        friendId,   
         expenses: Object.values(state.entities.expenses),
         expenseDetails: state.entities.exenseDetails,
     }
@@ -20,7 +22,8 @@ const mDTP = dispatch => {
         fetchAllExpenses: friendId => dispatch(fetchAllExpenses(friendId)),
         openModal: modal => dispatch(openModal(modal)),
         deleteExpense: expenseId => dispatch(deleteExpense(expenseId)),
-        fetchAllExpenseDetails: () => dispatch(fetchAllExpenseDetails())
+        fetchAllExpenseDetails: () => dispatch(fetchAllExpenseDetails()),
+        fetchAllFriends: () => dispatch(fetchAllFriends())
     }
 }
 
