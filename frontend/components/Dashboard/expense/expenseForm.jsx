@@ -155,8 +155,6 @@ export default class ExpenseForm extends React.Component {
         return (
         <div>
             <div className="expense-form">
-
-
                 <div className="expense-form-header">
                     <h2>Add an expense</h2>
                     <button onClick={e => this.handleClick(e)}>x</button>
