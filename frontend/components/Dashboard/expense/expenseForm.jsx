@@ -78,6 +78,10 @@ export default class ExpenseForm extends React.Component {
             this.setState({ expense_id: action.expense.id })
             this.props.createExpenseDetail(this.state);
             if (this.state.notes !== '' || this.state.asset_url !== '') {
+                const formData = new FormData();
+                formData.append('additional_detail[notes]', this.state.notes);
+                // below might not be right
+                formData.append('additional_detail[asset_url]', this.state.assetFile);
                 this.props.createAD(this.state);
             }
             this.props.closeModal();
@@ -155,8 +159,6 @@ export default class ExpenseForm extends React.Component {
         return (
         <div>
             <div className="expense-form">
-
-
                 <div className="expense-form-header">
                     <h2>Add an expense</h2>
                     <button onClick={e => this.handleClick(e)}>x</button>

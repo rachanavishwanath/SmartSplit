@@ -3,13 +3,18 @@ import React from 'react';
 export default class AdditionalDetails extends React.Component {
     constructor(props){
         super(props);
-        this.state = { notes: '' }
+        this.state = { notes: '', assetFile: null }
         this.updateField = this.updateField.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     updateField(e){
         this.props.updatedNotes(e.currentTarget.value)
         this.setState({ notes: e.currentTarget.value})
+    }
+
+    handleFile(e){
+        this.setState({ assetFile: e.currentTarget.files[0] })
     }
 
     render(){
@@ -26,6 +31,12 @@ export default class AdditionalDetails extends React.Component {
                             <button>Choose File</button>
                             <p>No file chosen</p>
                         </div>
+                        <form>
+                            <input 
+                                type="file"
+                                onChange={this.handleFile}
+                            />
+                        </form>
                     </section>
                     <section className="notes">
                         <textarea className="add-notes" cols="30" rows="10"
