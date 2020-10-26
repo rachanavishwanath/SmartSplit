@@ -6,7 +6,6 @@ import { fetchAllExpenseDetails } from '../../../actions/expense_detail_action';
 import { fetchAllFriends } from '../../../actions/friend_action';
 
 const mSTP = (state, ownProps) => {
-    debugger
     const friendId = ownProps.match.params.friend_id;
     return {
         currentUser: state.entities.users[state.session.id],

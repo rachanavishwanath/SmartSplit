@@ -1,4 +1,5 @@
 import React from 'react';
+import { ListItem } from 'semantic-ui-react';
 
 export default class AutoSearch extends React.Component {
     constructor(props) {
@@ -6,10 +7,18 @@ export default class AutoSearch extends React.Component {
         this.state = { searchResult: null };
         this.SearchResult = this.SearchResult.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.onKeyDown = this.onKeyDown.bind(this);
     }
 
     componentDidMount(){
         this.SearchResult();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.val != this.props.val) {
+            this.setState({ searchResult: null});
+            this.SearchResult();
+        }
     }
 
     handleClick(friend_id) {
@@ -17,11 +26,22 @@ export default class AutoSearch extends React.Component {
         this.props.setPayableId(friend_id)
     }
 
+    onKeyDown(e){
+        e.preventDefault();
+        debugger
+    }
+
     SearchResult(){
         let searchResult = this.props.friends.map(friend => {
-        if (friend.name.startsWith(this.props.val)) {
+            const lowerCase = this.props.val.toLowerCase();
+            const friendName = friend.name.toLowerCase();
+            if (friendName.includes(lowerCase)) {
             return <li key={friend.friend_id}
                         className="autoSearch-li"
+                        role="list"
+                        onKeyPress={(e) => {
+                            debugger
+                        }}
                         onClick={() => (this.props.setPayableId(friend.friend_id, friend.name))}
                     >
                     {friend.name}
@@ -34,7 +54,12 @@ export default class AutoSearch extends React.Component {
     render() {
         return (
             <div className="autoSearch">
-                <ul className="autoSearch-ul">{this.state.searchResult}</ul>
+                <ul className="autoSearch-ul" 
+                    role="listbox"
+                    onKeyPress={(e) => {
+                        debugger
+                    }} 
+                >{this.state.searchResult}</ul>
             </div>
         )
     }

@@ -3,6 +3,7 @@ import GreetingComponent from '../../greeting/greeting_container';
 import RightDashboard from '../RightDashboard/right_dashboard';
 import RecentActicity from './recent_activity';
 import LeftDashboard from '../LeftDashboard/left_dashboard';
+import LeftDashboardContainer from '../LeftDashboard/leftdashboard_container';
 
 export default class Activity extends React.Component {
     render() {
@@ -10,7 +11,8 @@ export default class Activity extends React.Component {
             <div>
                 <GreetingComponent />
                 <div className="recent-activity">
-                    <LeftDashboard friends={this.props.friends}/>
+                    {/* <LeftDashboard friends={this.props.friends}/> */}
+                    <LeftDashboardContainer />
                     <RecentActicity />
                     <RightDashboard />
                 </div>

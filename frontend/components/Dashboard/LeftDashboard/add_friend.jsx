@@ -11,41 +11,50 @@ export default class AddFriend extends React.Component {
         this.addFriend = this.addFriend.bind(this);
     }
 
-    addFriend(){
-        debugger
-        this.props.addFriend(this.state).then(() => {
-            this.props.closeModal;
-        });
+    addFriend(e){
+        e.preventDefault();
+        this.props.addFriend(this.state)
+            .then(() => {
+                this.props.closeModal;
+                }, error => {
+                    this.props.closeModal();
+                    alert(error.errors);
+                })
     }
 
-    handleClick(){
-        debugger
-        this.props.closeModal;
+    handleClick(e){
+        e.preventDefault();
+        this.props.closeModal();
     }
 
     update(e, field){
-        debugger
         e.preventDefault();
         this.setState({ [field]: e.currentTarget.value })
     }
 
     render() {
-        console.log(this.props);
         return (
-            <div className="addFriend-form">
-                <div className="expense-form-header">
-                    <h2>Add a friend</h2>
-                    <button onClick={this.handleClick}>x</button>
+            <div>
+                <div className="addFriend-form">
+                    <div className="expense-form-header">
+                        <h2>Add a friend</h2>
+                        <button onClick={e => this.handleClick(e)}>x</button>
+                    </div>
+                    <form className="add-friend-form">
+                        <div className="pfields">
+                            <label>Email:
+                                <input type="text" 
+                                    value={this.state.email} 
+                                    placeholder="Enter email address"
+                                    onChange={e => this.update(e, 'email')}
+                                />
+                            </label>
+                        </div>
+                        <div className="footer-buttons">
+                            <button onClick={this.addFriend}>Add Friend</button>
+                        </div>
+                    </form>
                 </div>
-                <form className="add-friend-form">
-                    <label>Email:
-                        <input type="text" 
-                            value={this.state.email} 
-                            onChange={e => this.update(e, 'email')}
-                        />
-                    </label>
-                    <button onClick={this.addFriend}>Add Friend</button>
-                </form>
             </div>
         )
     }

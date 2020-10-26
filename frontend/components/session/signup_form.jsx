@@ -40,6 +40,10 @@ export default class SignUpForm extends React.Component {
         e.preventDefault();
         this.props.processForm(this.state).then(() => {
             return this.props.history.push('/dashboard')
+        }),then(() => {
+            this.setState({
+                active: true
+            })
         });
         this.setState({
             name: '',
@@ -71,7 +75,6 @@ export default class SignUpForm extends React.Component {
                                 value={this.state.email} 
                                 onChange={this.update('email')}/>
                         </label>
-                        {/* {this.isValidEmail(this.state.email)} */}
                         <br /><br />
                         <label>And here’s my password: <br />
                             <input

@@ -2,7 +2,8 @@ import * as FriendAPIUtil from '../util/friends_util';
 
 export const RECEIVE_ALL_FRIENDS = 'RECEIVE_ALL_FRIENDS';
 export const RECEIVE_SUCCESS_MESSAGE = 'RECEIVE_SUCCESS_MESSAGE';
-export const RECEIVE_FAIL_MESSAGE = 'RECEIVE_FAIL_MESSAGE';
+export const RECEIVE_ERROR_MESSAGE = 'RECEIVE_ERROR_MESSAGE';
+
 import { receiveCurrentUser } from './session_action';
 
 const receiveAllFriends = friends => {
@@ -19,6 +20,13 @@ const receiveSuccess = message => {
     }
 }
 
+const receiveErrorSuccess = errors => {
+    return {
+        type: RECEIVE_ERROR_MESSAGE,
+        errors
+    }
+}
+
 export const fetchAllFriends = () => dispatch => {
     return FriendAPIUtil.fetchAllFriends().then(friends => {
         return dispatch(receiveAllFriends(friends))
@@ -26,12 +34,10 @@ export const fetchAllFriends = () => dispatch => {
 }
 
 export const addFriend = friend => dispatch => {
-    debugger
-    return FriendAPIUtil.createFriend(friend).then(friends => {
-        debugger
-        return dispatch(receiveAllFriends(friends))
-    }, response => {
-        debugger
-        return dispatch(receiveSuccess(response.responseJSON))
-    })
+    return FriendAPIUtil.createFriend(friend)
+        .then(friends => {
+            return dispatch(receiveAllFriends(friends))
+        }, response => {
+            return dispatch(receiveErrorSuccess(response.responseJSON))
+        })
 }
