@@ -7,7 +7,6 @@ export default class AutoSearch extends React.Component {
         this.state = { searchResult: null };
         this.SearchResult = this.SearchResult.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.onKeyDown = this.onKeyDown.bind(this);
     }
 
     componentDidMount(){
@@ -26,11 +25,6 @@ export default class AutoSearch extends React.Component {
         this.props.setPayableId(friend_id)
     }
 
-    onKeyDown(e){
-        e.preventDefault();
-        debugger
-    }
-
     SearchResult(){
         let searchResult = this.props.friends.map(friend => {
             const lowerCase = this.props.val.toLowerCase();
@@ -38,10 +32,6 @@ export default class AutoSearch extends React.Component {
             if (friendName.includes(lowerCase)) {
             return <li key={friend.friend_id}
                         className="autoSearch-li"
-                        role="list"
-                        onKeyPress={(e) => {
-                            debugger
-                        }}
                         onClick={() => (this.props.setPayableId(friend.friend_id, friend.name))}
                     >
                     {friend.name}
@@ -55,10 +45,6 @@ export default class AutoSearch extends React.Component {
         return (
             <div className="autoSearch">
                 <ul className="autoSearch-ul" 
-                    role="listbox"
-                    onKeyPress={(e) => {
-                        debugger
-                    }} 
                 >{this.state.searchResult}</ul>
             </div>
         )

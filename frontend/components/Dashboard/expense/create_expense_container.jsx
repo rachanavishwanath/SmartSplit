@@ -52,7 +52,7 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
     return {
-        fetchAllExpenses: () => dispatch(fetchAllExpenses()),
+        fetchAllExpenses: (friendId) => dispatch(fetchAllExpenses(friendId)),
         processForm: expense => dispatch(createExpense(expense)),
         closeModal: () => dispatch(closeModal()),
         openModal: modal => dispatch(openModal(modal)),

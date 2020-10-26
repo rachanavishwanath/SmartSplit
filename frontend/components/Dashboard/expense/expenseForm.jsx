@@ -26,6 +26,13 @@ export default class ExpenseForm extends React.Component {
         this.props.fetchAllFriends();
     }
 
+    componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+}
+
     onChange(date) {
         this.setState({ date: date })
     } 
@@ -74,10 +81,10 @@ export default class ExpenseForm extends React.Component {
         let that = this;
         e.preventDefault();
         this.props.processForm(this.state).then((action) => {
-            action;
-            this.setState({ expense_id: action.expense.id })
-            that.props.friendId != '' ? that.props.fetchAllExpenses(that.props.friendId) : that.props.fetchAllExpenses();
-            this.props.createExpenseDetail(this.state);
+            this.setState({ expense_id: action.expense.id });
+            this.props.createExpenseDetail(this.state).then(() =>{
+                that.props.friendId != '' ? that.props.fetchAllExpenses(that.props.friendId) : that.props.fetchAllExpenses();
+            });
             if (this.state.notes !== '' || this.state.asset_url !== '') {
                 const formData = new FormData();
                 formData.append('additional_detail[notes]', this.state.notes);
@@ -99,7 +106,7 @@ export default class ExpenseForm extends React.Component {
                 }        
         }).then(() => {
             this.props.fetchCurrentUser();
-        });
+        })
     }
 
     setPayableId(friend_id, friend_name){
