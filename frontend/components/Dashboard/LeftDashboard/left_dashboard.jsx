@@ -11,7 +11,7 @@ export default class LeftDashboard extends React.Component {
     }
 
     handleClick(modal) {
-        this.props.openModal(modal)
+         this.props.openModal({modal: modal})
     }
 
     render() {

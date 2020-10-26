@@ -8,18 +8,27 @@ import { fetchAllFriends } from '../../../actions/friend_action';
 import { category, defCa } from '../../../reducers/selectors';
 import { createAD } from '../../../actions/ad_actions';
 import { fetchCurrentUser } from '../../../actions/session_action';
+import { fetchAllExpenses } from '../../../actions/expense_action';
 
 const mSTP = (state, ownProps) => {
+    let friendName = '';
+    let friendId = '';
+    let showSecondaryFields = false;
+    if (state.ui.modal.friendId) {
+        friendName = state.ui.modal.friendName;
+        friendId = state.ui.modal.friendId;
+        showSecondaryFields = true;
+    }
     return {
         expense: { 
-            name: '',
+            name: friendName,
             desc: '',
             amount: '',
             category_id: defCa(state.entities.categories),
             payable_type: 'Friend',
-            payable_id: null,
+            payable_id: parseInt(friendId),
             split_type: 'equally',
-            active: false,
+            active: showSecondaryFields,
             date: new Date(),
             openCatModal: false,
             openEDModal: false,
@@ -43,6 +52,7 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
     return {
+        fetchAllExpenses: () => dispatch(fetchAllExpenses()),
         processForm: expense => dispatch(createExpense(expense)),
         closeModal: () => dispatch(closeModal()),
         openModal: modal => dispatch(openModal(modal)),

@@ -8,9 +8,11 @@ export default class CenterDashboard extends React.Component {
     }
 
     handleClick(modal){
+        let that = this;
         return e => {
             e.preventDefault();
-            this.props.openModal(modal)
+            const friendId = that.props.friendId ? that.props.friendId : null
+            this.props.openModal({modal: modal, friendId: friendId, friendName: that.props.header })
         }
     }
     

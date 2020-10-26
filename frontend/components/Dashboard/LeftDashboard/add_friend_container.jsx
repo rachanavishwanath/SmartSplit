@@ -4,6 +4,12 @@ import AddFriend from './add_friend';
 import { addFriend } from '../../../actions/friend_action';
 import { closeModal } from '../../../actions/modal_actions';
 
+const mSTP = state => {
+    return {
+        errors: state.errors.addFriend
+    }
+}
+
 const mDTP = dispatch => {
     return {
         addFriend: (friend) => dispatch(addFriend(friend)),
@@ -11,4 +17,4 @@ const mDTP = dispatch => {
     }
 }
 
-export default connect(null, mDTP)(AddFriend);
+export default connect(mSTP, mDTP)(AddFriend);

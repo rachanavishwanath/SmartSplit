@@ -7,10 +7,16 @@ import AddFriendContainer from '../Dashboard/LeftDashboard/add_friend_container'
 function Modal ({modal, closeModal}) {
     if (!modal) { return null; }
     let component;
-    switch(modal) {
+    switch(modal.modal) {
         case ('expense'):
-            component = <CreateExpenseContainer/>
+            component = <CreateExpenseContainer 
+                friendId={modal.friendId}
+                friendName={modal.friendName}
+                />
             break;
+
+        case ('edit-expense'):
+
             
         case('add-friend'):
             component = <AddFriendContainer/>

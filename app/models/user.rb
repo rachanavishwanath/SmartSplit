@@ -38,16 +38,25 @@ class User < ApplicationRecord
         class_name: :Friend,
         dependent: :destroy
 
+    has_many :inverse_friends,
+        primary_key: :id,
+        foreign_key: :profile_id,
+        class_name: :Friend,
+        dependent: :destroy
+
+    def all_friends
+        self.friends + self.inverse_friends
+    end
+
     def friends_list
         obj ={}
         friends.map do |friendship| 
             obj[friendship.id] = User.find(friendship.profile_id)
         end
+        inverse_friends.map do |friendship| 
+            obj[friendship.id] = User.find(friendship.friend_id)
+        end
         obj
-    end
-
-    def friend_list
-        Friend.where(profile_id: self.id).where(friend_id: 55)
     end
 
     def you_owe

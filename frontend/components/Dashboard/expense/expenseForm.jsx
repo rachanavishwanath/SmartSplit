@@ -76,6 +76,7 @@ export default class ExpenseForm extends React.Component {
         this.props.processForm(this.state).then((action) => {
             action;
             this.setState({ expense_id: action.expense.id })
+            that.props.friendId != '' ? that.props.fetchAllExpenses(that.props.friendId) : that.props.fetchAllExpenses();
             this.props.createExpenseDetail(this.state);
             if (this.state.notes !== '' || this.state.asset_url !== '') {
                 const formData = new FormData();
@@ -85,7 +86,7 @@ export default class ExpenseForm extends React.Component {
                 this.props.createAD(this.state);
             }
             this.props.closeModal();
-            this.state = this.props.expense;
+            this.setState(this.props.expense);
         }, response => {
                 if (that.state.name === '') {
                     alert('There is only one person involved in this expense. Do you still want to save it?')
@@ -142,8 +143,9 @@ export default class ExpenseForm extends React.Component {
                     });
                     break;
                 case 'amount':
+
                     this.setState({
-                        [field]: parseInt(e.currentTarget.value),
+                        [field]: (e.currentTarget.value),
                         amount_paid: parseInt(e.currentTarget.value)
                     })
                     break;
@@ -234,6 +236,7 @@ export default class ExpenseForm extends React.Component {
                             <button onClick={e => this.handleClick(e, 'Calender')}>x</button>
                     </div>
                     <Calendar
+                        handleClick={e => this.handleClick(e, 'Calender')}
                         onChange={this.onChange}
                         value={this.state.date}
                     /> 
