@@ -35,6 +35,7 @@ const mSTP = (state, ownProps) => {
             show: false,
             openCal: false,
             openNotes: false,
+            openInviteFriend: false,
             expense_id: null,
             paid_by: state.session.id,
             amount_paid: null,

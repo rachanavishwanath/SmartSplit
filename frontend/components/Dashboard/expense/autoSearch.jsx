@@ -1,12 +1,17 @@
 import React from 'react';
 import { ListItem } from 'semantic-ui-react';
+import InviteFriend from './invite_friend';
 
 export default class AutoSearch extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { searchResult: null };
+        this.state = { 
+            searchResult: null,
+            openInviteFriend: false 
+        };
         this.SearchResult = this.SearchResult.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.OpenChildModal = this.OpenChildModal.bind(this);
     }
 
     componentDidMount(){
@@ -25,6 +30,11 @@ export default class AutoSearch extends React.Component {
         this.props.setPayableId(friend_id)
     }
 
+    OpenChildModal(e) {
+        e.preventDefault();
+        this.setState({ openInviteFriend: true })
+    }
+
     SearchResult(){
         let searchResult = this.props.friends.map(friend => {
             const lowerCase = this.props.val.toLowerCase();
@@ -40,12 +50,18 @@ export default class AutoSearch extends React.Component {
         })
         this.setState({ searchResult: searchResult})
     }
-
+    
     render() {
+        if (this.state.searchResult === null) {return null};
         return (
             <div className="autoSearch">
-                <ul className="autoSearch-ul" 
-                >{this.state.searchResult}</ul>
+               <ul className="autoSearch-ul" >
+                 {this.state.searchResult.every(function(a) {return a === undefined}) ? 
+                    <li className="autoSearch-li"
+                        onClick={(e) => this.props.openInviteFriend(e)}
+                    >Click to add email address</li>
+                    : this.state.searchResult }
+               </ul>
             </div>
         )
     }

@@ -11,8 +11,10 @@ class Api::FriendsController < ApplicationController
            @friend = Friend.new(profile_id: current_user.id, friend_id: @user_id.id)
            if @friend.valid?
                 @friend.save!
-                @allFriends = Friend.all
-                render :index
+                # @allFriends = Friend.all
+                # render :index
+                @user = current_user
+                render 'api/users/show'
            else
                 render json: ['You are already friends!'], status: 200
            end

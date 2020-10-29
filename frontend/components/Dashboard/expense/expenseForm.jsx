@@ -3,7 +3,8 @@ import AutoSearch from './autoSearch';
 import Categories from './categories';
 import ExpenseDetails from './expense_details';
 import AdditionalDetails from './additional_details';
-import Calendar from 'react-calendar';
+import InviteFriendContainer from './invite_friend_container';
+import InviteFriend from './invite_friend';
 
 export default class ExpenseForm extends React.Component {
 
@@ -19,6 +20,8 @@ export default class ExpenseForm extends React.Component {
         this.setPayerId = this.setPayerId.bind(this);
         this.updatedNotes = this.updatedNotes.bind(this);
         this.closeNotesModal = this.closeNotesModal.bind(this);
+        this.OpenChildModal = this.OpenChildModal.bind(this);
+        this.updateName = this.updateName.bind(this);
     }
 
     componentDidMount() {
@@ -68,6 +71,10 @@ export default class ExpenseForm extends React.Component {
             case 'AD':
                 this.setState({ openNotes: false });
                 break;
+            case 'IF':
+                debugger
+                this.setState({ openInviteFriend: false });
+                break;
             default:
                 this.props.closeModal();
         }
@@ -110,10 +117,12 @@ export default class ExpenseForm extends React.Component {
     }
 
     setPayableId(friend_id, friend_name){
+        debugger
         this.setState({
             payable_id: friend_id,
             show: false,
-            name: friend_name
+            name: friend_name,
+            openInviteFriend: false
         })
     }
 
@@ -130,10 +139,22 @@ export default class ExpenseForm extends React.Component {
         })
     }
 
+    updateName(name){
+        this.setState({
+            name: name
+        })
+    }
+
     closeNotesModal() {
         this.setState({
             openNotes: false
         })
+    }
+
+    OpenChildModal(e) {
+        e.preventDefault();
+        this.setState({ openInviteFriend: true })
+        // this.props.openModal('invite-friend')
     }
 
     updateField(field){
@@ -150,12 +171,16 @@ export default class ExpenseForm extends React.Component {
                     });
                     break;
                 case 'amount':
-
                     this.setState({
                         [field]: (e.currentTarget.value),
                         amount_paid: parseInt(e.currentTarget.value)
                     })
                     break;
+                case 'date':
+                    debugger
+                    this.setState({
+                        [field]: e.currentTarget.value
+                    })
                 default:
                     this.setState({
                         [field]: e.currentTarget.value
@@ -206,7 +231,12 @@ export default class ExpenseForm extends React.Component {
                             <div className="details">($0.00/person)</div>
                         </div>
                         <div className="footer-bottoms">
-                                <a className="date slim-buttom" onClick={() => this.setState({ openCal: true, openNotes: false, openEDModal: false, openCatModal: false })}>September 25, 2020</a>
+                               <label htmlFor="expense-date" className="date slim-buttom">
+                                    <input type="date"
+                                        onClick={() => this.setState({ openCal: true, openNotes: false, openEDModal: false, openCatModal: false }) }
+                                        onChange={this.updateField('date')}
+                                    />
+                                </label>
                                 <a className="notes slim-buttom" onClick={() => this.setState({ openNotes: true, openCal: false, openEDModal: false, openCatModal: false })}>Add images/notes</a>
                             <a className="group slim-buttom">No group</a>
                         </div>
@@ -224,6 +254,7 @@ export default class ExpenseForm extends React.Component {
                 /> : null }
                 {this.state.show ? <AutoSearch friends={this.props.friends}
                     setPayableId={this.setPayableId}
+                    openInviteFriend={this.OpenChildModal}
                     state={this.state}
                     val={this.state.name}
                     />
@@ -236,18 +267,6 @@ export default class ExpenseForm extends React.Component {
                     payable_id={this.state.payable_id}
                     users={this.props.users}
                 /> : null}
-                {this.state.openCal ? 
-                <div>
-                    <div className="expense-form-header">
-                        <h2>Choose date</h2>
-                            <button onClick={e => this.handleClick(e, 'Calender')}>x</button>
-                    </div>
-                    <Calendar
-                        handleClick={e => this.handleClick(e, 'Calender')}
-                        onChange={this.onChange}
-                        value={this.state.date}
-                    /> 
-                </div>: null}
                 {this.state.openNotes ? 
                 <AdditionalDetails
                     updatedNotes={this.updatedNotes}
@@ -255,6 +274,14 @@ export default class ExpenseForm extends React.Component {
                     value={this.state.notes}
                     closeNotesModal={this.closeNotesModal}
                 />
+                : null}
+                {this.state.openInviteFriend ? 
+                <InviteFriendContainer
+                    updateName={this.updateName}
+                    handleClick={e => this.handleClick(e, 'IF')}
+                    name={this.state.name}
+                    setPayableId={this.setPayableId}
+                /> 
                 : null}
         </div>
         )
