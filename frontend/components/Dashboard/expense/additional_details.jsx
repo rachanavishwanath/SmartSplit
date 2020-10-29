@@ -31,12 +31,12 @@ export default class AdditionalDetails extends React.Component {
                             <button>Choose File</button>
                             <p>No file chosen</p>
                         </div>
-                        <form>
+                        {/* <form>
                             <input 
                                 type="file"
                                 onChange={this.handleFile}
                             />
-                        </form>
+                        </form> */}
                     </section>
                     <section className="notes">
                         <textarea className="add-notes" cols="30" rows="10"

@@ -16,19 +16,22 @@ AdditionalDetail.destroy_all
 guest = User.create!(
     name: 'DemoUser',
     email: 'demo@email.com',
-    password: '123456789'
+    password: '123456789',
+    live_user: true
 )
 
 u1 = User.create!(
-    name: 'Arya',
-    email: 'user1@email.com',
-    password: '123456789'
+        name: 'Arya',
+        email: 'user1@email.com',
+        password: '123456789',
+        live_user: true
 )
 
 u2 = User.create!(
     name: 'Ned',
     email: 'user2@email.com',
-    password: '123456789'
+    password: '123456789',
+     live_user: true
 )
 
 f1 = Friend.create!(

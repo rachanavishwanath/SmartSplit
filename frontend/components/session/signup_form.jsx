@@ -8,7 +8,8 @@ export default class SignUpForm extends React.Component {
             name: '',
             email: '',
             password: '',
-            active: false
+            active: false,
+            live_user: true
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoLogin = this.demoLogin.bind(this);

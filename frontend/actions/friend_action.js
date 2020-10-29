@@ -35,8 +35,12 @@ export const fetchAllFriends = () => dispatch => {
 
 export const addFriend = friend => dispatch => {
     return FriendAPIUtil.createFriend(friend)
-        .then(friends => {
-            return dispatch(receiveAllFriends(friends))
+        // .then(friends => {
+        //     debugger
+        //     return dispatch(receiveAllFriends(friends))
+        .then(user => {
+            dispatch(receiveCurrentUser(user)
+        )
         }, response => {
             return dispatch(receiveErrorSuccess(response.responseJSON))
         })

@@ -35,6 +35,7 @@ const mSTP = (state, ownProps) => {
             show: false,
             openCal: false,
             openNotes: false,
+            openInviteFriend: false,
             expense_id: null,
             paid_by: state.session.id,
             amount_paid: null,
@@ -52,7 +53,7 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
     return {
-        fetchAllExpenses: () => dispatch(fetchAllExpenses()),
+        fetchAllExpenses: (friendId) => dispatch(fetchAllExpenses(friendId)),
         processForm: expense => dispatch(createExpense(expense)),
         closeModal: () => dispatch(closeModal()),
         openModal: modal => dispatch(openModal(modal)),

@@ -1,13 +1,17 @@
 import React from 'react';
 import { ListItem } from 'semantic-ui-react';
+import InviteFriend from './invite_friend';
 
 export default class AutoSearch extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { searchResult: null };
+        this.state = { 
+            searchResult: null,
+            openInviteFriend: false 
+        };
         this.SearchResult = this.SearchResult.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.onKeyDown = this.onKeyDown.bind(this);
+        this.OpenChildModal = this.OpenChildModal.bind(this);
     }
 
     componentDidMount(){
@@ -26,9 +30,9 @@ export default class AutoSearch extends React.Component {
         this.props.setPayableId(friend_id)
     }
 
-    onKeyDown(e){
+    OpenChildModal(e) {
         e.preventDefault();
-        debugger
+        this.setState({ openInviteFriend: true })
     }
 
     SearchResult(){
@@ -38,10 +42,6 @@ export default class AutoSearch extends React.Component {
             if (friendName.includes(lowerCase)) {
             return <li key={friend.friend_id}
                         className="autoSearch-li"
-                        role="list"
-                        onKeyPress={(e) => {
-                            debugger
-                        }}
                         onClick={() => (this.props.setPayableId(friend.friend_id, friend.name))}
                     >
                     {friend.name}
@@ -50,16 +50,18 @@ export default class AutoSearch extends React.Component {
         })
         this.setState({ searchResult: searchResult})
     }
-
+    
     render() {
+        if (this.state.searchResult === null) {return null};
         return (
             <div className="autoSearch">
-                <ul className="autoSearch-ul" 
-                    role="listbox"
-                    onKeyPress={(e) => {
-                        debugger
-                    }} 
-                >{this.state.searchResult}</ul>
+               <ul className="autoSearch-ul" >
+                 {this.state.searchResult.every(function(a) {return a === undefined}) ? 
+                    <li className="autoSearch-li"
+                        onClick={(e) => this.props.openInviteFriend(e)}
+                    >Click to add email address</li>
+                    : this.state.searchResult }
+               </ul>
             </div>
         )
     }
