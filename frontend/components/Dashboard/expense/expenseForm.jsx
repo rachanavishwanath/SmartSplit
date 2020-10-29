@@ -72,7 +72,6 @@ export default class ExpenseForm extends React.Component {
                 this.setState({ openNotes: false });
                 break;
             case 'IF':
-                debugger
                 this.setState({ openInviteFriend: false });
                 break;
             default:
@@ -117,7 +116,6 @@ export default class ExpenseForm extends React.Component {
     }
 
     setPayableId(friend_id, friend_name){
-        debugger
         this.setState({
             payable_id: friend_id,
             show: false,
@@ -177,7 +175,6 @@ export default class ExpenseForm extends React.Component {
                     })
                     break;
                 case 'date':
-                    debugger
                     this.setState({
                         [field]: e.currentTarget.value
                     })

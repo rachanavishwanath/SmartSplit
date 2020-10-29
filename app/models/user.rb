@@ -97,6 +97,10 @@ class User < ApplicationRecord
        errors[:email] << "is not valid" if self.email.split('@').length != 2
     end
 
+    # def self.check_email_uniqueness
+    #     user = self.find_by(email: )
+    # end
+
     def self.find_by_credentials(email, password)
         @user = User.find_by(email: email)
         return @user if @user && @user.is_password?(password)
