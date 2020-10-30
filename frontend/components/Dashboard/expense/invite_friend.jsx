@@ -17,7 +17,6 @@ export default class InviteFriend extends React.Component {
         e.preventDefault();
         let that = this;
         this.props.signUpInvitedUser(this.state, this.props.currentUser).then((action) => {
-            console.log(this.props.currentUser)
             this.props.addFriend(action.user).then(() => {
                 const {friends} = that.props;
                 const friendId = friends[friends.length -1].friend_id
