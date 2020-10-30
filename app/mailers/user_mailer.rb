@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
     def invitation_email(user)
         @user = user
-        @url = 'http://localhost:3000/#/signup'
+        @url = 'https://smartsplit2.herokuapp.com/#/signup'
         mail(to: user.email, subject: 'Invitation to join SmartSplit')
     end
 end
