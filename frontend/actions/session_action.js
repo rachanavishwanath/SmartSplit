@@ -49,10 +49,7 @@ export const login = user => dispatch => {
 }
 
 export const signUpInvitedUser = (user, currentUser) => dispatch => {
-    debugger
     return SessionApiUtil.signup(user).then(user => {
-        debugger
-        // dispatch(receiveCurrentUser(currentUser))
         return dispatch(receiveUser(user))
     }, response => {
         return dispatch(receiveSessionErrors(response.responseJSON))

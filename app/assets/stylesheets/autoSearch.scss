@@ -20,16 +20,8 @@ li.autoSearch-li {
     padding: 5px;
     background-color: white;
     cursor: pointer;
+    border-bottom: 1px solid #f0efef;
 }
-// not working
-// li.autoSearch-li:before{
-//     background-image: url(../images/friend.jpg);
-//     background-size: 10px 10px;
-//     display: inline-block;
-//     width: 10px; 
-//     height: 10px;
-//     content:"";
-// }
 
 li.autoSearch-li:hover{
     background-color: rgb(238, 234, 234);

@@ -5,7 +5,6 @@ import {signUpInvitedUser} from '../../../actions/session_action';
 import {addFriend} from '../../../actions/friend_action';
 
 const mSTP = (state, ownProps) => {
-    debugger
     return {
         name: ownProps.name,
         currentUser: state.entities.users,

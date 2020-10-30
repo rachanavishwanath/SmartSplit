@@ -5,6 +5,7 @@ import ExpenseDetails from './expense_details';
 import AdditionalDetails from './additional_details';
 import InviteFriendContainer from './invite_friend_container';
 import InviteFriend from './invite_friend';
+import SplitType from './split_type';
 
 export default class ExpenseForm extends React.Component {
 
@@ -72,7 +73,6 @@ export default class ExpenseForm extends React.Component {
                 this.setState({ openNotes: false });
                 break;
             case 'IF':
-                debugger
                 this.setState({ openInviteFriend: false });
                 break;
             default:
@@ -117,7 +117,6 @@ export default class ExpenseForm extends React.Component {
     }
 
     setPayableId(friend_id, friend_name){
-        debugger
         this.setState({
             payable_id: friend_id,
             show: false,
@@ -177,7 +176,6 @@ export default class ExpenseForm extends React.Component {
                     })
                     break;
                 case 'date':
-                    debugger
                     this.setState({
                         [field]: e.currentTarget.value
                     })
@@ -210,7 +208,7 @@ export default class ExpenseForm extends React.Component {
                     </div>
                     <div className={this.state.active ? "expense-secondary-fields" : "hidden"}>
                         <div className="main-fields">
-                                <img src={window.expense} onClick={() => this.setState({ openCatModal: true, openNotes: false, openCal: false, openEDModal: false}) } alt="expense-logo"/>
+                                <img src={window.expense} onClick={() => this.setState({ openCatModal: true, openNotes: false, openCal: false, openEDModal: false, openSplitType: false}) } alt="expense-logo"/>
                             <div className="main-fields-right">
                                 <input 
                                     type="text"
@@ -226,18 +224,18 @@ export default class ExpenseForm extends React.Component {
                             </div>
                         </div>
                         <div className="human-summary">
-                                Paid by  <a className="payer" onClick={() => this.setState({ openEDModal: true, openNotes: false, openCal: false, openCatModal: false}) }>you</a>
-                              and split  <a className="split">equally</a>.
+                                Paid by  <a className="payer" onClick={() => this.setState({ openEDModal: true, openNotes: false, openCal: false, openCatModal: false, openSplitType: false}) }>you</a>
+                              and split  <a className="split" onClick={() => this.setState({openSplitType: true, openEDModal: false, openNotes: false, openCal: false, openCatModal: false})}>equally</a>.
                             <div className="details">($0.00/person)</div>
                         </div>
                         <div className="footer-bottoms">
                                <label htmlFor="expense-date" className="date slim-buttom">
                                     <input type="date"
-                                        onClick={() => this.setState({ openCal: true, openNotes: false, openEDModal: false, openCatModal: false }) }
+                                        onClick={() => this.setState({ openCal: true, openNotes: false, openEDModal: false, openCatModal: false, openSplitType: false }) }
                                         onChange={this.updateField('date')}
                                     />
                                 </label>
-                                <a className="notes slim-buttom" onClick={() => this.setState({ openNotes: true, openCal: false, openEDModal: false, openCatModal: false })}>Add images/notes</a>
+                                <a className="notes slim-buttom" onClick={() => this.setState({ openNotes: true, openCal: false, openEDModal: false, openCatModal: false, openSplitType: false })}>Add images/notes</a>
                             <a className="group slim-buttom">No group</a>
                         </div>
                     </div>
@@ -283,6 +281,10 @@ export default class ExpenseForm extends React.Component {
                     setPayableId={this.setPayableId}
                 /> 
                 : null}
+                {this.state.openSplitType ? 
+                    <SplitType/>
+                    : null
+                }
         </div>
         )
     }
