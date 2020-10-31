@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-    default from: 'invitations@SmartSplit.com'
+    default from: 'smartsplitinvitations@gmail.com'
 
     def invitation_email(user)
         @user = user
