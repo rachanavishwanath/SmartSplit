@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
         if @user.live_user == false
             @user.save
             msg = UserMailer.invitation_email(@user)
-            msg.deliver_now
+            msg.deliver_later
             render :show
         else
             in_db = User.find_by(email: @user.email)
