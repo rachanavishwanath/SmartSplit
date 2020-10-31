@@ -5,6 +5,14 @@ import AdditionalDetailsContainer from './additional_details_container';
 export default class ExpendeItemDetails extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            showAsset: false
+        }
+        this.handleShowAsset = this.handleShowAsset.bind(this);
+    }
+
+    handleShowAsset () {
+        this.setState({ showAsset: true })
     }
 
     render() {
@@ -26,7 +34,10 @@ export default class ExpendeItemDetails extends React.Component {
                         <p><strong>{this.props.lent_to}</strong> owes $<strong>{this.props.you_lent}</strong></p>
                     </div>
                     <div className="show-from-ADT">
-                        <AdditionalDetailsContainer expense={this.props.expense}/>
+                        <AdditionalDetailsContainer 
+                            expense={this.props.expense}
+                            handleShowAsset={this.handleShowAsset}
+                        />
                     </div>
                 </div>
             </div>

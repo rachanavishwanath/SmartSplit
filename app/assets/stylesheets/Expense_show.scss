@@ -125,6 +125,25 @@ p.ad-createdAt {
     margin-left: 5px;
     height: fit-content;
 }
+div.ad-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+a.ad-asset{
+    font-size: 13px;
+    margin-right: 10px;
+    &:hover {
+        color: black;
+    }
+}
+
+.fa-comment:before {
+    margin-left: 5px;
+    font-size: 15px;
+    color: darkgray;
+}
 
 p.ad-notes{
     padding-left: 10px;
@@ -132,7 +151,6 @@ p.ad-notes{
     padding-bottom: 7px;
     font-size: 13px;
     color: rgb(29, 28, 28);
-    
 }
 
 button.post-comment {

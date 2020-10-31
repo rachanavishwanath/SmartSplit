@@ -14,6 +14,7 @@ export default class AdditionalDetails extends React.Component {
 
     componentDidMount(){
         this.props.fetchADs(this.props.expenseId);
+        this.props.handleShowAsset();
     }
 
     handleSubmit(e){
@@ -51,7 +52,10 @@ export default class AdditionalDetails extends React.Component {
                             </div>
                             <button onClick={() => this.props.deleteAD(ad.id)}>X</button>
                         </div> 
-                            <p className="ad-notes">{ad.notes}</p>   
+                        <div className="ad-div">
+                            <p className="ad-notes">{ad.notes}</p>  
+                            {ad.asset_url ? <a className="ad-asset" href={ad.asset_url} target="_blank">Receipt</a> : null}
+                        </div>
                         </li>
             })
         }

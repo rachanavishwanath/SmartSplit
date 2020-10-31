@@ -22,7 +22,7 @@ class Api::AdditionalDetailsController < ApplicationController
 
     private
     def ad_params
-        params.require(:additional_detail).permit(:expense_id, :author_id, :notes, :asset_url)
+        params.require(:additional_detail).permit(:expense_id, :author_id, :notes, :asset)
     end
 
 end

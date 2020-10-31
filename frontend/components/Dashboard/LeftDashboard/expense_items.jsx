@@ -59,7 +59,9 @@ export default class ExpenseItems extends React.Component {
                         <div>{d[1]}</div>
                     </div>
                     <img src={window.expense} alt="expense-logo"/>
-                        <div className="expense-desc" onClick={this.toggleShow}>{expense.desc}</div>
+                        <div className="expense-desc" onClick={this.toggleShow}>{expense.desc}
+                        {expense.additional_detail_ids.length > 0 ? <i className="fas fa-comment"></i> : null}
+                        </div>
                 </div>
                 <div className="expense-summary">
                     <div className="you-paid">
