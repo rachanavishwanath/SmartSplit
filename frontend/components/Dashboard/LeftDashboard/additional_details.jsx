@@ -19,7 +19,11 @@ export default class AdditionalDetails extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.createAD(this.state).then(()=>{
+        const formData = new FormData();
+        formData.append('additional_detail[notes]', this.state.notes);
+        formData.append('additional_detail[author_id]', this.props.currentUser.id);
+        formData.append('additional_detail[expense_id]', this.props.expenseId);
+        this.props.createAD(formData).then(()=>{
             this.setState({
                 author_id: this.props.currentUser.id,
                 notes: '',
