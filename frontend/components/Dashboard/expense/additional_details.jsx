@@ -3,21 +3,29 @@ import React from 'react';
 export default class AdditionalDetails extends React.Component {
     constructor(props){
         super(props);
-        this.state = { notes: '', assetFile: null }
+        this.state = { notes: '', assetFile: null, assetUrl: null }
         this.updateField = this.updateField.bind(this);
         this.handleFile = this.handleFile.bind(this);
     }
 
     updateField(e){
-        this.props.updatedNotes(e.currentTarget.value)
+        this.props.updatedNotes(e.currentTarget.value, this.state.assetUrl, this.state.assetFile )
         this.setState({ notes: e.currentTarget.value})
     }
 
     handleFile(e){
-        this.setState({ assetFile: e.currentTarget.files[0] })
+        const file = e.target.files[0] ;
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({ assetFile: file, assetUrl: fileReader.result });
+        };
+        if (file) {
+            fileReader.readAsDataURL(file);
+        }
     }
 
     render(){
+        console.log(this.state);
         return(
             <div className="child-modal ad">
                 <div className="expense-form-header">
@@ -27,16 +35,16 @@ export default class AdditionalDetails extends React.Component {
                 <div className="ad-summary">
                     <section className="upload">
                         <p>Attach an image or PDF:</p>
-                        <div className="upload-asset">
+                        {/* <div className="upload-asset">
                             <button>Choose File</button>
                             <p>No file chosen</p>
-                        </div>
-                        {/* <form>
+                        </div> */}
+                        <form>
                             <input 
                                 type="file"
                                 onChange={this.handleFile}
                             />
-                        </form> */}
+                        </form>
                     </section>
                     <section className="notes">
                         <textarea className="add-notes" cols="30" rows="10"

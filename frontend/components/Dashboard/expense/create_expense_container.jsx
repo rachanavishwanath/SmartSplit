@@ -42,7 +42,8 @@ const mSTP = (state, ownProps) => {
             amount_paid: null,
             author_id: state.session.id,
             notes: '',
-            asset_url: ''
+            asset_url: '',
+            assetFile: null,
         },
         users: state.entities.users,
         friends: Object.values(state.entities.users)[0].friends,

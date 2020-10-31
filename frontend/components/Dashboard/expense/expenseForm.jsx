@@ -82,22 +82,29 @@ export default class ExpenseForm extends React.Component {
     }
 
     handleSubmit(e){
+        let { desc, category_id, payable_type, payable_id, date, split_type, amount, 
+            expense_id, paid_by, amount_paid, author_id, notes, asset_url, assetFile } = this.state
         if (this.state.name === '' && this.state.email === '') {
             alert('There is only one person involved in this expense. Do you still want to save it?')
         } 
         let that = this;
         e.preventDefault();
-        this.props.processForm(this.state).then((action) => {
-            this.setState({ expense_id: action.expense.id });
-            this.props.createExpenseDetail(this.state).then(() =>{
+        that.props.processForm({desc, category_id, 
+            payable_type, payable_id, amount, 
+            date, split_type}
+        ).then((action) => {
+            that.setState({ expense_id: action.expense.id });
+            expense_id = action.expense.id;
+            that.props.createExpenseDetail({ expense_id, paid_by, amount_paid }).then(() =>{
                 that.props.friendId != '' ? that.props.fetchAllExpenses(that.props.friendId) : that.props.fetchAllExpenses();
             });
-            if (this.state.notes !== '' || this.state.asset_url !== '') {
+            if (that.state.notes !== '' || that.state.asset_url !== '') {
                 const formData = new FormData();
-                formData.append('additional_detail[notes]', this.state.notes);
-                // below might not be right
-                formData.append('additional_detail[asset_url]', this.state.assetFile);
-                this.props.createAD(this.state);
+                formData.append('additional_detail[notes]', notes);
+                formData.append('additional_detail[author_id]', author_id);
+                formData.append('additional_detail[expense_id]', expense_id);
+                formData.append('additional_detail[asset]', assetFile)
+                that.props.createAD(formData);
             }
             this.props.closeModal();
             this.setState(this.props.expense);
@@ -132,9 +139,15 @@ export default class ExpenseForm extends React.Component {
         })
     }
 
-    updatedNotes(text){
+    updatedNotes(text, asset_url, assetFile) {
+        asset_url != '' ?
         this.setState({
             notes: text,
+            asset_url: asset_url,
+            assetFile: assetFile
+        }) : 
+        this.setState({
+            notes: text
         })
     }
 
