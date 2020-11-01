@@ -28,6 +28,7 @@ class Api::ExpensesController < ApplicationController
     def update
         @expense = Expense.find(params[:id])
         if @expense.update(expense_params)
+            @user = current_user
             render 'api/expenses/show'
         else
             render json: @expense.errors.full_messages, status: 422

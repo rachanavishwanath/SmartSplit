@@ -24,7 +24,6 @@ const removeAdditionalDetail = adId =>{
         adId
     }
 }
-deleteAD
 
 export const deleteAD = adId => dispatch => {
     const id = adId;
@@ -40,6 +39,12 @@ export const fetchADs = expenseId => dispatch => {
 }
 export const createAD = ad => dispatch => {
     return ADUtil.createdAD(ad).then(ad => {
+        return dispatch(receiveAdditionalDetail(ad))
+    })
+}
+
+export const updateAD = ad => dispatch => {
+    return ADUtil.updateAD(ad).then(ad => {
         return dispatch(receiveAdditionalDetail(ad))
     })
 }

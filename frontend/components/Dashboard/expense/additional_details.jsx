@@ -25,7 +25,6 @@ export default class AdditionalDetails extends React.Component {
     }
 
     render(){
-        console.log(this.state);
         return(
             <div className="child-modal ad">
                 <div className="expense-form-header">

@@ -45,6 +45,7 @@ export default class FriendExpense extends React.Component {
                 return that.props.expenseDetails[expenseDetailId]
             })
             return <ExpenseItems
+                openModal={this.props.openModal}
                 key={expense.id}
                 expense={expense}
                 currentUser={this.props.currentUser}

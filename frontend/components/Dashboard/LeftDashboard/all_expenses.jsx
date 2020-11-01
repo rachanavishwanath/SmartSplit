@@ -29,6 +29,7 @@ export default class AllExpenses extends React.Component {
                 return that.props.expenseDetails[expenseDetailId]
             })
             return <ExpenseItems 
+                openModal={this.props.openModal}
                 key={expense.id}
                 expense={expense}
                 deleteExpense={this.props.deleteExpense}

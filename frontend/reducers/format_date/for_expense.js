@@ -45,3 +45,8 @@ export const forShow = input => {
     const date = arr[2].slice(0, 2);
     return `${month} ${date}`
 }
+
+export const expenseDate = date => {
+    let arr = date.split('-');
+    return `${arr[1]}/${arr[2]}/${arr[0]}`
+}

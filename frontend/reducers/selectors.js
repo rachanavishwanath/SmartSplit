@@ -19,10 +19,21 @@ export const defCa = (cat) => {
     let defId;
      Object.values(cat).forEach(cat => {
         switch (cat.name) {
-            case "Entertainment":
+            case "Uncategorized":
                 defId = cat.id;
-                return defId;
+                break;
         }
     })
     return defId
+}
+
+export const myNotes = (obj, arr, id) => {
+    let note;
+    for (let i = 0; i< arr.length; i++){
+        if (obj[arr[i]].author_id === id) {
+            note = obj[arr[i]];
+            break;
+        }
+    }
+    return note;
 }

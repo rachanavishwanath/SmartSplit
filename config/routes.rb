@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       #resources :expense_details, only: [:index]
     end
     resources :categories, only: [:index]
-    resources :additional_details, only: [:create, :destroy]
+    resources :additional_details, only: [:create, :update, :destroy]
     resources :expense_details, only: [:index, :update, :create]
   end
 end

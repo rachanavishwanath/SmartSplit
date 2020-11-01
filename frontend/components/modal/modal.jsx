@@ -4,6 +4,7 @@ import { closeModal } from '../../actions/modal_actions';
 import CreateExpenseContainer from '../Dashboard/expense/create_expense_container';
 import AddFriendContainer from '../Dashboard/LeftDashboard/add_friend_container';
 import InviteFriend from '../Dashboard/expense/invite_friend';
+import EditExpenseContainer from '../Dashboard/expense/edit_expense_container';
 
 function Modal ({modal, closeModal}) {
     if (!modal) { return null; }
@@ -17,8 +18,8 @@ function Modal ({modal, closeModal}) {
             break;
 
         case ('edit-expense'):
-
-            
+            component = <EditExpenseContainer expense={modal.expense}/>
+            break;
         case('add-friend'):
             component = <AddFriendContainer/>
             break; 

@@ -82,29 +82,33 @@ export default class ExpenseForm extends React.Component {
     }
 
     handleSubmit(e){
-        let { desc, category_id, payable_type, payable_id, date, split_type, amount, 
-            expense_id, paid_by, amount_paid, author_id, notes, asset_url, assetFile } = this.state
+        let { id, desc, category_id, payable_type, payable_id, date, split_type, amount, 
+            expense_id, paid_by, amount_paid, author_id, notes, asset_url, assetFile, edId, adId } = this.state;
         if (this.state.name === '' && this.state.email === '') {
             alert('There is only one person involved in this expense. Do you still want to save it?')
         } 
         let that = this;
         e.preventDefault();
-        that.props.processForm({desc, category_id, 
+        that.props.processForm({id, desc, category_id, 
             payable_type, payable_id, amount, 
             date, split_type}
         ).then((action) => {
             that.setState({ expense_id: action.expense.id });
             expense_id = action.expense.id;
-            that.props.createExpenseDetail({ expense_id, paid_by, amount_paid }).then(() =>{
-                that.props.friendId != '' ? that.props.fetchAllExpenses(that.props.friendId) : that.props.fetchAllExpenses();
-            });
-            if (that.state.notes !== '' || that.state.asset_url !== '') {
+            if (that.props.paid_by != that.state.paid_by || that.props.amount_paid != that.state.amount_paid) {
+                that.props.createExpenseDetail({ id: edId, expense_id, paid_by, amount_paid }).then(() =>{
+                    that.props.friendId != '' ? that.props.fetchAllExpenses(that.props.friendId) : that.props.fetchAllExpenses();
+                });
+            }
+            if (that.state.notes !== that.props.notes || that.state.asset_url !== that.props.asset_url) {
                 const formData = new FormData();
+                formData.append('additional_detail[id]', adId);
                 formData.append('additional_detail[notes]', notes);
                 formData.append('additional_detail[author_id]', author_id);
                 formData.append('additional_detail[expense_id]', expense_id);
                 formData.append('additional_detail[asset]', assetFile)
                 that.props.createAD(formData);
+                debugger
             }
             this.props.closeModal();
             this.setState(this.props.expense);
@@ -205,7 +209,7 @@ export default class ExpenseForm extends React.Component {
         <div>
             <div className="expense-form">
                 <div className="expense-form-header">
-                    <h2>Add an expense</h2>
+                    <h2>{this.props.formType} expense</h2>
                     <button onClick={e => this.handleClick(e)}>x</button>
                 </div>
                 <form className="expense-form-eles"onSubmit={e => this.handleSubmit(e)}>
@@ -239,7 +243,7 @@ export default class ExpenseForm extends React.Component {
                         <div className="human-summary">
                                 Paid by  <a className="payer" onClick={() => this.setState({ openEDModal: true, openNotes: false, openCal: false, openCatModal: false, openSplitType: false}) }>you</a>
                               and split  <a className="split" onClick={() => this.setState({openSplitType: true, openEDModal: false, openNotes: false, openCal: false, openCatModal: false})}>equally</a>.
-                            <div className="details">($0.00/person)</div>
+                            <div className="details">{`$${this.state.amount/2}/person`}</div>
                         </div>
                         <div className="footer-bottoms">
                                <label htmlFor="expense-date" className="date slim-buttom">

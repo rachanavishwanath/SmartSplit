@@ -6,16 +6,19 @@ export default class ExpendeItemDetails extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            showAsset: false
+            openEditExpense: false
         }
-        this.handleShowAsset = this.handleShowAsset.bind(this);
+        this.openEditExpense = this.openEditExpense.bind(this);
     }
 
-    handleShowAsset () {
-        this.setState({ showAsset: true })
+    openEditExpense(e, modal){
+        e.preventDefault();
+        e.stopPropagation();
+        this.props.openModal({modal: modal, expense: this.props.expense})
     }
 
     render() {
+        console.log(this.props);
         const formattedDate = formatDate(this.props.expense.created_at);
         return(
             <div className="show-expense-details">
@@ -25,7 +28,7 @@ export default class ExpendeItemDetails extends React.Component {
                         <p id="expense-desc">{this.props.expense.desc}</p>
                         <p id="expense-amount">{`$${this.props.expense.amount}`}</p>
                         <p id="expense-addedon">{`Added by ${this.props.added_by} on ${formattedDate}`}</p>
-                        <button>Edit expense</button>
+                        <button onClick={e => this.openEditExpense(e, 'edit-expense')} className="edit-expense">Edit expense</button>
                     </section>
                 </div>
                 <div className="show-other-details">
@@ -36,7 +39,6 @@ export default class ExpendeItemDetails extends React.Component {
                     <div className="show-from-ADT">
                         <AdditionalDetailsContainer 
                             expense={this.props.expense}
-                            handleShowAsset={this.handleShowAsset}
                         />
                     </div>
                 </div>

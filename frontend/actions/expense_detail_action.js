@@ -28,3 +28,9 @@ export const createExpenseDetail = expense_detail => dispatch => {
         return dispatch(receiveExpenseDetail(expense_detail))
     })
 }
+
+export const updateExpenseDetail = expense_detail => dispatch => {
+    return ExpenseDetailUtil.updateExpenseDetail(expense_detail).then((expense_detail) => {
+        return dispatch(receiveExpenseDetail(expense_detail))
+    })
+}
