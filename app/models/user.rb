@@ -80,7 +80,7 @@ class User < ApplicationRecord
         amount = 0
         more_details = Hash.new {|h,k| h[k] = k }
         detailed_expenses.each do |ex|
-            id = Friend.find(ex.payable_id)
+            id = Friend.includes(:profile).find(ex.payable_id)
             friend_id = self.id != id.profile_id ? id.profile_id : id.friend_id
             ex.expense_details.each do |ed|
                 if ed.paid_by == self.id
