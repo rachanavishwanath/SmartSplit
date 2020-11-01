@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import AddFriend from './add_friend';
 import { addFriend } from '../../../actions/friend_action';
 import { closeModal } from '../../../actions/modal_actions';
+import {signUpInvitedUser} from '../../../actions/session_action';
 
 const mSTP = state => {
     return {
@@ -13,7 +14,8 @@ const mSTP = state => {
 const mDTP = dispatch => {
     return {
         addFriend: (friend) => dispatch(addFriend(friend)),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        signUpInvitedUser: (user, currentUser) => dispatch(signUpInvitedUser(user, currentUser)),
     }
 }
 
