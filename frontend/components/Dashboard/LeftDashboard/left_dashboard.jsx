@@ -37,6 +37,10 @@ export default class LeftDashboard extends React.Component {
                             {allFriends}
                         </ul>
                     </div>
+                    <div className="contact">
+                        <div><a href="https://www.linkedin.com/in/rachana-vishwanath-450ba159" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i></a></div>
+                        <div><a href="https://github.com/rachanavishwanath/SmartSplit" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a></div>
+                    </div>
                 </div>
             </div>
         )

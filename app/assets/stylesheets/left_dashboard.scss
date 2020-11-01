@@ -9,6 +9,18 @@
     }
 }
 
+.contact {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-top: 10px;
+    a > i{
+        font-size: 25px;
+        margin-right: 5px;
+        color: #1cc29f;
+    }
+}
+
 .left-dashboard > a:hover{
     color:#5bc5a7;
 }
