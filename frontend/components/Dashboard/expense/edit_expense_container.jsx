@@ -15,7 +15,11 @@ const mSTP = (state, ownProps) => {
     const expense = ownProps.expense;
     const friend = Object.values(state.entities.users)[0].friends.filter(function(x) {return x.friend_id === ownProps.expense.payable_id});
     const ad = myNotes(state.entities.additional_details, expense.additional_detail_ids, state.session.id);
+    const adId = ad === undefined ? '' : ad.id;
+    const adNote = ad === undefined ? '' : ad.notes;
     const ed = state.entities.exenseDetails[expense.expense_detail_ids[0]]
+    console.log(ad);
+    debugger
     return {
         expense: { 
             id: expense.id,
@@ -39,9 +43,9 @@ const mSTP = (state, ownProps) => {
             expense_id: expense.id,
             paid_by: ed.paid_by,
             amount_paid: ed.amount_paid,
-            adId: ad.id,
+            adId: adId,
             author_id: state.session.id,
-            notes: ad.notes,
+            notes: adNote,
             asset_url: '',
             assetFile: null,
         },

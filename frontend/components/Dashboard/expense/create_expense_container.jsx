@@ -20,7 +20,6 @@ const mSTP = (state, ownProps) => {
         showSecondaryFields = true;
     }
     const defaultCat = defCa(state.entities.categories);
-    console.log(defaultCat);
     return {
         expense: { 
             id: '',
