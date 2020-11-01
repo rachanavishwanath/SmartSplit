@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     background-color: #eee;
-    width: 550px;
+    width: 100%;
     border-left: 1px solid #dad6d6;
     border-right: 1px solid #dad6d6;
 }
@@ -10,6 +10,7 @@
 .center-dashboard {
     flex-direction: row;
     border-bottom: 1px solid #ddd;
+    width: 100%;
 }
 
 .overall-info {
