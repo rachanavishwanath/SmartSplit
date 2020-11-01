@@ -14,7 +14,6 @@ export default class AdditionalDetails extends React.Component {
 
     componentDidMount(){
         this.props.fetchADs(this.props.expenseId);
-        this.props.handleShowAsset();
     }
 
     handleSubmit(e){

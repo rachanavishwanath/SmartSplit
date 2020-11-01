@@ -83,6 +83,8 @@ export default class ExpenseItems extends React.Component {
                 </div>
             </li>
             {this.state.show ? <ExpendeItemDetails
+                    show={this.state.show}
+                    openModal={this.props.openModal}
                     expense={this.props.expense}
                     who_paid={who_paid === 'you' ? currentUser.name : who_paid}
                     lent_to={who_paid === 'you' ? friend_name : currentUser.name}

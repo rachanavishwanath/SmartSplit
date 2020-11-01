@@ -8,6 +8,16 @@ export const createdAD = additional_detail => {
     })
 }
 
+export const updateAD = additional_detail => {
+    return $.ajax({
+        method: 'patch',
+        url: `api/additional_details/${additional_detail.id}`,
+        data: additional_detail,
+        contentType: false,
+        processData: false
+    })
+}
+
 export const fetchAllAD = expenseId => {
     return $.ajax({
         method: 'GET',

@@ -10,7 +10,7 @@
 #  sub_category_id :integer
 #
 class Category < ApplicationRecord
-    # did not write has_many for expenses, as I can't image a scenario where I would pull expenses based on category
+    # did not write has_many for expenses, as I can't imagine a scenario where I would pull expenses based on category
     # has_many :expenses
 
     belongs_to :category,

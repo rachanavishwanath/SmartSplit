@@ -1,11 +1,17 @@
 class Api::ExpenseDetailsController < ApplicationController
     def index
         #@expense_details = ExpenseDetail.where(expense_id: params[:expense_id])
-        @expense_details = ExpenseDetail.all
+        @expense_details = ExpenseDetail.includes(:expense)
         render :index
     end
 
     def update
+        @expenseDetail = ExpenseDetail.find(params[:id])
+        if @expenseDetail.update(expense_details_params)
+            render :show
+        else
+            render json: @expenseDetail.errors.full_messages, status: 422
+        end
     end
 
     def create

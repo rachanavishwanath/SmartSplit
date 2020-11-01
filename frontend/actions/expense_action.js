@@ -60,8 +60,9 @@ export const createExpense = expense => dispatch => {
 }
 
 export const updateExpense = expense => dispatch => {
-    return ExpenseApiUtil.updateExpense(expense).then(expense => {
-        return dispatch(receiveExpense(expense))
+    return ExpenseApiUtil.updateExpense(expense).then(data => {
+        dispatch(receiveCurrentUser(data.user))
+        return dispatch(receiveExpense(data.expense))
     }, response => {
         return dispatch(receiveErrors(response.responseJSON))
     })

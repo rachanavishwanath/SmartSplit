@@ -19,11 +19,14 @@ const mSTP = (state, ownProps) => {
         friendId = state.ui.modal.friendId;
         showSecondaryFields = true;
     }
+    const defaultCat = defCa(state.entities.categories);
+    console.log(defaultCat);
     return {
         expense: { 
+            id: '',
             name: friendName,
             desc: '',
-            amount: '',
+            amount: 0.00,
             category_id: defCa(state.entities.categories),
             payable_type: 'Friend',
             payable_id: parseInt(friendId),
@@ -40,6 +43,8 @@ const mSTP = (state, ownProps) => {
             expense_id: null,
             paid_by: state.session.id,
             amount_paid: null,
+            edId: '',
+            adId: '',
             author_id: state.session.id,
             notes: '',
             asset_url: '',
@@ -49,7 +54,7 @@ const mSTP = (state, ownProps) => {
         friends: Object.values(state.entities.users)[0].friends,
         categories: category(state.entities.categories),
         friendsships: state.entities.friendships,
-        formType: 'Create'
+        formType: 'Add an'
     }
 }
 
