@@ -28,14 +28,16 @@ export default class ExpenseForm extends React.Component {
     componentDidMount() {
         this.props.fetchAllCategories();
         this.props.fetchAllFriends();
+        this.setState({ onScreen: true})
     }
 
     componentWillUnmount() {
+        this.setState({ onScreen: false})
     // fix Warning: Can't perform a React state update on an unmounted component
-    this.setState = (state,callback)=>{
-        return;
-    };
-}
+        this.setState = (state,callback)=>{
+            return;
+        };
+    }
 
     onChange(date) {
         this.setState({ date: date })
@@ -75,6 +77,9 @@ export default class ExpenseForm extends React.Component {
             case 'IF':
                 this.setState({ openInviteFriend: false });
                 break;
+            case 'ST':
+                this.setState({ openSplitType: false });
+                break;
             default:
                 this.props.closeModal();
         }
@@ -83,7 +88,7 @@ export default class ExpenseForm extends React.Component {
 
     handleSubmit(e){
         let { id, desc, category_id, payable_type, payable_id, date, split_type, amount, 
-            expense_id, paid_by, amount_paid, author_id, notes, asset_url, assetFile, edId, adId } = this.state;
+            expense_id, paid_by, amount_paid, author_id, notes, asset_url, assetFile, edId } = this.state;
         if (this.state.name === '' && this.state.email === '') {
             alert('There is only one person involved in this expense. Do you still want to save it?')
         } 
@@ -102,13 +107,13 @@ export default class ExpenseForm extends React.Component {
             }
             if (that.state.notes !== that.props.notes || that.state.asset_url !== that.props.asset_url) {
                 const formData = new FormData();
-                formData.append('additional_detail[id]', adId);
                 formData.append('additional_detail[notes]', notes);
                 formData.append('additional_detail[author_id]', author_id);
                 formData.append('additional_detail[expense_id]', expense_id);
-                formData.append('additional_detail[asset]', assetFile)
+                if (that.state.asset_url != null) {
+                    formData.append('additional_detail[asset]', assetFile)
+                }
                 that.props.createAD(formData);
-                debugger
             }
             this.props.closeModal();
             this.setState(this.props.expense);
@@ -207,7 +212,7 @@ export default class ExpenseForm extends React.Component {
     render() {
         return (
         <div>
-            <div className="expense-form">
+            <div className={`expense-form ${this.state.onScreen ? `onScreen` : `offScreen` }`}>
                 <div className="expense-form-header">
                     <h2>{this.props.formType} expense</h2>
                     <button onClick={e => this.handleClick(e)}>x</button>
@@ -299,7 +304,12 @@ export default class ExpenseForm extends React.Component {
                 /> 
                 : null}
                 {this.state.openSplitType ? 
-                    <SplitType/>
+                    <SplitType
+                        payable_id={this.state.payable_id}
+                        you={this.props.currentUser}
+                        setPayerId={this.setPayerId}
+                        handleClick={e => this.handleClick(e, 'ST')}
+                    />
                     : null
                 }
         </div>

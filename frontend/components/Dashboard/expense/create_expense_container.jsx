@@ -23,6 +23,8 @@ const mSTP = (state, ownProps) => {
     return {
         expense: { 
             id: '',
+            onScreen: false,
+            offScreen: false,
             name: friendName,
             desc: '',
             amount: 0.00,
@@ -49,6 +51,7 @@ const mSTP = (state, ownProps) => {
             asset_url: '',
             assetFile: null,
         },
+        currentUser: Object.values(state.entities.users)[0],
         users: state.entities.users,
         friends: Object.values(state.entities.users)[0].friends,
         categories: category(state.entities.categories),

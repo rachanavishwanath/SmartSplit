@@ -8,6 +8,26 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.expense-form.onScreen {
+    transition: 0.5s opacity;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.expense-form.offScreen {
+    transition: 0.5s opacity;
+    animation: fadeOut 2s ease-in-out;
+}
+
+@keyframes fadein {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1}
+  100% {opacity: 0}
+}
+
 .child-modal{
     margin-left: 10px;
 }

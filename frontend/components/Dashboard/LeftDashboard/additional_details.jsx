@@ -53,7 +53,7 @@ export default class AdditionalDetails extends React.Component {
                                 <p className="ad-author">{author}</p> 
                                 <p className="ad-createdAt">{forShow(ad.created_at)}</p>
                             </div>
-                            <button onClick={() => this.props.deleteAD(ad.id)}>X</button>
+                            {ad.author_id === that.props.currentUser.id ? <button onClick={() => this.props.deleteAD(ad.id)}>X</button> : null}
                         </div> 
                         <div className="ad-div">
                             <p className="ad-notes">{ad.notes}</p>  
