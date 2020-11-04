@@ -34,12 +34,9 @@ export default class AdditionalDetails extends React.Component {
                 <div className="ad-summary">
                     <section className="upload">
                         <p>Attach an image or PDF:</p>
-                        {/* <div className="upload-asset">
-                            <button>Choose File</button>
-                            <p>No file chosen</p>
-                        </div> */}
                         <form>
                             <input 
+                                className="file-input"
                                 type="file"
                                 onChange={this.handleFile}
                             />
@@ -47,7 +44,6 @@ export default class AdditionalDetails extends React.Component {
                     </section>
                     <section className="notes">
                         <textarea className="add-notes" cols="30" rows="10"
-                            // pass value in below prop
                             onChange={this.updateField}
                             value={this.props.value}
                             placeholder="Add notes"

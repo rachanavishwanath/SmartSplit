@@ -5,6 +5,7 @@ import CreateExpenseContainer from '../Dashboard/expense/create_expense_containe
 import AddFriendContainer from '../Dashboard/LeftDashboard/add_friend_container';
 import InviteFriend from '../Dashboard/expense/invite_friend';
 import EditExpenseContainer from '../Dashboard/expense/edit_expense_container';
+import SettleContainer from '../Dashboard/centerDashboard/settle_container';
 
 function Modal ({modal, closeModal}) {
     if (!modal) { return null; }
@@ -25,6 +26,10 @@ function Modal ({modal, closeModal}) {
             break; 
         case('invite-friend'):
             component= <InviteFriend/>
+            break;
+        case ('settle'):
+            component = <SettleContainer/>
+            break;
         default:
             return null;
     }

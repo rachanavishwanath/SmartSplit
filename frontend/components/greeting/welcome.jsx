@@ -22,9 +22,9 @@ export default class Welcome extends React.Component {
                     <p>{this.props.currentUser.name}</p>
                     <div className="arrow-down"></div>
                     <div className="account-drop-down">
-                        <a href="">Your account</a>
+                        {/* <a href="">Your account</a>
                         <a href="">Create a group</a>
-                        <a href="">Fairness calculator</a>
+                        <a href="">Fairness calculator</a> */}
                         <a onClick={this.props.logout}>Log out</a>
                     </div>
                 </div>

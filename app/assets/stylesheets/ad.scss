@@ -12,7 +12,7 @@
     justify-content: space-between;
     // height: 350px;
     height: fit-content;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Montserrat;
 }
 
 .upload {
@@ -24,6 +24,10 @@
     font-size: 13px;
     color: #8a8787;
     margin: 10px 0;
+}
+
+.file-input{
+    font-family: Montserrat;
 }
 
 .upload > p{

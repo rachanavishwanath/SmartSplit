@@ -6,7 +6,7 @@
 
 .welcome > .right-nav > p {
     font-size: 15px;
-    font-family: sans-serif;
+    font-family: Montserrat;
     padding-top: 5px;
     margin-left: 10px;
     position: relative;
@@ -24,6 +24,7 @@
 }
 
 .welcome > .right-nav:hover > .account-drop-down {
+    font-family: Montserrat;
     position: absolute;
     top: 40px;
     right: 290px;
@@ -38,7 +39,7 @@
 }
 
 .account-drop-down > a {
-    padding: 5px;
+    padding: 5px 20px;
 }
 
 .arrow-down {
