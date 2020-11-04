@@ -1,21 +1,71 @@
 .footer{
-    background-color:#676767;
-    display: flex;
+    background-color:white;
     justify-content: space-between;
     height: 100px;
-    position: sticky;
-    bottom: 0;
+    // position: sticky;
+    // bottom: 0;
     width: 100%;
+    font-family: Montserrat;
+}
+
+
+.smartsplit {
+    color: #1cc29f;
+    font-weight: 700;
+}
+
+.account{
+    color: #f67240;
+    font-weight: 700;
+}
+
+.more{
+    color: #373b3f;
+    font-weight: 700;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color:  #373b3f;
+}
+
+.footer-img > img {
+    width: 100%;
+    background-image: url(https://rachanavishwanath-personal.s3-us-west-1.amazonaws.com/Footer.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 .left-footer {
-    color: white;
+    color: #373b3f;
     padding: 30px;
 }
 
+.div-1 {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.div-2 {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-left: 1px solid #b6babe;
+    border-right: 1px solid #b6babe;
+}
+
 .right-footer {
-    color: white;
+    font-size: 13px;
+    color:#373b3f;
     padding: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .right-footer > a {

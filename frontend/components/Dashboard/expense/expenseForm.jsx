@@ -230,7 +230,10 @@ export default class ExpenseForm extends React.Component {
                     </div>
                     <div className={this.state.active ? "expense-secondary-fields" : "hidden"}>
                         <div className="main-fields">
+                            <figure>
                                 <img src={window.expense} onClick={() => this.setState({ openCatModal: true, openNotes: false, openCal: false, openEDModal: false, openSplitType: false}) } alt="expense-logo"/>
+                                <figcaption>Category</figcaption>
+                            </figure>
                             <div className="main-fields-right">
                                 <input 
                                     type="text"

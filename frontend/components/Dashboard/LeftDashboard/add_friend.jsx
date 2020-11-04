@@ -83,6 +83,7 @@ export default class AddFriend extends React.Component {
         }
         this.update = this.update.bind(this);
         this.signUp = this.signUp.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     signUp(e){
@@ -96,6 +97,11 @@ export default class AddFriend extends React.Component {
 
     update(e, field){
         this.setState({ [field]: e.currentTarget.value })
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        this.props.closeModal();
     }
 
 

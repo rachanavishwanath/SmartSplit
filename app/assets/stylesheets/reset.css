@@ -1,6 +1,6 @@
 main, html, body, h1, div, 
 p ,form, h3, h2, a, ul, li, label, 
-input, button, footer, span,
+input, button, footer, span, figure, figcaption,
 img, section, nav, article, textarea {
     margin: 0;
     padding: 0;

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import Footer from './footer';
 import HomePage from './home_page';
 import Welcome from './welcome';
+import Features from './features';
 
 export default class Greeting extends React.Component{
     constructor(props) {
@@ -36,7 +37,7 @@ export default class Greeting extends React.Component{
                 />
             </div>
         ) : (
-            <div>
+            <div className="bkg">
                 <div className="splash">
                     <div className="login-signup">
                         <div>
@@ -51,6 +52,7 @@ export default class Greeting extends React.Component{
                     {this.state.logout ? <div className="logout-notice">You are now logged out.</div> : null}
                     <HomePage />
                 </div>
+                <Features />
                 <Footer />
             </div>
         );

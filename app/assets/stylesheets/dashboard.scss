@@ -14,6 +14,7 @@
 }
 
 .overall-info {
+    font-family: Montserrat;
     display: flex;
     flex-direction: row;
     background-color: #eee;
@@ -41,7 +42,7 @@ div.you-are-owed {
 
 button.add-expense, button.settle {
     color: white;
-    font-family: sans-serif;
+    font-family: Montserrat;
     padding: 10px 15px;
     border-radius: 3px;
     margin-right: 10px;
@@ -62,7 +63,7 @@ button.settle {
 }
 
 div.center-dashboard > header {
-    font-family: sans-serif;
+    font-family: Montserrat;
     font-weight: bold;
     font-size: 24px;
     color: rgb(66, 63, 63);
