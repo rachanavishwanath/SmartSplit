@@ -90,7 +90,8 @@ export default class AddFriend extends React.Component {
         e.preventDefault();
         let that = this;
         this.props.signUpInvitedUser(this.state, this.props.currentUser).then((action) => {
-            this.props.addFriend(action.user)
+            this.props.addFriend(action.user);
+            this.props.closeModal();
         })
     }
 
@@ -131,7 +132,7 @@ export default class AddFriend extends React.Component {
                             </label>
                         </div>
                         <div className="footer-buttons">
-                            <button onClick={this.addFriend}>Add Friend</button>
+                            <button onClick={this.signUp}>Add Friend</button>
                         </div>
                     </form>
                 </div>

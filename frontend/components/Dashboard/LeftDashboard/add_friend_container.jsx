@@ -7,7 +7,8 @@ import {signUpInvitedUser} from '../../../actions/session_action';
 
 const mSTP = state => {
     return {
-        errors: state.errors.addFriend
+        errors: state.errors.addFriend,
+        currentUser: state.entities.users
     }
 }
 
