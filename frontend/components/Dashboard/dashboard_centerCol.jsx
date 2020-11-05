@@ -30,11 +30,11 @@ export default class DashboardCenterCol extends React.Component {
                 <div className="transaction-summary">
                     <div className="you-owe-left">
                         <h1>YOU OWE</h1>
-                        <p>{total_bal === 0 ? 'You do not owe anything' : 'Coming soon'}</p>
+                        <p>{total_bal === 0 ? 'You do not owe anything' : `$${you_owe}`}</p>
                     </div>
                     <div className="you-are-owe-right">
                         <h1>YOU ARE OWED</h1>
-                        <p>Coming soon</p>
+                        <p>{`$${you_are_owed}`}</p>
                     </div>
                 </div>
             </div>

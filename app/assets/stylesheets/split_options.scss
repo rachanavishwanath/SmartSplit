@@ -1,3 +1,8 @@
+
+.split-options {
+    width: 350px;
+}
+
 .split-option-slim-buttons{
     display: flex;
     flex-direction: column;
@@ -5,6 +10,7 @@
     flex-wrap: wrap;
     align-content: center;
     padding-bottom: 20px;
+    margin-top: 20px;
     button{
         width: calc(100% - 100px);
         padding: 5px 0;
@@ -65,4 +71,14 @@ ul.split-options-ul {
 
 .split-options-li:hover .fa-caret-down{
     display: inline-block;
+}
+
+li.split-between {
+    margin: 20px;
+}
+
+h2.split-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin:20px;
 }

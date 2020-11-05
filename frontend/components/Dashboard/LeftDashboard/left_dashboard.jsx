@@ -26,7 +26,7 @@ export default class LeftDashboard extends React.Component {
             <div>
                 <div className="left-dashboard">
                     <Link id="dashboard-link" to="/dashboard">Dashboard</Link>
-                    <Link id="recent-activity" to="/activity"><i className="icon-flag"></i>Recent activity</Link>
+                    {/* <Link id="recent-activity" to="/activity"><i className="icon-flag"></i>Recent activity</Link> */}
                     <Link id="all-expenses" to="/all">All expenses</Link>
                     <div id="friends">
                         <div className="fr-header">

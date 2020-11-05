@@ -145,6 +145,7 @@ export default class ExpenseForm extends React.Component {
         this.setState({
             paid_by: payer_id,
             openEDModal: false,
+            openSplitType: false
         })
     }
 
@@ -309,6 +310,7 @@ export default class ExpenseForm extends React.Component {
                 {this.state.openSplitType ? 
                     <SplitType
                         payable_id={this.state.payable_id}
+                        users={this.props.users}
                         you={this.props.currentUser}
                         setPayerId={this.setPayerId}
                         handleClick={e => this.handleClick(e, 'ST')}

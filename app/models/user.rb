@@ -48,8 +48,13 @@ class User < ApplicationRecord
         self.friends + self.inverse_friends
     end
 
+    def recent_activity
+        recent_activity = {}
+        
+    end
+
     def friends_list
-        obj ={}
+        obj = {}
         friends.map do |friendship| 
             obj[friendship.id] = User.find(friendship.profile_id)
         end
