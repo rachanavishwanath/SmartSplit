@@ -20,7 +20,6 @@ export default class LeftDashboard extends React.Component {
     }
 
     render() {
-        console.log(this.props.push);
         if (this.props.friends === undefined) { return null; }
         const allFriends = this.props.friends.map(friend => {
             return <FriendListItems

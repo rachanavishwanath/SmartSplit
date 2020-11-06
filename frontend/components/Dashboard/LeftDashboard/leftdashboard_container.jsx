@@ -4,7 +4,6 @@ import { openModal, closeModal } from '../../../actions/modal_actions';
 import {deleteFriend} from '../../../actions/friend_action';
 
 const mSTP = (state, ownProps) => {
-    console.log(ownProps)
     return {
         friends: Object.values(state.entities.users)[0].friends,
         push: ownProps.push
