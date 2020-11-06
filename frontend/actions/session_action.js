@@ -52,7 +52,7 @@ export const signUpInvitedUser = (user, currentUser) => dispatch => {
     return SessionApiUtil.signup(user).then(user => {
         return dispatch(receiveUser(user))
     }, response => {
-        return dispatch(receiveSessionErrors(response.responseJSON))
+        return dispatch(receiveSessionErrors(response.responseText))
     })
 }
 

@@ -89,8 +89,12 @@ export default class AddFriend extends React.Component {
     signUp(e){
         e.preventDefault();
         let that = this;
-        this.props.signUpInvitedUser(this.state, this.props.currentUser).then((action) => {
+        this.props.signUpInvitedUser(this.state, this.props.currentUser)
+        .then((action) => {
             this.props.addFriend(action.user);
+            this.props.closeModal();
+        }, () => {
+            this.props.addFriend(this.state);
             this.props.closeModal();
         })
     }

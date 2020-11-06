@@ -35,13 +35,18 @@ export const fetchAllFriends = () => dispatch => {
 
 export const addFriend = friend => dispatch => {
     return FriendAPIUtil.createFriend(friend)
-        // .then(friends => {
-        //     debugger
-        //     return dispatch(receiveAllFriends(friends))
         .then(user => {
             dispatch(receiveCurrentUser(user)
         )
         }, response => {
             return dispatch(receiveErrorSuccess(response.responseJSON))
         })
+}
+
+export const deleteFriend = friendId => dispatch => {
+    return FriendAPIUtil.deleteFriend(friendId)
+    .then(user => {
+        return dispatch(receiveCurrentUser(user))
+        // dispatch(receiveSuccess(response.responseJSON))
+    })
 }

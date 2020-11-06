@@ -8,10 +8,15 @@ export default class LeftDashboard extends React.Component {
         super(props);
         this.state = { addFriends: false }
         this.handleClick = this.handleClick.bind(this);
+        this.deleteFriend = this.deleteFriend.bind(this);
     }
 
     handleClick(modal) {
          this.props.openModal({modal: modal})
+    }
+
+    deleteFriend(friendId){
+        this.props.deleteFriend(friendId)
     }
 
     render() {
@@ -20,6 +25,7 @@ export default class LeftDashboard extends React.Component {
             return <FriendListItems
                 key={friend.friend_id}
                 friend={friend}
+                deleteFriend={this.props.deleteFriend}
             />
         })
         return (

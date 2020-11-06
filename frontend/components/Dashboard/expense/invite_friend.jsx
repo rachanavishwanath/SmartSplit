@@ -23,6 +23,13 @@ export default class InviteFriend extends React.Component {
                 const friendName = friends[friends.length -1].name
                 this.props.setPayableId(friendId, friendName)
             })
+        }, () => {
+            this.props.addFriend(this.state).then(() => {
+                const {friends} = that.props;
+                const friendId = friends[friends.length -1].friend_id
+                const friendName = friends[friends.length -1].name
+                this.props.setPayableId(friendId, friendName)
+            })
         })
     }
 

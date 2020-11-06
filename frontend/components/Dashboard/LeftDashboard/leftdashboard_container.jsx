@@ -1,6 +1,7 @@
 import { connect}from 'react-redux';
 import LeftDashboard from './left_dashboard';
 import { openModal, closeModal } from '../../../actions/modal_actions';
+import {deleteFriend} from '../../../actions/friend_action';
 
 const mSTP = state => {
     return {
@@ -12,7 +13,8 @@ const mSTP = state => {
 const mDTP = dispatch => {
     return {
         openModal: (modal) => dispatch(openModal(modal)),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        deleteFriend: friendId => dispatch(deleteFriend(friendId))
     }
 }
 
