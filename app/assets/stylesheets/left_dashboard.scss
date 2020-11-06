@@ -55,11 +55,19 @@ div#friends > .fr-header{
 }
 
 .li-friends {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     // background-image: url(../images/friend.jpg);
     color: #999;
     height: 19px;
     font-size: 14px;
     padding: 3px 8px 2px 8px;
+}
+
+button.delete-friend:hover{
+    color: #cf1818;
 }
 
 .li-friends:hover{

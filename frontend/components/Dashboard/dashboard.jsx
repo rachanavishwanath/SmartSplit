@@ -12,7 +12,7 @@ export default class Dashboard extends React.Component {
             <nav>
                 <GreetingComponent />
                 <div className="dashboard">
-                    <LeftDashboardContainer />
+                    <LeftDashboardContainer push={this.props.push}/>
                     {/* <LeftDashboard friends={this.props.friends} openModal={this.props.openModal} /> */}
                     <DashboardCenterCol openModal={this.props.openModal} currentUser={this.props.user} fetchAllExpenseDetails={this.props.fetchAllExpenseDetails}/>
                     <RightDashboard/>

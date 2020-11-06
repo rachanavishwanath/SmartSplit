@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+button.add-friend:hover {
+    color: #1cc29f;
+}
+
 input[type="text"]:hover {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 }

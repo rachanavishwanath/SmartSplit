@@ -59,7 +59,7 @@ export default class FriendExpense extends React.Component {
                 <GreetingComponent />
                 <div className="friend-expense">
                     {/* <LeftDashboard friends={this.props.friends}/> */}
-                    <LeftDashboardContainer />
+                    <LeftDashboardContainer push={this.props.push}/>
                     <div className="center-column">
                         <CenterDashboard openModal={this.props.openModal} header={`${name}`} friendId={this.props.friendId}/>
                         <div id="all-expenses">

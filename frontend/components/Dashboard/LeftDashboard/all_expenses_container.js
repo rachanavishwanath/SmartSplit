@@ -5,10 +5,11 @@ import AllExpenses from './all_expenses';
 import { logout } from '../../../actions/session_action';
 import { fetchAllExpenseDetails } from '../../../actions/expense_detail_action';
 
-const mSTP = state => {
+const mSTP = (state, ownProps) => {
     return {
         currentUser: state.entities.users[state.session.id],
         expenses: Object.values(state.entities.expenses),
+        push: ownProps.history.push,
         // friends: state.entities.currentUser.friends,
         expenseDetails: state.entities.exenseDetails,
     }

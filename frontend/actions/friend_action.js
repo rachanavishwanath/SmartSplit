@@ -46,7 +46,7 @@ export const addFriend = friend => dispatch => {
 export const deleteFriend = friendId => dispatch => {
     return FriendAPIUtil.deleteFriend(friendId)
     .then(user => {
-        return dispatch(receiveCurrentUser(user))
+        dispatch(receiveCurrentUser(user))
         // dispatch(receiveSuccess(response.responseJSON))
     })
 }

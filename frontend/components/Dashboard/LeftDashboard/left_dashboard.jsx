@@ -20,12 +20,14 @@ export default class LeftDashboard extends React.Component {
     }
 
     render() {
+        console.log(this.props.push);
         if (this.props.friends === undefined) { return null; }
         const allFriends = this.props.friends.map(friend => {
             return <FriendListItems
                 key={friend.friend_id}
                 friend={friend}
                 deleteFriend={this.props.deleteFriend}
+                push={this.props.push}
             />
         })
         return (

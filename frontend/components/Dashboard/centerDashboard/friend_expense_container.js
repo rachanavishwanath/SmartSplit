@@ -9,6 +9,7 @@ const mSTP = (state, ownProps) => {
     const friendId = ownProps.match.params.friend_id;
     return {
         currentUser: state.entities.users[state.session.id],
+        push: ownProps.history.push,
         friends: Object.values(state.entities.users)[0].friends,
         friendId,   
         expenses: Object.values(state.entities.expenses),

@@ -42,7 +42,7 @@ export default class AllExpenses extends React.Component {
             <div className="all-expenses">
                 <Welcome currentUser={this.props.currentUser} logout={this.props.logout}/>
                 <div id="main-section">
-                    <LeftDashboardContainer/>
+                    <LeftDashboardContainer push={this.props.push}/>
                     <div className="center-column">
                         <CenterDashboard openModal={this.props.openModal} header={'All expenses'} />
                         <div id="all-expenses">

@@ -12,7 +12,7 @@ export default class Activity extends React.Component {
                 <GreetingComponent />
                 <div className="recent-activity">
                     {/* <LeftDashboard friends={this.props.friends}/> */}
-                    <LeftDashboardContainer />
+                    <LeftDashboardContainer push={this.props.push}/>
                     <RecentActicity />
                     <RightDashboard />
                 </div>
