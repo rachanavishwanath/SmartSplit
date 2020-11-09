@@ -20,6 +20,7 @@ SmartSplit is a full stack single page application clone of splitwise. Users can
 ## Features
 * Full user authentication (signUp, Login and logout) with security
 * Add expense based on the type of category, choose who paid the bill, select a friend to share the expense with from your list of friends
+* Upload receipts
 
 Adding expense
 
@@ -35,6 +36,5 @@ Details about an expense
 
 
 ### Future Implementations
-* AWS for uploading receipt
 * Displaying recent activities
 * Create a group to share the expense
