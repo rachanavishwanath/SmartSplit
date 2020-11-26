@@ -86,7 +86,6 @@ export default class SignUpForm extends React.Component {
                         <br /><br />
                     </div>
                     <button>Sign me up!</button>
-                    <p>By signing up, you accept the Smartsplit Terms of Service.</p>
                     <p>Don't have an account yet? <a style={{ color: "rgba(18, 154, 234, 1)" }} onClick={this.demoLogin}>Login as a demo user.</a></p>
                 </form>
 
