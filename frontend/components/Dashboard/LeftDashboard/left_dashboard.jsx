@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import FriendListItems from './all_friends_list_item';
 import AddFriend from './add_friend';
 
@@ -32,9 +32,15 @@ export default class LeftDashboard extends React.Component {
         return (
             <div>
                 <div className="left-dashboard">
-                    <Link id="dashboard-link" to="/dashboard">Dashboard</Link>
+                    <NavLink id="dashboard-link" 
+                        to="/dashboard"
+                        activeStyle={{ color: "#1cc29f" }}
+                    >Dashboard</NavLink>
                     {/* <Link id="recent-activity" to="/activity"><i className="icon-flag"></i>Recent activity</Link> */}
-                    <Link id="all-expenses" to="/all">All expenses</Link>
+                    <NavLink id="all-expenses" 
+                        to="/all"
+                        activeStyle={{ color: "#1cc29f" }}
+                    >All expenses</NavLink>
                     <div id="friends">
                         <div className="fr-header">
                             <h3>FRIENDS</h3>
